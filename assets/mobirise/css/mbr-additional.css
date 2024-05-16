@@ -3240,6 +3240,63 @@ a {
 .cid-uckxL3e0t7 .position {
   color: #000000;
 }
+.cid-ucTKlRm91n {
+  padding-top: 105px;
+  padding-bottom: 150px;
+  background-color: #000000;
+}
+.cid-ucTKlRm91n .mbr-overlay {
+  background-color: #ffffff;
+  opacity: 0.4;
+}
+.cid-ucTKlRm91n .wrapper {
+  border: 2px solid #ffffff;
+  padding: 6rem 4rem;
+}
+@media (max-width: 767px) {
+  .cid-ucTKlRm91n .wrapper {
+    padding: 4rem 1rem;
+  }
+}
+@media (max-width: 767px) {
+  .cid-ucTKlRm91n .col-auto {
+    margin: auto;
+  }
+}
+.cid-ucTKlRm91n .btn {
+  min-height: 60px;
+}
+.cid-ucTKlRm91n .wave-container {
+  position: absolute;
+  left: 0;
+  top: -110px;
+  height: 113px;
+  overflow: hidden;
+  width: 100%;
+}
+.cid-ucTKlRm91n .svg-top {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  transform-origin: bottom;
+  animation: 1.5s ease-in-out infinite alternate svg-wave;
+  fill: #8e30eb;
+}
+.cid-ucTKlRm91n .svg-top .st0 {
+  fill: #000000;
+}
+@media (max-width: 992px) {
+  .cid-ucTKlRm91n .svg-top {
+    width: 1000px;
+  }
+}
+.cid-ucTKlRm91n .form-row > .col,
+.cid-ucTKlRm91n .form-row > [class*=col-] {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
 .cid-ucfr13WrS9 {
   padding-top: 3rem;
   padding-bottom: 3rem;
