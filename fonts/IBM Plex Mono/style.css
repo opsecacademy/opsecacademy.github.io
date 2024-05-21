@@ -1,0 +1,98 @@
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: normal;
+   font-display: swap;
+   font-weight: 100;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/100.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: normal;
+   font-display: swap;
+   font-weight: 200;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/200.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: normal;
+   font-display: swap;
+   font-weight: 300;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/300.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: normal;
+   font-display: swap;
+   font-weight: 500;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/500.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: normal;
+   font-display: swap;
+   font-weight: 600;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/600.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: normal;
+   font-display: swap;
+   font-weight: 700;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/700.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: italic;
+   font-display: swap;
+   font-weight: 100;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/100italic.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: italic;
+   font-display: swap;
+   font-weight: 200;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/200italic.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: italic;
+   font-display: swap;
+   font-weight: 300;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/300italic.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: regular;
+   font-display: swap;
+   font-weight: 400;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/regular.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: italic;
+   font-display: swap;
+   font-weight: 400;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/italic.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: italic;
+   font-display: swap;
+   font-weight: 500;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/500italic.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: italic;
+   font-display: swap;
+   font-weight: 600;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/600italic.ttf') format('truetype');
+}
+@font-face {
+   font-family: 'IBM Plex Mono';
+   font-style: italic;
+   font-display: swap;
+   font-weight: 700;
+   src: url('file:///D:/syncthing/github/opsecacademy.github.io/fonts/IBM Plex Mono/700italic.ttf') format('truetype');
+}
