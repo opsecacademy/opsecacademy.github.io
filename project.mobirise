@@ -66,9 +66,7 @@
     "siteUrl": false,
     "cookiesAlert": false,
     "gdpr": false,
-    "publishEditFolder": true,
-    "publishType": "mbrsite",
-    "mbrsite": "mbrsite://%7B%22id%22%3A488802%2C%22domain%22%3A%22p8ik94e21s.mobirisesite.com%22%7D"
+    "publishEditFolder": true
   },
   "pages": {
     "course.html": {
