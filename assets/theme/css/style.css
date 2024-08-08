@@ -248,9 +248,11 @@ iframe {
   .media-size-item {
     width: auto !important;
   }
+
   .media {
     width: auto;
   }
+
   .mbr-figure {
     width: 100% !important;
   }
@@ -433,7 +435,8 @@ nav .mbr-section-btn {
   display: inline-block;
   text-decoration: none;
   outline-style: none;
-  animation: arrowdown 1.7s ease-in-out infinite;
+  -webkit-animation: arrowdown 1.7s ease-in-out infinite;
+          animation: arrowdown 1.7s ease-in-out infinite;
   color: #ffffff;
 }
 .mbr-arrow > a > i {
@@ -467,6 +470,17 @@ nav .mbr-section-btn {
     transform: translateY(0px);
   }
 }
+@-webkit-keyframes arrowdown {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 @media (max-width: 500px) {
   .mbr-arrow-up {
     left: 0;
@@ -478,11 +492,25 @@ nav .mbr-section-btn {
 @keyframes gradient-animation {
   from {
     background-position: 0% 100%;
-    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
   }
   to {
     background-position: 100% 0%;
-    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+  }
+}
+@-webkit-keyframes gradient-animation {
+  from {
+    background-position: 0% 100%;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
+  }
+  to {
+    background-position: 100% 0%;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
   }
 }
 .bg-gradient {
@@ -858,6 +886,7 @@ blockquote {
     padding-left: 16px;
     padding-right: 16px;
   }
+
   .row {
     margin-left: -16px;
     margin-right: -16px;
@@ -922,7 +951,4 @@ blockquote {
     width: 300% !important;
     left: -100% !important;
   }
-}
-.popover {
-  position: absolute;
 }
