@@ -1964,6 +1964,60 @@ a {
 .cid-uckLF9wfLO .mbr-section-title {
   color: #000000;
 }
+.cid-ukVMSzOMLn {
+  padding-top: 6rem;
+  padding-bottom: 8rem;
+  background-color: #ffffff;
+}
+.cid-ukVMSzOMLn .wave-container {
+  position: absolute;
+  left: 0;
+  top: -110px;
+  height: 113px;
+  overflow: hidden;
+  width: 100%;
+}
+.cid-ukVMSzOMLn .svg-top {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  transform-origin: bottom;
+  animation: 1.5s ease-in-out infinite alternate svg-wave;
+  fill: #b162ff;
+}
+.cid-ukVMSzOMLn .svg-top .st0 {
+  fill: #ffffff;
+}
+@media (max-width: 992px) {
+  .cid-ukVMSzOMLn .svg-top {
+    width: 1000px;
+  }
+}
+@keyframes svg-wave {
+  from {
+    transform: scaleX(1) scaleY(1.1);
+  }
+  to {
+    transform: scaleX(1) scaleY(1.6);
+  }
+}
+@media (min-width: 1400px) {
+  .cid-ukVMSzOMLn .col-12 {
+    padding: 0 2rem;
+  }
+  .cid-ukVMSzOMLn .row {
+    margin: 0 -2rem;
+  }
+}
+.cid-ukVMSzOMLn .mbr-text,
+.cid-ukVMSzOMLn .mbr-section-btn {
+  color: #000000;
+}
+.cid-ukVMSzOMLn .mbr-section-title {
+  color: #000000;
+}
 .cid-ucfr13WrS9 {
   padding-top: 3rem;
   padding-bottom: 3rem;
