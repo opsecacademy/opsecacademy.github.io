@@ -2417,22 +2417,15 @@ a {
 .cid-ugi8akFHdk .mbr-section-title {
   color: #ffffff;
 }
-.cid-ukOFnewK1h {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+.cid-ukV8MLE0n5 {
+  padding-top: 7rem;
+  padding-bottom: 6rem;
   background-color: #f8f8f8;
 }
-.cid-ukOFnewK1h .timeline-element {
-  position: relative;
+.cid-ukV8MLE0n5 .row {
+  flex-direction: row-reverse;
 }
-.cid-ukOFnewK1h .timelines-container {
-  display: flex;
-  flex-wrap: wrap;
-}
-.cid-ukOFnewK1h .image-wrapper {
-  padding: 1rem;
-}
-.cid-ukOFnewK1h .wave-container {
+.cid-ukV8MLE0n5 .wave-container {
   position: absolute;
   left: 0;
   top: -110px;
@@ -2440,7 +2433,7 @@ a {
   overflow: hidden;
   width: 100%;
 }
-.cid-ukOFnewK1h .svg-top {
+.cid-ukV8MLE0n5 .svg-top {
   width: 100%;
   position: absolute;
   left: 0;
@@ -2450,11 +2443,11 @@ a {
   animation: 1.5s ease-in-out infinite alternate svg-wave;
   fill: #b162ff;
 }
-.cid-ukOFnewK1h .svg-top .st0 {
+.cid-ukV8MLE0n5 .svg-top .st0 {
   fill: #f8f8f8;
 }
 @media (max-width: 992px) {
-  .cid-ukOFnewK1h .svg-top {
+  .cid-ukV8MLE0n5 .svg-top {
     width: 1000px;
   }
 }
@@ -2466,76 +2459,191 @@ a {
     transform: scaleX(1) scaleY(1.6);
   }
 }
-.cid-ukOFnewK1h .image-wrapper img {
-  width: 100%;
-  object-fit: cover;
+.cid-ukV8MLE0n5 .mbr-section-title {
+  color: #000000;
 }
-.cid-ukOFnewK1h .mbr-section-title,
-.cid-ukOFnewK1h .mbr-section-subtitle,
-.cid-ukOFnewK1h .timeline-date {
-  text-align: center;
+@media (min-width: 1400px) {
+  .cid-ukV8MLE0n5 .col-12 {
+    padding: 0 2rem;
+  }
+  .cid-ukV8MLE0n5 .row {
+    margin: 0 -2rem;
+  }
 }
-.cid-ukOFnewK1h .row:after {
-  content: "";
+.cid-ukV8MLE0n5 .mbr-text,
+.cid-ukV8MLE0n5 .mbr-section-btn {
+  color: #000000;
+}
+.cid-ukV952l0Gi {
+  padding-top: 7rem;
+  padding-bottom: 5rem;
+  background-color: #ffffff;
+}
+.cid-ukV952l0Gi .row {
+  flex-direction: row-reverse;
+}
+.cid-ukV952l0Gi .wave-container {
   position: absolute;
-  background-color: #000000;
-  width: 2px;
-  height: calc(100% + 50px);
-  top: 82px;
-  left: 50%;
+  left: 0;
+  top: -110px;
+  height: 113px;
+  overflow: hidden;
+  width: 100%;
+}
+.cid-ukV952l0Gi .svg-top {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  transform-origin: bottom;
+  animation: 1.5s ease-in-out infinite alternate svg-wave;
+  fill: #b162ff;
+}
+.cid-ukV952l0Gi .svg-top .st0 {
+  fill: #ffffff;
 }
 @media (max-width: 992px) {
-  .cid-ukOFnewK1h .row:after {
-    top: 64px;
-    left: 50%;
+  .cid-ukV952l0Gi .svg-top {
+    width: 1000px;
   }
 }
-@media (max-width: 767px) {
-  .cid-ukOFnewK1h .row:after {
-    height: calc(100% + 50px);
-    top: 0px;
-    left: 15px;
+@keyframes svg-wave {
+  from {
+    transform: scaleX(1) scaleY(1.1);
+  }
+  to {
+    transform: scaleX(1) scaleY(1.6);
   }
 }
-@media (max-width: 767px) {
-  .cid-ukOFnewK1h .timeline-date-wrapper,
-  .cid-ukOFnewK1h .timeline-text-wrapper,
-  .cid-ukOFnewK1h .image-wrapper {
-    padding: 0rem;
-    padding-left: 2rem;
-  }
-  .cid-ukOFnewK1h .mbr-timeline-date {
-    text-align: left !important;
-  }
-  .cid-ukOFnewK1h .mbr-timeline-title {
-    text-align: left;
-    margin-top: 1rem;
-  }
-}
-@media (max-width: 991px) and (min-width: 768px) {
-  .cid-ukOFnewK1h .timeline-date-wrapper,
-  .cid-ukOFnewK1h .timeline-text-wrapper {
-    padding: 1rem;
-  }
-}
-@media (min-width: 992px) {
-  .cid-ukOFnewK1h .timeline-date-wrapper,
-  .cid-ukOFnewK1h .timeline-text-wrapper,
-  .cid-ukOFnewK1h .image-wrapper {
-    padding: 2rem;
-  }
-}
-.cid-ukOFnewK1h .mbr-text {
+.cid-ukV952l0Gi .mbr-section-title {
   color: #000000;
 }
-.cid-ukOFnewK1h .mbr-timeline-date {
-  color: #1a449a;
+@media (min-width: 1400px) {
+  .cid-ukV952l0Gi .col-12 {
+    padding: 0 2rem;
+  }
+  .cid-ukV952l0Gi .row {
+    margin: 0 -2rem;
+  }
 }
-.cid-ukOFnewK1h .mbr-timeline-title {
+.cid-ukV952l0Gi .mbr-text,
+.cid-ukV952l0Gi .mbr-section-btn {
   color: #000000;
 }
-.cid-ukOFnewK1h .mbr-section-title {
-  color: #1a449a;
+.cid-ukVbmP18Gx {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  background-color: #f8f8f8;
+}
+.cid-ukVbmP18Gx .row {
+  flex-direction: row-reverse;
+}
+.cid-ukVbmP18Gx .wave-container {
+  position: absolute;
+  left: 0;
+  top: -110px;
+  height: 113px;
+  overflow: hidden;
+  width: 100%;
+}
+.cid-ukVbmP18Gx .svg-top {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  transform-origin: bottom;
+  animation: 1.5s ease-in-out infinite alternate svg-wave;
+  fill: #b162ff;
+}
+.cid-ukVbmP18Gx .svg-top .st0 {
+  fill: #f8f8f8;
+}
+@media (max-width: 992px) {
+  .cid-ukVbmP18Gx .svg-top {
+    width: 1000px;
+  }
+}
+@keyframes svg-wave {
+  from {
+    transform: scaleX(1) scaleY(1.1);
+  }
+  to {
+    transform: scaleX(1) scaleY(1.6);
+  }
+}
+.cid-ukVbmP18Gx .mbr-section-title {
+  color: #000000;
+}
+@media (min-width: 1400px) {
+  .cid-ukVbmP18Gx .col-12 {
+    padding: 0 2rem;
+  }
+  .cid-ukVbmP18Gx .row {
+    margin: 0 -2rem;
+  }
+}
+.cid-ukVbmP18Gx .mbr-text,
+.cid-ukVbmP18Gx .mbr-section-btn {
+  color: #000000;
+}
+.cid-ukVbuMDvRc {
+  padding-top: 7rem;
+  padding-bottom: 5rem;
+  background-color: #ffffff;
+}
+.cid-ukVbuMDvRc .row {
+  flex-direction: row-reverse;
+}
+.cid-ukVbuMDvRc .wave-container {
+  position: absolute;
+  left: 0;
+  top: -110px;
+  height: 113px;
+  overflow: hidden;
+  width: 100%;
+}
+.cid-ukVbuMDvRc .svg-top {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 50px;
+  transform-origin: bottom;
+  animation: 1.5s ease-in-out infinite alternate svg-wave;
+  fill: #b162ff;
+}
+.cid-ukVbuMDvRc .svg-top .st0 {
+  fill: #ffffff;
+}
+@media (max-width: 992px) {
+  .cid-ukVbuMDvRc .svg-top {
+    width: 1000px;
+  }
+}
+@keyframes svg-wave {
+  from {
+    transform: scaleX(1) scaleY(1.1);
+  }
+  to {
+    transform: scaleX(1) scaleY(1.6);
+  }
+}
+.cid-ukVbuMDvRc .mbr-section-title {
+  color: #000000;
+}
+@media (min-width: 1400px) {
+  .cid-ukVbuMDvRc .col-12 {
+    padding: 0 2rem;
+  }
+  .cid-ukVbuMDvRc .row {
+    margin: 0 -2rem;
+  }
+}
+.cid-ukVbuMDvRc .mbr-text,
+.cid-ukVbuMDvRc .mbr-section-btn {
+  color: #000000;
 }
 .cid-ugi82Ud5AM {
   padding-top: 105px;
