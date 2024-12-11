@@ -2471,119 +2471,87 @@ a {
 .cid-ugi8akFHdk .mbr-section-title {
   color: #ffffff;
 }
-.cid-ukV8MLE0n5 {
-  padding-top: 7rem;
-  padding-bottom: 6rem;
-  background-color: #f8f8f8;
-}
-.cid-ukV8MLE0n5 .row {
-  flex-direction: row-reverse;
-}
-.cid-ukV8MLE0n5 .wave-container {
-  position: absolute;
-  left: 0;
-  top: -110px;
-  height: 113px;
-  overflow: hidden;
-  width: 100%;
-}
-.cid-ukV8MLE0n5 .svg-top {
-  width: 100%;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 50px;
-  transform-origin: bottom;
-  animation: 1.5s ease-in-out infinite alternate svg-wave;
-  fill: #b162ff;
-}
-.cid-ukV8MLE0n5 .svg-top .st0 {
-  fill: #f8f8f8;
-}
-@media (max-width: 992px) {
-  .cid-ukV8MLE0n5 .svg-top {
-    width: 1000px;
-  }
-}
-@keyframes svg-wave {
-  from {
-    transform: scaleX(1) scaleY(1.1);
-  }
-  to {
-    transform: scaleX(1) scaleY(1.6);
-  }
-}
-.cid-ukV8MLE0n5 .mbr-section-title {
-  color: #000000;
-}
-@media (min-width: 1400px) {
-  .cid-ukV8MLE0n5 .col-12 {
-    padding: 0 2rem;
-  }
-  .cid-ukV8MLE0n5 .row {
-    margin: 0 -2rem;
-  }
-}
-.cid-ukV8MLE0n5 .mbr-text,
-.cid-ukV8MLE0n5 .mbr-section-btn {
-  color: #000000;
-}
-.cid-ugi82Ud5AM {
-  padding-top: 105px;
-  padding-bottom: 150px;
-  background-color: #000000;
-}
-.cid-ugi82Ud5AM .mbr-overlay {
+.cid-uwGUTg6FSK {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
   background-color: #ffffff;
-  opacity: 0.4;
 }
-.cid-ugi82Ud5AM .wrapper {
-  border: 2px solid #ffffff;
-  padding: 6rem 4rem;
+.cid-uwGUTg6FSK .mbr-fallback-image.disabled {
+  display: none;
 }
-@media (max-width: 767px) {
-  .cid-ugi82Ud5AM .wrapper {
-    padding: 4rem 1rem;
-  }
-}
-@media (max-width: 767px) {
-  .cid-ugi82Ud5AM .col-auto {
-    margin: auto;
-  }
-}
-.cid-ugi82Ud5AM .btn {
-  min-height: 60px;
-}
-.cid-ugi82Ud5AM .wave-container {
-  position: absolute;
-  left: 0;
-  top: -110px;
-  height: 113px;
-  overflow: hidden;
+.cid-uwGUTg6FSK .mbr-fallback-image {
+  display: block;
+  background-size: cover;
+  background-position: center center;
   width: 100%;
-}
-.cid-ugi82Ud5AM .svg-top {
-  width: 100%;
+  height: 100%;
   position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 50px;
-  transform-origin: bottom;
-  animation: 1.5s ease-in-out infinite alternate svg-wave;
-  fill: #b162ff;
-}
-.cid-ugi82Ud5AM .svg-top .st0 {
-  fill: #000000;
+  top: 0;
 }
 @media (max-width: 992px) {
-  .cid-ugi82Ud5AM .svg-top {
-    width: 1000px;
+  .cid-uwGUTg6FSK .container {
+    padding: 0 22px;
   }
 }
-.cid-ugi82Ud5AM .form-row > .col,
-.cid-ugi82Ud5AM .form-row > [class*=col-] {
-  padding-right: 1rem;
-  padding-left: 1rem;
+.cid-uwGUTg6FSK .row {
+  justify-content: space-between;
+}
+.cid-uwGUTg6FSK .content-wrapper .mbr-section-title {
+  margin-bottom: 16px;
+}
+.cid-uwGUTg6FSK .content-wrapper .mbr-text {
+  margin-bottom: 16px;
+}
+.cid-uwGUTg6FSK .form-wrap .dragArea.row .mbr-section-title {
+  margin-bottom: 16px !important;
+}
+.cid-uwGUTg6FSK .form-wrap .dragArea.row .mbr-text {
+  margin-bottom: 16px;
+}
+.cid-uwGUTg6FSK .form-wrap .dragArea.row .form-group {
+  margin-bottom: 16px !important;
+}
+.cid-uwGUTg6FSK .form-wrap .dragArea.row .form-group .form-control {
+  padding: 16px;
+  border: 1px solid #d4d3d3 !important;
+  box-shadow: none;
+  border-radius: 0 !important;
+  background-color: transparent;
+}
+.cid-uwGUTg6FSK .form-wrap .dragArea.row .form-group .form-control:hover,
+.cid-uwGUTg6FSK .form-wrap .dragArea.row .form-group .form-control:focus {
+  border: 1px solid #000000 !important;
+}
+.cid-uwGUTg6FSK .form-wrap .dragArea.row .form-group .form-control::placeholder {
+  color: #000000;
+}
+.cid-uwGUTg6FSK .form-wrap .dragArea.row .form-group textarea {
+  min-height: 150px;
+}
+.cid-uwGUTg6FSK .form-wrap .dragArea.row .form-group .form-check {
+  padding-left: 1.9em;
+  margin-bottom: 16px;
+}
+.cid-uwGUTg6FSK .form-wrap .dragArea.row .form-group .form-check .form-check-input {
+  background-color: transparent;
+  border-color: #d4d3d3;
+  border-radius: 0;
+}
+.cid-uwGUTg6FSK .form-wrap .dragArea.row .form-group .form-check .form-check-input:focus {
+  background-color: #d4d3d3;
+}
+.cid-uwGUTg6FSK .form-wrap .dragArea.row .mbr-section-btn .btn {
+  margin-top: 16px;
+  min-height: auto;
+}
+.cid-uwGUTg6FSK .mbr-section-title {
+  color: #000000;
+}
+.cid-uwGUTg6FSK .mbr-text {
+  color: #000000;
+}
+.cid-uwGUTg6FSK label {
+  color: #000000;
 }
 .cid-ucfr13WrS9 {
   padding-top: 3rem;
