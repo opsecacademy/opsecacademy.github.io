@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score Page</title>
+    <link rel="icon" href="https://coinos.io/api/public/2cbfd4d03948bdaa45c7d78e3e950ef26481830b50e8d7012552a80985703295.webp">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212; /* Dark theme */
+            color: #ffffff; /* White text */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative; /* Added for positioning of the message */
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header img {
+            height: 40px;
+            margin-right: 10px;
+        }
+        .score {
+            font-size: 10rem; /* Huge font size */
+            font-weight: bold;
+        }
+        .text-center div:not(.score) {
+            font-size: 0.875rem; /* Smaller font size */
+        }
+        .message {
+            position: absolute; /* Make it absolute so it can be positioned at the bottom */
+            bottom: 20px; /* Adjust bottom positioning */
+            left: 20px; /* Align to the left */
+            text-align: left;
+            max-width: 600px;
+        }
+        iframe {
+            width: 100%; /* Make the iframe responsive */
+            height: 600px; /* Set the height for the embedded content */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="https://coinos.io/api/public/2cbfd4d03948bdaa45c7d78e3e950ef26481830b50e8d7012552a80985703295.webp" alt="Logo">
+    </div>
+    <div class="text-center">
+        <h1>OpSec Score</h1>
+        <div class="score">78%</div>
+    </div>
+    <div class="message">
+        This score indicates that your operational security (OpSec) needs improvement. A good score is between 95% and 100%, representing strong security practices. You can pay the following invoice to receive a detailed report with tailored recommendations on how to enhance your OpSec. The report will include specific hardware and software suggestions to help you achieve a higher score and better protect your personal security.
+
+        <!-- Embed the invoice using iframe -->
+        <iframe src="https://coinos.io/invoice/79e0d78f-7b1f-45b2-9b76-105c86078606?options=true" title="Invoice"></iframe>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
