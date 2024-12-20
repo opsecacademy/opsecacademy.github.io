@@ -43,10 +43,15 @@
             text-align: left;
             max-width: 600px;
         }
-        iframe {
-            width: 100%; /* Make the iframe responsive */
-            height: 600px; /* Set the height for the embedded content */
-            border: none;
+        .invoice-link {
+            display: block;
+            margin-top: 10px;
+            color: #f0ad4e; /* Light orange color for visibility */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .invoice-link:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -60,9 +65,7 @@
     </div>
     <div class="message">
         This score indicates that your operational security (OpSec) needs improvement. A good score is between 95% and 100%, representing strong security practices. You can pay the following invoice to receive a detailed report with tailored recommendations on how to enhance your OpSec. The report will include specific hardware and software suggestions to help you achieve a higher score and better protect your personal security.
-
-        <!-- Embed the invoice using iframe -->
-        <iframe src="https://coinos.io/invoice/79e0d78f-7b1f-45b2-9b76-105c86078606?options=true" title="Invoice"></iframe>
+        <a href="https://coinos.io/invoice/79e0d78f-7b1f-45b2-9b76-105c86078606?options=true" class="invoice-link" target="_blank">Pay the Invoice for a Detailed OpSec Report</a>
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
