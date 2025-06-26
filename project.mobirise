@@ -1,7 +1,7 @@
 {
   "settings": {
     "name": "opsecacademy",
-    "currentPage": "index.html",
+    "currentPage": "services.html",
     "theme": {
       "name": "mobirise5",
       "title": "Mobirise 5",
@@ -54,7 +54,7 @@
         "url": "https://fonts.googleapis.com/css?family=IBM+Plex+Mono:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i"
       }
     ],
-    "uniqCompNum": 142,
+    "uniqCompNum": 143,
     "versionPublish": "6.0.1",
     "imageResize": true,
     "screenshot": "screenshot.png",
@@ -636,6 +636,98 @@
           "_global": false,
           "_once": false,
           "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 1rem)",
+            "padding-bottom": "(@paddingBottom * 1rem)",
+            "& when (@bg-type = 'image')": {
+              "background-image": "url(@bg-value)"
+            },
+            "& when (@bg-type = 'color')": {
+              "background-color": "@bg-value"
+            },
+            ".mbr-fallback-image.disabled": {
+              "display": "none"
+            },
+            ".mbr-fallback-image": {
+              "display": "block",
+              "background-size": "cover",
+              "background-position": "center center",
+              "width": "100%",
+              "height": "100%",
+              "position": "absolute",
+              "top": "0",
+              "& when (@bg-type = 'video')": {
+                "background-image": "url(@fallBackImage)"
+              }
+            },
+            ".media-wrap": {
+              "padding": "0",
+              "@media (max-width: 991px)": {
+                "margin-bottom": "1rem"
+              }
+            },
+            "@media (max-width: 767px)": {
+              ".row": {
+                "text-align": "center",
+                "& > div": {
+                  "margin": "auto"
+                }
+              },
+              ".social-row": {
+                "justify-content": "center"
+              }
+            },
+            ".social-row": {
+              "display": "flex",
+              "flex-wrap": "wrap"
+            },
+            ".list": {
+              "list-style": "none",
+              "padding-left": "0",
+              "@media (max-width: 991px)": {
+                "margin-bottom": "2rem"
+              },
+              "@media (min-width: 992px)": {
+                "margin-bottom": "0rem"
+              },
+              "color": "#bbbbbb"
+            },
+            ".mbr-text": {
+              "color": "#bbbbbb"
+            },
+            ".soc-item": {
+              "display": "flex",
+              "align-items": "center",
+              "justify-content": "center",
+              "border-radius": "50%",
+              "background-color": "white",
+              "margin-right": "0.5rem",
+              "margin-bottom": "1rem",
+              "padding": "0.5rem",
+              "height": "2.5rem",
+              "width": "2.5rem"
+            },
+            ".mbr-iconfont": {
+              "color": "black"
+            },
+            "@media (max-width: 991px)": {
+              "div > *:last-child": {
+                "margin-top": "0 !important"
+              }
+            }
+          },
+          "_name": "footer4",
+          "_sourceTheme": "mobirise5",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"footer4\" group=\"Footers\" data-bg-video=\"{{bg.type == 'video' && bg.value.url}}\" global once=\"footers\" mbr-class=\"{\n    'mbr-parallax-background': bg.parallax}\">\n\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"5\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"5\">\n        <input type=\"range\" inline title=\"Logo Size\" name=\"logoSize\" min=\"1\" max=\"3\" step=\"1\" value=\"2\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\">\n        <input type=\"checkbox\" title=\"Social\" name=\"showSocial\">\n        <input type=\"range\" name=\"socialCount\" title=\"Social Count\" min=\"1\" max=\"4\" step=\"1\" value=\"3\" condition=\"showSocial\">\n        <input type=\"checkbox\" title=\"Copyright\" name=\"showCopyright\" checked>\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Image\" value=\"../_images/background8.jpg\">\n            <input type=\"color\" title=\"Color\" value=\"#000000\" selected>\n            <input type=\"video\" title=\"Video\" value=\"https://vimeo.com/428046504\">\n        </fieldset>\n        <header condition=\"bg.type === 'video'\">Fallback Image</header>\n        <input type=\"image\" title=\"Fallback Image\" value=\"../_images/background13.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#232323\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n\n    <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\"></div>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type !== 'color'\" opacity=\"{{overlayOpacity}}\" bg-color=\"{{overlayColor}}\"></div>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row mbr-white\">\n            <div class=\"col-6 col-lg-3\">\n                <div class=\"media-wrap col-md-{{4*logoSize}} col-12\">\n                    <a href=\"https://mobiri.se/\">\n                        <img src=\"@PROJECT_PATH@/assets/images/inverte-416x331.png\" alt=\"Mobirise Website Builder\">\n                    </a>\n                </div>\n            </div>\n            <div class=\"col-12 col-md-6 col-lg-3\">\n                <h5 class=\"mbr-section-subtitle mbr-fonts-style mb-2\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\">\n                    <b>About</b>\n                </h5>\n                <p class=\"mbr-text mbr-fonts-style mb-4\" mbr-theme-style=\"display-4\" data-app-selector=\".mbr-text\"><b>OpSec Academy\n<br></b><a href=\"https://abr.business.gov.au/ABN/View?id=67684858857\" class=\"text-white\" target=\"_blank\">ABN 67 684 858 857\n</a><br>2140 EDUCATION PTY LTD\n<br><a href=\"https://opsecacademy.org/assets/files/TERMS-ANDCONDITIONSLIABILITYEXCLUSIONCLAUSE.pdf\" class=\"text-white\" target=\"_blank\">TERMS AND CONDITIONS&nbsp;</a></p>\n                <h5 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-section-subtitle\" mbr-if=\"showTitle && showSocial\">\n                    <b>Follow Us</b>\n                </h5>\n                <div class=\"social-row display-7\" mbr-if=\"showSocial\">\n                    <div class=\"soc-item\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-facebook\"></span>\n                        </a>\n                    </div>\n                    <div class=\"soc-item\" mbr-if=\"socialCount>1\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-twitter\"></span>\n                        </a>\n                    </div>\n                    <div class=\"soc-item\" mbr-if=\"socialCount>2\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-instagram\"></span>\n                        </a>\n                    </div>\n                    <div class=\"soc-item\" mbr-if=\"socialCount>3\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-instagram\"></span>\n                        </a>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-12 col-md-6 col-lg-3\">\n                <h5 mbr-text class=\"mbr-section-subtitle mbr-fonts-style mb-2\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\">\n                    <b>Mobirise Help</b>\n                </h5>\n                <ul class=\"list mbr-fonts-style\" mbr-theme-style=\"display-4\" data-app-selector=\".list\" data-multiline mbr-article>\n                    <li class=\"mbr-text item-wrap\"><a href=\"contact.html\" class=\"text-white\">Contact</a>\n</li><li class=\"mbr-text item-wrap\"><a href=\"os.html\" class=\"text-white\">OpSecOS</a>\n</li><li class=\"mbr-text item-wrap\"><a href=\"services.html\" class=\"text-white\">Services\n</a></li><li class=\"mbr-text item-wrap\"><a href=\"https://habla.news/p/nprofile1qy88wumn8ghj7mn0wvhxcmmv9uq3uamnwvaz7tmwdaehgu3dwp6kytnhv4kxcmmjv3jhytnwv46z7qg4waehxw309aex2mrp0yhxgctdw4eju6t09uq3wamnwvaz7tmjv4kxz7fwdehhxarj9e3xzmny9uq3uamnwvaz7tmjv4kxz7fwdehhxarj9emkjun9v3hx2apwdfcz7qgewaehxw309aex2mrp0yh8xmn0wf6zuum0vd5kzmp0qy28wumn8ghj7un9d3shjctzd3jjummjvuhsqgq77cvqtnehaf0gs4yaj6e8fsehaznjhdcfjdg4k96ndg20rqcjesqnf2q3\" class=\"text-white\" target=\"_blank\">Updates</a>\n</li><li class=\"mbr-text item-wrap\"><br></li>\n                </ul>\n            </div>\n            <div class=\"col-12 col-md-6 col-lg-3\">\n                <h5 mbr-text class=\"mbr-section-subtitle mbr-fonts-style mb-2\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\">\n                    <b>Mobirise Extensions</b>\n                </h5>\n                <ul class=\"list mbr-fonts-style\" mbr-theme-style=\"display-4\" data-app-selector=\".list\" data-multiline mbr-article>\n                    <li class=\"mbr-text item-wrap\">OpSec Academy issues updates exclusively on Nostr, verifiably with <a href=\"https://nosta.me/nprofile1qy2hwumn8ghj7un9d3shjtnyv9kh2uewd9hj7qg3waehxw309ahx7um5wgh8w6twv5hsqgq77cvqtnehaf0gs4yaj6e8fsehaznjhdcfjdg4k96ndg20rqcjes9jc2nj\" class=\"text-danger\" target=\"_blank\">npub1rmmpspw0xl49azz5nkttyaxrxl52w2ahpxf4zkch2d4pfuvrztxqwj44w2</a>. Any other claims or updates purported by entities on different social media platforms under the OpSec Academy name should not be trusted.</li>\n                </ul>\n            </div>\n            <div class=\"col-12 mt-4\" mbr-if=\"showCopyright\">\n                <p class=\"mbr-text mb-0 mbr-fonts-style copyright align-center\" mbr-theme-style=\"display-7\" data-app-selector=\".copyright\" data-app-placeholder=\"Type Text\"><a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\" class=\"text-white\" target=\"_blank\">GPLv3 Copyleft License&nbsp;</a><br></p>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_cid": "uPbHqIKosp",
+          "_protectedParams": [],
+          "_global": true,
+          "_once": "footers",
+          "_params": {},
+          "_anchor": "footer4-3y"
         }
       ]
     },
@@ -1273,6 +1365,98 @@
           "_global": false,
           "_once": false,
           "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 1rem)",
+            "padding-bottom": "(@paddingBottom * 1rem)",
+            "& when (@bg-type = 'image')": {
+              "background-image": "url(@bg-value)"
+            },
+            "& when (@bg-type = 'color')": {
+              "background-color": "@bg-value"
+            },
+            ".mbr-fallback-image.disabled": {
+              "display": "none"
+            },
+            ".mbr-fallback-image": {
+              "display": "block",
+              "background-size": "cover",
+              "background-position": "center center",
+              "width": "100%",
+              "height": "100%",
+              "position": "absolute",
+              "top": "0",
+              "& when (@bg-type = 'video')": {
+                "background-image": "url(@fallBackImage)"
+              }
+            },
+            ".media-wrap": {
+              "padding": "0",
+              "@media (max-width: 991px)": {
+                "margin-bottom": "1rem"
+              }
+            },
+            "@media (max-width: 767px)": {
+              ".row": {
+                "text-align": "center",
+                "& > div": {
+                  "margin": "auto"
+                }
+              },
+              ".social-row": {
+                "justify-content": "center"
+              }
+            },
+            ".social-row": {
+              "display": "flex",
+              "flex-wrap": "wrap"
+            },
+            ".list": {
+              "list-style": "none",
+              "padding-left": "0",
+              "@media (max-width: 991px)": {
+                "margin-bottom": "2rem"
+              },
+              "@media (min-width: 992px)": {
+                "margin-bottom": "0rem"
+              },
+              "color": "#bbbbbb"
+            },
+            ".mbr-text": {
+              "color": "#bbbbbb"
+            },
+            ".soc-item": {
+              "display": "flex",
+              "align-items": "center",
+              "justify-content": "center",
+              "border-radius": "50%",
+              "background-color": "white",
+              "margin-right": "0.5rem",
+              "margin-bottom": "1rem",
+              "padding": "0.5rem",
+              "height": "2.5rem",
+              "width": "2.5rem"
+            },
+            ".mbr-iconfont": {
+              "color": "black"
+            },
+            "@media (max-width: 991px)": {
+              "div > *:last-child": {
+                "margin-top": "0 !important"
+              }
+            }
+          },
+          "_name": "footer4",
+          "_sourceTheme": "mobirise5",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"footer4\" group=\"Footers\" data-bg-video=\"{{bg.type == 'video' && bg.value.url}}\" global once=\"footers\" mbr-class=\"{\n    'mbr-parallax-background': bg.parallax}\">\n\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"5\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"5\">\n        <input type=\"range\" inline title=\"Logo Size\" name=\"logoSize\" min=\"1\" max=\"3\" step=\"1\" value=\"2\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\">\n        <input type=\"checkbox\" title=\"Social\" name=\"showSocial\">\n        <input type=\"range\" name=\"socialCount\" title=\"Social Count\" min=\"1\" max=\"4\" step=\"1\" value=\"3\" condition=\"showSocial\">\n        <input type=\"checkbox\" title=\"Copyright\" name=\"showCopyright\" checked>\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Image\" value=\"../_images/background8.jpg\">\n            <input type=\"color\" title=\"Color\" value=\"#000000\" selected>\n            <input type=\"video\" title=\"Video\" value=\"https://vimeo.com/428046504\">\n        </fieldset>\n        <header condition=\"bg.type === 'video'\">Fallback Image</header>\n        <input type=\"image\" title=\"Fallback Image\" value=\"../_images/background13.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#232323\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n\n    <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\"></div>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type !== 'color'\" opacity=\"{{overlayOpacity}}\" bg-color=\"{{overlayColor}}\"></div>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row mbr-white\">\n            <div class=\"col-6 col-lg-3\">\n                <div class=\"media-wrap col-md-{{4*logoSize}} col-12\">\n                    <a href=\"https://mobiri.se/\">\n                        <img src=\"@PROJECT_PATH@/assets/images/inverte-416x331.png\" alt=\"Mobirise Website Builder\">\n                    </a>\n                </div>\n            </div>\n            <div class=\"col-12 col-md-6 col-lg-3\">\n                <h5 class=\"mbr-section-subtitle mbr-fonts-style mb-2\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\">\n                    <b>About</b>\n                </h5>\n                <p class=\"mbr-text mbr-fonts-style mb-4\" mbr-theme-style=\"display-4\" data-app-selector=\".mbr-text\"><b>OpSec Academy\n<br></b><a href=\"https://abr.business.gov.au/ABN/View?id=67684858857\" class=\"text-white\" target=\"_blank\">ABN 67 684 858 857\n</a><br>2140 EDUCATION PTY LTD\n<br><a href=\"https://opsecacademy.org/assets/files/TERMS-ANDCONDITIONSLIABILITYEXCLUSIONCLAUSE.pdf\" class=\"text-white\" target=\"_blank\">TERMS AND CONDITIONS&nbsp;</a></p>\n                <h5 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-section-subtitle\" mbr-if=\"showTitle && showSocial\">\n                    <b>Follow Us</b>\n                </h5>\n                <div class=\"social-row display-7\" mbr-if=\"showSocial\">\n                    <div class=\"soc-item\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-facebook\"></span>\n                        </a>\n                    </div>\n                    <div class=\"soc-item\" mbr-if=\"socialCount>1\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-twitter\"></span>\n                        </a>\n                    </div>\n                    <div class=\"soc-item\" mbr-if=\"socialCount>2\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-instagram\"></span>\n                        </a>\n                    </div>\n                    <div class=\"soc-item\" mbr-if=\"socialCount>3\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-instagram\"></span>\n                        </a>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-12 col-md-6 col-lg-3\">\n                <h5 mbr-text class=\"mbr-section-subtitle mbr-fonts-style mb-2\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\">\n                    <b>Mobirise Help</b>\n                </h5>\n                <ul class=\"list mbr-fonts-style\" mbr-theme-style=\"display-4\" data-app-selector=\".list\" data-multiline mbr-article>\n                    <li class=\"mbr-text item-wrap\"><a href=\"contact.html\" class=\"text-white\">Contact</a>\n</li><li class=\"mbr-text item-wrap\"><a href=\"os.html\" class=\"text-white\">OpSecOS</a>\n</li><li class=\"mbr-text item-wrap\"><a href=\"services.html\" class=\"text-white\">Services\n</a></li><li class=\"mbr-text item-wrap\"><a href=\"https://habla.news/p/nprofile1qy88wumn8ghj7mn0wvhxcmmv9uq3uamnwvaz7tmwdaehgu3dwp6kytnhv4kxcmmjv3jhytnwv46z7qg4waehxw309aex2mrp0yhxgctdw4eju6t09uq3wamnwvaz7tmjv4kxz7fwdehhxarj9e3xzmny9uq3uamnwvaz7tmjv4kxz7fwdehhxarj9emkjun9v3hx2apwdfcz7qgewaehxw309aex2mrp0yh8xmn0wf6zuum0vd5kzmp0qy28wumn8ghj7un9d3shjctzd3jjummjvuhsqgq77cvqtnehaf0gs4yaj6e8fsehaznjhdcfjdg4k96ndg20rqcjesqnf2q3\" class=\"text-white\" target=\"_blank\">Updates</a>\n</li><li class=\"mbr-text item-wrap\"><br></li>\n                </ul>\n            </div>\n            <div class=\"col-12 col-md-6 col-lg-3\">\n                <h5 mbr-text class=\"mbr-section-subtitle mbr-fonts-style mb-2\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\">\n                    <b>Mobirise Extensions</b>\n                </h5>\n                <ul class=\"list mbr-fonts-style\" mbr-theme-style=\"display-4\" data-app-selector=\".list\" data-multiline mbr-article>\n                    <li class=\"mbr-text item-wrap\">OpSec Academy issues updates exclusively on Nostr, verifiably with <a href=\"https://nosta.me/nprofile1qy2hwumn8ghj7un9d3shjtnyv9kh2uewd9hj7qg3waehxw309ahx7um5wgh8w6twv5hsqgq77cvqtnehaf0gs4yaj6e8fsehaznjhdcfjdg4k96ndg20rqcjes9jc2nj\" class=\"text-danger\" target=\"_blank\">npub1rmmpspw0xl49azz5nkttyaxrxl52w2ahpxf4zkch2d4pfuvrztxqwj44w2</a>. Any other claims or updates purported by entities on different social media platforms under the OpSec Academy name should not be trusted.</li>\n                </ul>\n            </div>\n            <div class=\"col-12 mt-4\" mbr-if=\"showCopyright\">\n                <p class=\"mbr-text mb-0 mbr-fonts-style copyright align-center\" mbr-theme-style=\"display-7\" data-app-selector=\".copyright\" data-app-placeholder=\"Type Text\"><a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\" class=\"text-white\" target=\"_blank\">GPLv3 Copyleft License&nbsp;</a><br></p>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_cid": "uPbHqIKosp",
+          "_protectedParams": [],
+          "_global": true,
+          "_once": "footers",
+          "_params": {},
+          "_anchor": "footer4-3y"
         }
       ]
     },
@@ -1899,6 +2083,98 @@
           "_global": false,
           "_once": false,
           "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 1rem)",
+            "padding-bottom": "(@paddingBottom * 1rem)",
+            "& when (@bg-type = 'image')": {
+              "background-image": "url(@bg-value)"
+            },
+            "& when (@bg-type = 'color')": {
+              "background-color": "@bg-value"
+            },
+            ".mbr-fallback-image.disabled": {
+              "display": "none"
+            },
+            ".mbr-fallback-image": {
+              "display": "block",
+              "background-size": "cover",
+              "background-position": "center center",
+              "width": "100%",
+              "height": "100%",
+              "position": "absolute",
+              "top": "0",
+              "& when (@bg-type = 'video')": {
+                "background-image": "url(@fallBackImage)"
+              }
+            },
+            ".media-wrap": {
+              "padding": "0",
+              "@media (max-width: 991px)": {
+                "margin-bottom": "1rem"
+              }
+            },
+            "@media (max-width: 767px)": {
+              ".row": {
+                "text-align": "center",
+                "& > div": {
+                  "margin": "auto"
+                }
+              },
+              ".social-row": {
+                "justify-content": "center"
+              }
+            },
+            ".social-row": {
+              "display": "flex",
+              "flex-wrap": "wrap"
+            },
+            ".list": {
+              "list-style": "none",
+              "padding-left": "0",
+              "@media (max-width: 991px)": {
+                "margin-bottom": "2rem"
+              },
+              "@media (min-width: 992px)": {
+                "margin-bottom": "0rem"
+              },
+              "color": "#bbbbbb"
+            },
+            ".mbr-text": {
+              "color": "#bbbbbb"
+            },
+            ".soc-item": {
+              "display": "flex",
+              "align-items": "center",
+              "justify-content": "center",
+              "border-radius": "50%",
+              "background-color": "white",
+              "margin-right": "0.5rem",
+              "margin-bottom": "1rem",
+              "padding": "0.5rem",
+              "height": "2.5rem",
+              "width": "2.5rem"
+            },
+            ".mbr-iconfont": {
+              "color": "black"
+            },
+            "@media (max-width: 991px)": {
+              "div > *:last-child": {
+                "margin-top": "0 !important"
+              }
+            }
+          },
+          "_name": "footer4",
+          "_sourceTheme": "mobirise5",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"footer4\" group=\"Footers\" data-bg-video=\"{{bg.type == 'video' && bg.value.url}}\" global once=\"footers\" mbr-class=\"{\n    'mbr-parallax-background': bg.parallax}\">\n\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"5\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"5\">\n        <input type=\"range\" inline title=\"Logo Size\" name=\"logoSize\" min=\"1\" max=\"3\" step=\"1\" value=\"2\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\">\n        <input type=\"checkbox\" title=\"Social\" name=\"showSocial\">\n        <input type=\"range\" name=\"socialCount\" title=\"Social Count\" min=\"1\" max=\"4\" step=\"1\" value=\"3\" condition=\"showSocial\">\n        <input type=\"checkbox\" title=\"Copyright\" name=\"showCopyright\" checked>\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Image\" value=\"../_images/background8.jpg\">\n            <input type=\"color\" title=\"Color\" value=\"#000000\" selected>\n            <input type=\"video\" title=\"Video\" value=\"https://vimeo.com/428046504\">\n        </fieldset>\n        <header condition=\"bg.type === 'video'\">Fallback Image</header>\n        <input type=\"image\" title=\"Fallback Image\" value=\"../_images/background13.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#232323\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n\n    <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\"></div>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type !== 'color'\" opacity=\"{{overlayOpacity}}\" bg-color=\"{{overlayColor}}\"></div>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row mbr-white\">\n            <div class=\"col-6 col-lg-3\">\n                <div class=\"media-wrap col-md-{{4*logoSize}} col-12\">\n                    <a href=\"https://mobiri.se/\">\n                        <img src=\"@PROJECT_PATH@/assets/images/inverte-416x331.png\" alt=\"Mobirise Website Builder\">\n                    </a>\n                </div>\n            </div>\n            <div class=\"col-12 col-md-6 col-lg-3\">\n                <h5 class=\"mbr-section-subtitle mbr-fonts-style mb-2\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\">\n                    <b>About</b>\n                </h5>\n                <p class=\"mbr-text mbr-fonts-style mb-4\" mbr-theme-style=\"display-4\" data-app-selector=\".mbr-text\"><b>OpSec Academy\n<br></b><a href=\"https://abr.business.gov.au/ABN/View?id=67684858857\" class=\"text-white\" target=\"_blank\">ABN 67 684 858 857\n</a><br>2140 EDUCATION PTY LTD\n<br><a href=\"https://opsecacademy.org/assets/files/TERMS-ANDCONDITIONSLIABILITYEXCLUSIONCLAUSE.pdf\" class=\"text-white\" target=\"_blank\">TERMS AND CONDITIONS&nbsp;</a></p>\n                <h5 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-section-subtitle\" mbr-if=\"showTitle && showSocial\">\n                    <b>Follow Us</b>\n                </h5>\n                <div class=\"social-row display-7\" mbr-if=\"showSocial\">\n                    <div class=\"soc-item\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-facebook\"></span>\n                        </a>\n                    </div>\n                    <div class=\"soc-item\" mbr-if=\"socialCount>1\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-twitter\"></span>\n                        </a>\n                    </div>\n                    <div class=\"soc-item\" mbr-if=\"socialCount>2\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-instagram\"></span>\n                        </a>\n                    </div>\n                    <div class=\"soc-item\" mbr-if=\"socialCount>3\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-instagram\"></span>\n                        </a>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-12 col-md-6 col-lg-3\">\n                <h5 mbr-text class=\"mbr-section-subtitle mbr-fonts-style mb-2\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\">\n                    <b>Mobirise Help</b>\n                </h5>\n                <ul class=\"list mbr-fonts-style\" mbr-theme-style=\"display-4\" data-app-selector=\".list\" data-multiline mbr-article>\n                    <li class=\"mbr-text item-wrap\"><a href=\"contact.html\" class=\"text-white\">Contact</a>\n</li><li class=\"mbr-text item-wrap\"><a href=\"os.html\" class=\"text-white\">OpSecOS</a>\n</li><li class=\"mbr-text item-wrap\"><a href=\"services.html\" class=\"text-white\">Services\n</a></li><li class=\"mbr-text item-wrap\"><a href=\"https://habla.news/p/nprofile1qy88wumn8ghj7mn0wvhxcmmv9uq3uamnwvaz7tmwdaehgu3dwp6kytnhv4kxcmmjv3jhytnwv46z7qg4waehxw309aex2mrp0yhxgctdw4eju6t09uq3wamnwvaz7tmjv4kxz7fwdehhxarj9e3xzmny9uq3uamnwvaz7tmjv4kxz7fwdehhxarj9emkjun9v3hx2apwdfcz7qgewaehxw309aex2mrp0yh8xmn0wf6zuum0vd5kzmp0qy28wumn8ghj7un9d3shjctzd3jjummjvuhsqgq77cvqtnehaf0gs4yaj6e8fsehaznjhdcfjdg4k96ndg20rqcjesqnf2q3\" class=\"text-white\" target=\"_blank\">Updates</a>\n</li><li class=\"mbr-text item-wrap\"><br></li>\n                </ul>\n            </div>\n            <div class=\"col-12 col-md-6 col-lg-3\">\n                <h5 mbr-text class=\"mbr-section-subtitle mbr-fonts-style mb-2\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\">\n                    <b>Mobirise Extensions</b>\n                </h5>\n                <ul class=\"list mbr-fonts-style\" mbr-theme-style=\"display-4\" data-app-selector=\".list\" data-multiline mbr-article>\n                    <li class=\"mbr-text item-wrap\">OpSec Academy issues updates exclusively on Nostr, verifiably with <a href=\"https://nosta.me/nprofile1qy2hwumn8ghj7un9d3shjtnyv9kh2uewd9hj7qg3waehxw309ahx7um5wgh8w6twv5hsqgq77cvqtnehaf0gs4yaj6e8fsehaznjhdcfjdg4k96ndg20rqcjes9jc2nj\" class=\"text-danger\" target=\"_blank\">npub1rmmpspw0xl49azz5nkttyaxrxl52w2ahpxf4zkch2d4pfuvrztxqwj44w2</a>. Any other claims or updates purported by entities on different social media platforms under the OpSec Academy name should not be trusted.</li>\n                </ul>\n            </div>\n            <div class=\"col-12 mt-4\" mbr-if=\"showCopyright\">\n                <p class=\"mbr-text mb-0 mbr-fonts-style copyright align-center\" mbr-theme-style=\"display-7\" data-app-selector=\".copyright\" data-app-placeholder=\"Type Text\"><a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\" class=\"text-white\" target=\"_blank\">GPLv3 Copyleft License&nbsp;</a><br></p>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_cid": "uPbHqIKosp",
+          "_protectedParams": [],
+          "_global": true,
+          "_once": "footers",
+          "_params": {},
+          "_anchor": "footer4-3y"
         }
       ]
     },
@@ -2527,6 +2803,98 @@
           "_global": false,
           "_once": false,
           "_params": {}
+        },
+        {
+          "alias": false,
+          "_styles": {
+            "padding-top": "(@paddingTop * 1rem)",
+            "padding-bottom": "(@paddingBottom * 1rem)",
+            "& when (@bg-type = 'image')": {
+              "background-image": "url(@bg-value)"
+            },
+            "& when (@bg-type = 'color')": {
+              "background-color": "@bg-value"
+            },
+            ".mbr-fallback-image.disabled": {
+              "display": "none"
+            },
+            ".mbr-fallback-image": {
+              "display": "block",
+              "background-size": "cover",
+              "background-position": "center center",
+              "width": "100%",
+              "height": "100%",
+              "position": "absolute",
+              "top": "0",
+              "& when (@bg-type = 'video')": {
+                "background-image": "url(@fallBackImage)"
+              }
+            },
+            ".media-wrap": {
+              "padding": "0",
+              "@media (max-width: 991px)": {
+                "margin-bottom": "1rem"
+              }
+            },
+            "@media (max-width: 767px)": {
+              ".row": {
+                "text-align": "center",
+                "& > div": {
+                  "margin": "auto"
+                }
+              },
+              ".social-row": {
+                "justify-content": "center"
+              }
+            },
+            ".social-row": {
+              "display": "flex",
+              "flex-wrap": "wrap"
+            },
+            ".list": {
+              "list-style": "none",
+              "padding-left": "0",
+              "@media (max-width: 991px)": {
+                "margin-bottom": "2rem"
+              },
+              "@media (min-width: 992px)": {
+                "margin-bottom": "0rem"
+              },
+              "color": "#bbbbbb"
+            },
+            ".mbr-text": {
+              "color": "#bbbbbb"
+            },
+            ".soc-item": {
+              "display": "flex",
+              "align-items": "center",
+              "justify-content": "center",
+              "border-radius": "50%",
+              "background-color": "white",
+              "margin-right": "0.5rem",
+              "margin-bottom": "1rem",
+              "padding": "0.5rem",
+              "height": "2.5rem",
+              "width": "2.5rem"
+            },
+            ".mbr-iconfont": {
+              "color": "black"
+            },
+            "@media (max-width: 991px)": {
+              "div > *:last-child": {
+                "margin-top": "0 !important"
+              }
+            }
+          },
+          "_name": "footer4",
+          "_sourceTheme": "mobirise5",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"footer4\" group=\"Footers\" data-bg-video=\"{{bg.type == 'video' && bg.value.url}}\" global once=\"footers\" mbr-class=\"{\n    'mbr-parallax-background': bg.parallax}\">\n\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"5\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"5\">\n        <input type=\"range\" inline title=\"Logo Size\" name=\"logoSize\" min=\"1\" max=\"3\" step=\"1\" value=\"2\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Title\" name=\"showTitle\">\n        <input type=\"checkbox\" title=\"Social\" name=\"showSocial\">\n        <input type=\"range\" name=\"socialCount\" title=\"Social Count\" min=\"1\" max=\"4\" step=\"1\" value=\"3\" condition=\"showSocial\">\n        <input type=\"checkbox\" title=\"Copyright\" name=\"showCopyright\" checked>\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"image\" title=\"Image\" value=\"../_images/background8.jpg\">\n            <input type=\"color\" title=\"Color\" value=\"#000000\" selected>\n            <input type=\"video\" title=\"Video\" value=\"https://vimeo.com/428046504\">\n        </fieldset>\n        <header condition=\"bg.type === 'video'\">Fallback Image</header>\n        <input type=\"image\" title=\"Fallback Image\" value=\"../_images/background13.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#232323\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.6\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n\n    <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\"></div>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type !== 'color'\" opacity=\"{{overlayOpacity}}\" bg-color=\"{{overlayColor}}\"></div>\n    <div mbr-class=\"{'container': !fullWidth, 'container-fluid': fullWidth}\">\n        <div class=\"row mbr-white\">\n            <div class=\"col-6 col-lg-3\">\n                <div class=\"media-wrap col-md-{{4*logoSize}} col-12\">\n                    <a href=\"https://mobiri.se/\">\n                        <img src=\"@PROJECT_PATH@/assets/images/inverte-416x331.png\" alt=\"Mobirise Website Builder\">\n                    </a>\n                </div>\n            </div>\n            <div class=\"col-12 col-md-6 col-lg-3\">\n                <h5 class=\"mbr-section-subtitle mbr-fonts-style mb-2\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\">\n                    <b>About</b>\n                </h5>\n                <p class=\"mbr-text mbr-fonts-style mb-4\" mbr-theme-style=\"display-4\" data-app-selector=\".mbr-text\"><b>OpSec Academy\n<br></b><a href=\"https://abr.business.gov.au/ABN/View?id=67684858857\" class=\"text-white\" target=\"_blank\">ABN 67 684 858 857\n</a><br>2140 EDUCATION PTY LTD\n<br><a href=\"https://opsecacademy.org/assets/files/TERMS-ANDCONDITIONSLIABILITYEXCLUSIONCLAUSE.pdf\" class=\"text-white\" target=\"_blank\">TERMS AND CONDITIONS&nbsp;</a></p>\n                <h5 class=\"mbr-section-subtitle mbr-fonts-style mb-3\" mbr-theme-style=\"display-7\" data-app-selector=\".mbr-section-subtitle\" mbr-if=\"showTitle && showSocial\">\n                    <b>Follow Us</b>\n                </h5>\n                <div class=\"social-row display-7\" mbr-if=\"showSocial\">\n                    <div class=\"soc-item\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-facebook\"></span>\n                        </a>\n                    </div>\n                    <div class=\"soc-item\" mbr-if=\"socialCount>1\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-twitter\"></span>\n                        </a>\n                    </div>\n                    <div class=\"soc-item\" mbr-if=\"socialCount>2\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-instagram\"></span>\n                        </a>\n                    </div>\n                    <div class=\"soc-item\" mbr-if=\"socialCount>3\">\n                        <a href=\"https://twitter.com/mobirise\" target=\"_blank\">\n                            <span mbr-icon class=\"mbr-iconfont socicon socicon-instagram\"></span>\n                        </a>\n                    </div>\n                </div>\n            </div>\n            <div class=\"col-12 col-md-6 col-lg-3\">\n                <h5 mbr-text class=\"mbr-section-subtitle mbr-fonts-style mb-2\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\">\n                    <b>Mobirise Help</b>\n                </h5>\n                <ul class=\"list mbr-fonts-style\" mbr-theme-style=\"display-4\" data-app-selector=\".list\" data-multiline mbr-article>\n                    <li class=\"mbr-text item-wrap\"><a href=\"contact.html\" class=\"text-white\">Contact</a>\n</li><li class=\"mbr-text item-wrap\"><a href=\"os.html\" class=\"text-white\">OpSecOS</a>\n</li><li class=\"mbr-text item-wrap\"><a href=\"services.html\" class=\"text-white\">Services\n</a></li><li class=\"mbr-text item-wrap\"><a href=\"https://habla.news/p/nprofile1qy88wumn8ghj7mn0wvhxcmmv9uq3uamnwvaz7tmwdaehgu3dwp6kytnhv4kxcmmjv3jhytnwv46z7qg4waehxw309aex2mrp0yhxgctdw4eju6t09uq3wamnwvaz7tmjv4kxz7fwdehhxarj9e3xzmny9uq3uamnwvaz7tmjv4kxz7fwdehhxarj9emkjun9v3hx2apwdfcz7qgewaehxw309aex2mrp0yh8xmn0wf6zuum0vd5kzmp0qy28wumn8ghj7un9d3shjctzd3jjummjvuhsqgq77cvqtnehaf0gs4yaj6e8fsehaznjhdcfjdg4k96ndg20rqcjesqnf2q3\" class=\"text-white\" target=\"_blank\">Updates</a>\n</li><li class=\"mbr-text item-wrap\"><br></li>\n                </ul>\n            </div>\n            <div class=\"col-12 col-md-6 col-lg-3\">\n                <h5 mbr-text class=\"mbr-section-subtitle mbr-fonts-style mb-2\" data-app-selector=\".mbr-section-subtitle\" mbr-theme-style=\"display-7\" mbr-if=\"showTitle\">\n                    <b>Mobirise Extensions</b>\n                </h5>\n                <ul class=\"list mbr-fonts-style\" mbr-theme-style=\"display-4\" data-app-selector=\".list\" data-multiline mbr-article>\n                    <li class=\"mbr-text item-wrap\">OpSec Academy issues updates exclusively on Nostr, verifiably with <a href=\"https://nosta.me/nprofile1qy2hwumn8ghj7un9d3shjtnyv9kh2uewd9hj7qg3waehxw309ahx7um5wgh8w6twv5hsqgq77cvqtnehaf0gs4yaj6e8fsehaznjhdcfjdg4k96ndg20rqcjes9jc2nj\" class=\"text-danger\" target=\"_blank\">npub1rmmpspw0xl49azz5nkttyaxrxl52w2ahpxf4zkch2d4pfuvrztxqwj44w2</a>. Any other claims or updates purported by entities on different social media platforms under the OpSec Academy name should not be trusted.</li>\n                </ul>\n            </div>\n            <div class=\"col-12 mt-4\" mbr-if=\"showCopyright\">\n                <p class=\"mbr-text mb-0 mbr-fonts-style copyright align-center\" mbr-theme-style=\"display-7\" data-app-selector=\".copyright\" data-app-placeholder=\"Type Text\"><a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\" class=\"text-white\" target=\"_blank\">GPLv3 Copyleft License&nbsp;</a><br></p>\n            </div>\n        </div>\n    </div>\n</section>",
+          "_cid": "uPbHqIKosp",
+          "_protectedParams": [],
+          "_global": true,
+          "_once": "footers",
+          "_params": {},
+          "_anchor": "footer4-3y"
         }
       ]
     }
