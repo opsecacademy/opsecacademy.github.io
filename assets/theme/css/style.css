@@ -952,25 +952,3 @@ blockquote {
     left: -100% !important;
   }
 }
-
-:root {
-  --vh: 100%;
-}
-
-.fullscreen-section {
-  height: calc(var(--vh, 1vh) * 100);
-  overflow: hidden;
-}
-/* Prevent horizontal scroll/overflow on mobile */
-body {
-  overflow-x: hidden;
-}
-
-/* Fix floating image on iOS/mobile */
-@media screen and (max-width: 768px) {
-  .academy-img {
-    animation: none !important;
-    transform: none !important;
-  }
-}
-
