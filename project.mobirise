@@ -67,7 +67,9 @@
     "siteUrl": false,
     "cookiesAlert": false,
     "gdpr": false,
-    "publishEditFolder": true
+    "publishEditFolder": true,
+    "publishType": "local",
+    "publishPath": "@PROJECT_PATH@"
   },
   "pages": {
     "index.html": {
