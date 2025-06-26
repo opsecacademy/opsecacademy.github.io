@@ -952,3 +952,12 @@ blockquote {
     left: -100% !important;
   }
 }
+
+:root {
+  --vh: 100%;
+}
+
+.fullscreen-section {
+  height: calc(var(--vh, 1vh) * 100);
+  overflow: hidden;
+}
