@@ -1,167 +1,119 @@
 <!DOCTYPE html>
-<html  >
+<html lang="en">
 <head>
-  
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-  <link rel="shortcut icon" href="assets/images/inverte-416x331.png" type="image/x-icon">
-  <meta name="description" content="">
-  
-  
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>OpSec Academy</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/animatecss/animate.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&display=swap"></noscript>
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css?v=7XeAfB"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css?v=7XeAfB" type="text/css">
+  <link rel="icon" href="https://opsecacademy.org/assets/images/inverte-416x331.png" type="image/png" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  
-  
-  
+  <style>
+    :root {
+      --bg-color: #000000;
+      --text-color: #ffffff;
+      --accent: #00ffcc;
+      --border-color: #444;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .hero {
+      padding: 80px 20px 40px;
+      text-align: center;
+    }
+
+    .branding {
+      max-width: 300px;
+      margin: 40px auto 20px;
+      display: block;
+      filter: brightness(0) invert(1);
+    }
+
+    .qr-img {
+      max-width: 260px;
+      margin-top: 20px;
+      border: 2px solid var(--accent);
+      border-radius: 12px;
+      background-color: #ffffff;
+      padding: 10px;
+    }
+
+    .btn-session {
+      margin-top: 25px;
+    }
+
+    .btn-outline-light {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-outline-light:hover {
+      background-color: var(--accent);
+      color: #000;
+    }
+
+    .btn-bitcoin {
+      margin-top: 15px;
+      background-color: #f7931a;
+      color: #000;
+      border: none;
+      font-weight: 600;
+      padding: 10px 16px;
+      border-radius: 6px;
+      font-size: 1rem;
+    }
+
+    .btn-bitcoin:hover {
+      background-color: #e07c00;
+      color: #000;
+      text-decoration: none;
+    }
+
+    .session-id {
+      margin-top: 20px;
+      word-break: break-word;
+      font-family: monospace;
+      font-size: 0.95rem;
+      color: var(--accent);
+      background-color: #111;
+      padding: 12px;
+      border-radius: 6px;
+      display: inline-block;
+      max-width: 100%;
+      border: 1px solid var(--border-color);
+    }
+  </style>
 </head>
 <body>
-  
-  <section data-bs-version="5.1" class="menu menu3 cid-ucalGMJANB" once="menu" id="menu3-1">
-    
-    <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container">
-            <div class="navbar-brand">
-                <span class="navbar-logo">
-                    <a href="index.html">
-                        <img src="assets/images/inverte-416x331.png" alt="" style="height: 3rem;">
-                    </a>
-                </span>
-                <span class="navbar-caption-wrap"><a class="navbar-caption text-white text-primary display-7" href="index.html">OpSec Academy</a></span>
-            </div>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbarSupportedContent" data-bs-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <div class="hamburger">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="os.html">OpSecOS</a>
-                    </li><li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="services.html">Services</a></li><li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="https://habla.news/p/nprofile1qy88wumn8ghj7mn0wvhxcmmv9uq3uamnwvaz7tmwdaehgu3dwp6kytnhv4kxcmmjv3jhytnwv46z7qg4waehxw309aex2mrp0yhxgctdw4eju6t09uq3wamnwvaz7tmjv4kxz7fwdehhxarj9e3xzmny9uq3uamnwvaz7tmjv4kxz7fwdehhxarj9emkjun9v3hx2apwdfcz7qgewaehxw309aex2mrp0yh8xmn0wf6zuum0vd5kzmp0qy28wumn8ghj7un9d3shjctzd3jjummjvuhsqgq77cvqtnehaf0gs4yaj6e8fsehaznjhdcfjdg4k96ndg20rqcjesqnf2q3" target="_blank">Updates</a></li><li class="nav-item"><a class="nav-link link text-white text-primary display-4" href="contact.html">Contact</a></li></ul>
-                
-                
-            </div>
-        </div>
-    </nav>
-</section>
 
-<section data-bs-version="5.1" class="content4 cid-ueOoDz2N6V" id="content4-1x">
+  <div class="container hero">
+    <img src="https://opsecacademy.org/assets/images/opsec-academy-492x422.png" alt="OpSec Academy Logo" class="branding img-fluid">
     
+    <h1 class="display-4 fw-bold mt-3">OpSec Academy</h1>
+    <p class="lead">Private. Secure. Decentralised Education.</p>
 
-    
-    
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="title col-md-12 col-lg-4">
-                <h3 class="mbr-section-title mbr-fonts-style align-center mb-4 display-2"><strong>OpSec Academy</strong></h3>
-                
-                
-            </div>
-        </div>
-    </div>
-</section>
+    <p class="mt-4">Connect with us via <strong>Session</strong> — an anonymous, encrypted messenger.</p>
+    <img src="qr.png" alt="Session QR Code" class="qr-img img-fluid" />
 
-<section data-bs-version="5.1" class="content2 cid-ucDxv6xLmA" id="content02-1k">
-    
-
-    
-    <div class="wave-container">
-        <svg class="svg-top" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1600 40" style="enable-background:new 0 0 1600 40;" preserveAspectRatio="none">
-            <style type="text/css">
-                .st0 
-            </style>
-            <path class="st0" d="M-1,15.7c200.1,0,200.7,13.8,400.9,13.8C600,29.5,600.4,9.3,800.5,9.3S998.8,36.8,1199,36.8
-                s201.9-21.1,402-21.1v24.1L-1,40V15.7z"></path>
-        </svg>
+    <div class="session-id mt-3">
+      Session ID:<br>
+      0573a4b0d67777595a95a12a4a1e06f59479cf9c9eb50ac35c15d5adb5fecdab33
     </div>
 
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-12 col-lg-5 image-wrapper m-auto">
-                <img class="w-100 md-pb" src="assets/images/opsec-academy-492x422.png" alt="">
-            </div>
-            <div class="col-12 col-md-12 col-lg m-auto">
-                <div class="text-wrapper align-left">
-                    
-                    <p class="mbr-text mbr-fonts-style display-7">OpSec Academy offers OpSecOS, a privacy-focused operating system that runs live from a USB stick, leaving no trace on the computer and routing all internet traffic through the Tor network to keep users anonymous and protected from surveillance. It comes preloaded with carefully selected, trusted tools for secure communication, decentralised coordination, and managing digital assets.<br><br>To help users get the most out of OpSecOS, OpSec Academy provides a range of guided services tailored to different needs and experience levels — from setting up a secure single-signature wallet, safely offboarding Bitcoin from exchanges, creating a decentralised Nostr identity, performing comprehensive security audits, securing seed backups, all the way up to the full-day OpSec Intensive. This immersive training covers practical operational security skills including threat modeling, multisignature wallet setup, and using privacy-enhancing tools effectively.<br><br></p>
-                    <div class="mbr-section-btn mt-3"><a class="btn btn-lg btn-black display-4" href="page1.html"><span class="icon54-v1-lock-mail mbr-iconfont mbr-iconfont-btn"></span>Contact</a>  <a class="btn btn-lg btn-black display-4" href="https://habla.news/p/nprofile1qy88wumn8ghj7mn0wvhxcmmv9uq3uamnwvaz7tmwdaehgu3dwp6kytnhv4kxcmmjv3jhytnwv46z7qg4waehxw309aex2mrp0yhxgctdw4eju6t09uq3wamnwvaz7tmjv4kxz7fwdehhxarj9e3xzmny9uq3uamnwvaz7tmjv4kxz7fwdehhxarj9emkjun9v3hx2apwdfcz7qgewaehxw309aex2mrp0yh8xmn0wf6zuum0vd5kzmp0qy28wumn8ghj7un9d3shjctzd3jjummjvuhsqgq77cvqtnehaf0gs4yaj6e8fsehaznjhdcfjdg4k96ndg20rqcjesqnf2q3" target="_blank"><span class="mobi-mbri mobi-mbri-align-right mbr-iconfont mbr-iconfont-btn"></span>Updates</a></div>
-                </div>
-            </div>
-        </div>
+    <div class="btn-session">
+      <a href="https://getsession.org" target="_blank" class="btn btn-outline-light">
+        Download Session
+      </a>
+      <br>
+      <a href="https://coinos.io/opsecacademy" target="_blank" class="btn btn-bitcoin">
+        ₿ Pay with Bitcoin
+      </a>
     </div>
-</section>
+  </div>
 
-<section data-bs-version="5.1" class="footer4 cid-uPbHqIKosp" once="footers" id="footer4-3y">
-
-    
-
-    
-    
-    <div class="container">
-        <div class="row mbr-white">
-            <div class="col-6 col-lg-3">
-                <div class="media-wrap col-md-8 col-12">
-                    <a href="#">
-                        <img src="assets/images/inverte-416x331.png" alt="">
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-                
-                <p class="mbr-text mbr-fonts-style mb-4 display-4"><strong>OpSec Academy
-<br></strong><a href="https://abr.business.gov.au/ABN/View?id=67684858857" class="text-white" target="_blank">ABN 67 684 858 857
-</a><br>2140 EDUCATION PTY LTD
-<br><a href="https://opsecacademy.org/assets/files/TERMS-ANDCONDITIONSLIABILITYEXCLUSIONCLAUSE.pdf" class="text-white" target="_blank">TERMS AND CONDITIONS&nbsp;</a></p>
-                
-                
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-                
-                <ul class="list mbr-fonts-style display-4">
-                    <li class="mbr-text item-wrap"><a href="contact.html" class="text-white">Contact</a>
-</li><li class="mbr-text item-wrap"><a href="os.html" class="text-white">OpSecOS</a>
-</li><li class="mbr-text item-wrap"><a href="services.html" class="text-white">Services
-</a></li><li class="mbr-text item-wrap"><a href="https://habla.news/p/nprofile1qy88wumn8ghj7mn0wvhxcmmv9uq3uamnwvaz7tmwdaehgu3dwp6kytnhv4kxcmmjv3jhytnwv46z7qg4waehxw309aex2mrp0yhxgctdw4eju6t09uq3wamnwvaz7tmjv4kxz7fwdehhxarj9e3xzmny9uq3uamnwvaz7tmjv4kxz7fwdehhxarj9emkjun9v3hx2apwdfcz7qgewaehxw309aex2mrp0yh8xmn0wf6zuum0vd5kzmp0qy28wumn8ghj7un9d3shjctzd3jjummjvuhsqgq77cvqtnehaf0gs4yaj6e8fsehaznjhdcfjdg4k96ndg20rqcjesqnf2q3" class="text-white" target="_blank">Updates</a>
-</li><li class="mbr-text item-wrap"><br></li>
-                </ul>
-            </div>
-            <div class="col-12 col-md-6 col-lg-3">
-                
-                <ul class="list mbr-fonts-style display-4">
-                    <li class="mbr-text item-wrap">OpSec Academy issues updates exclusively on Nostr, verifiably with <a href="https://nosta.me/nprofile1qy2hwumn8ghj7un9d3shjtnyv9kh2uewd9hj7qg3waehxw309ahx7um5wgh8w6twv5hsqgq77cvqtnehaf0gs4yaj6e8fsehaznjhdcfjdg4k96ndg20rqcjes9jc2nj" class="text-danger" target="_blank">npub1rmmpspw0xl49azz5nkttyaxrxl52w2ahpxf4zkch2d4pfuvrztxqwj44w2</a>. Any other claims or updates purported by entities on different social media platforms under the OpSec Academy name should not be trusted.</li>
-                </ul>
-            </div>
-            <div class="col-12 mt-4">
-                <p class="mbr-text mb-0 mbr-fonts-style copyright align-center display-7"><a href="https://www.gnu.org/licenses/gpl-3.0.en.html" class="text-white" target="_blank">GPLv3 Copyleft License&nbsp;</a><br></p>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-<script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/smoothscroll/smooth-scroll.js"></script>
-  <script src="assets/ytplayer/index.js"></script>
-  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-  <script src="assets/theme/js/script.js"></script>
-  
-  
-  
- <div id="scrollToTop" class="scrollToTop mbr-arrow-up"><a style="text-align: center;"><i class="mbr-arrow-up-icon mbr-arrow-up-icon-cm cm-icon cm-icon-smallarrow-up"></i></a></div>
-    <input name="animation" type="hidden">
-  </body>
+</body>
 </html>
