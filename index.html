@@ -15,35 +15,53 @@
       --border-color: #444;
     }
 
-    body {
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
       background-color: var(--bg-color);
       color: var(--text-color);
       font-family: 'Segoe UI', sans-serif;
     }
 
     .hero {
-      padding: 80px 20px 40px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     .branding {
-      max-width: 300px;
-      margin: 40px auto 20px;
-      display: block;
+      max-width: 220px;
+      margin-bottom: 20px;
       filter: brightness(0) invert(1);
     }
 
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    .lead {
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+
     .qr-img {
-      max-width: 260px;
-      margin-top: 20px;
+      max-width: 180px;
       border: 2px solid var(--accent);
       border-radius: 12px;
       background-color: #ffffff;
       padding: 10px;
+      margin: 15px 0;
     }
 
     .btn-session {
-      margin-top: 25px;
+      margin-top: 20px;
     }
 
     .btn-outline-light {
@@ -57,7 +75,7 @@
     }
 
     .btn-bitcoin {
-      margin-top: 15px;
+      margin-top: 12px;
       background-color: #f7931a;
       color: #000;
       border: none;
@@ -74,17 +92,16 @@
     }
 
     .session-id {
-      margin-top: 20px;
       word-break: break-word;
       font-family: monospace;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       color: var(--accent);
       background-color: #111;
-      padding: 12px;
+      padding: 10px;
       border-radius: 6px;
-      display: inline-block;
-      max-width: 100%;
       border: 1px solid var(--border-color);
+      margin-top: 10px;
+      max-width: 90%;
     }
   </style>
 </head>
@@ -92,14 +109,15 @@
 
   <div class="container hero">
     <img src="https://opsecacademy.org/assets/images/opsec-academy-492x422.png" alt="OpSec Academy Logo" class="branding img-fluid">
-    
-    <h1 class="display-4 fw-bold mt-3">OpSec Academy</h1>
+
+    <h1 class="fw-bold">OpSec Academy</h1>
     <p class="lead">Private. Secure. Decentralised Education.</p>
 
-    <p class="mt-4">Connect with us via <strong>Session</strong> — an anonymous, encrypted messenger.</p>
+    <p>Connect with us via <strong>Session</strong> — an anonymous, encrypted messenger.</p>
+    
     <img src="qr.png" alt="Session QR Code" class="qr-img img-fluid" />
 
-    <div class="session-id mt-3">
+    <div class="session-id">
       Session ID:<br>
       0573a4b0d67777595a95a12a4a1e06f59479cf9c9eb50ac35c15d5adb5fecdab33
     </div>
