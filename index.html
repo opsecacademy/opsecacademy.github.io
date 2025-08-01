@@ -13,6 +13,7 @@
       --text-color: #ffffff;
       --accent: #00ffcc;
       --border-color: #444;
+      --bitcoin-orange: #f7931a;
     }
 
     html, body {
@@ -90,21 +91,15 @@
       color: #000;
     }
 
-    .btn-bitcoin {
-      margin-top: 12px;
-      background-color: #f7931a;
-      color: #000;
-      border: none;
-      font-weight: 600;
-      padding: 10px 16px;
-      border-radius: 6px;
-      font-size: 1rem;
+    .btn-outline-orange {
+      border: 1px solid var(--bitcoin-orange);
+      color: var(--bitcoin-orange);
+      background-color: transparent;
     }
 
-    .btn-bitcoin:hover {
-      background-color: #e07c00;
+    .btn-outline-orange:hover {
+      background-color: var(--bitcoin-orange);
       color: #000;
-      text-decoration: none;
     }
 
     .img-button {
@@ -152,8 +147,8 @@
         Download Session
       </a>
       <br>
-      <a href="https://coinos.io/opsecacademy" target="_blank" class="btn btn-bitcoin">
-        ₿ Pay with Bitcoin
+      <a href="https://coinos.io/pay/opsecacademy" target="_blank" class="btn btn-outline-orange mt-2">
+        Pay with ₿itcoin
       </a>
       <br>
       <a href="https://seedsigner.com/" target="_blank" class="img-button">
