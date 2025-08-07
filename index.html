@@ -123,6 +123,42 @@
       background-color: #111;
       box-shadow: 0 0 8px rgba(0, 255, 204, 0.2);
     }
+
+    /* Updated white transparent button style */
+    .white-transparent-btn {
+      background-color: transparent !important;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.85) !important;
+      padding: 8px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
+      transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .white-transparent-btn:hover {
+      background-color: #d3d3d3; /* light grey background */
+      box-shadow: none;
+      color: #555 !important; /* light grey text */
+      text-decoration: none;
+    }
+
+    .white-transparent-btn svg {
+      fill: rgba(255, 255, 255, 0.85);
+      transition: fill 0.2s ease;
+    }
+
+    .white-transparent-btn:hover svg {
+      fill: #555; /* light grey icon */
+    }
+
+    .white-transparent-btn span {
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -157,6 +193,13 @@
       <br>
       <a href="https://tails.net/install/index.en.html" target="_blank" class="img-button">
         <img src="4d9cc63a-c26d-4291-b8e8-7954bc52e0fb.png" alt="Tails OS">
+      </a>
+      <br>
+      <a href="https://github.com/opsecacademy/opsecacademy.github.io/blob/main/README.md" target="_blank" class="img-button white-transparent-btn" style="text-decoration: none;">
+        <svg height="40" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width:auto;">
+          <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.58.82-2.14-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82a7.54 7.54 0 012-.27 7.54 7.54 0 012 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.14 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+        <span>Protocol Stack</span>
       </a>
     </div>
   </div>
