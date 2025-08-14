@@ -1,41 +1,18 @@
  #OpSec Academy Security Stack
 
-```
-┌──────────────────────────────────────────────┐
-│ Tails OS │
-│ Non-persistent, Tor-only OS │
-│ ┌────────────────────────────────────────┐ │
-│ │ Sparrow Wallet │ │
-│ │ Built-in, GPG-verified │ │
-│ │ ┌──────────────────────────────────┐ │ │
-│ │ │ SeedSigner │ │ │
-│ │ │ Airgapped, open-source hardware│ │ │
-│ │ │ & OS │ │ │
-│ │ │ ┌──────────────────────────────┐ │ │
-│ │ │ │ 🟠 Bitcoin Payments │ │ │
-│ │ │ │ Lightning Network │ │ │
-│ │ │ │ Pseudonymous, fast, │ │ │
-│ │ │ │ censorship-resistant payments│ │ │
-│ │ │ │ ┌────────────────────────┐ │ │ │
-│ │ │ │ │ Session Messaging │ │ │ │
-│ │ │ │ │ E2E encrypted, Oxen │ │ │ │
-│ │ │ │ │ onion-routing (not Tor)│ │ │ │
-│ │ │ │ │ Metadata-free & anonymous│ │ │ │
-│ │ │ │ └────────────────────────┘ │ │ │
-│ │ │ └──────────────────────────────┘ │ │
-│ │ └──────────────────────────────────┘ │ │
-│ └────────────────────────────────────────┘ │
-└──────────────────────────────────────────────┘
-```
+<img width="558" height="644" alt="image" src="https://github.com/user-attachments/assets/870dec1b-697f-468e-aafb-b83b1d959f0c" />
+
 
 ```
-| Layer                     | Description                                      |
-|---------------------------|------------------------------------------------|
-| **Tails OS**              | Custom OpSec OS, non-persistent, Tor-only      |
-| **Sparrow Wallet**        | Integrated wallet, GPG-verified binaries       |
-| **SeedSigner**            | Airgapped, open-source hardware & firmware     |
-| **Bitcoin Payments (LN)** | Lightning Network: fast, pseudonymous payments |
-| **Session Messaging App** | E2E encrypted, Oxen onion-routing, metadata-free |
+| Layer                     | Description                                           |
+|---------------------------|-------------------------------------------------------|
+| 🔒 **Tails OS (OpSecOS)** | Custom OpSec OS, non-persistent, Tor-only           |
+| ₿ **Sparrow Wallet**      | Integrated wallet, GPG-verified binaries            |
+| 🔑 **KeePassXC**           | Secure local key and password management            |
+| **SeedSigner**            | Airgapped, open-source hardware & firmware         |
+| 🟠 **Bitcoin Payments (LN)** | Lightning Network: fast, pseudonymous, censorship-resistant payments |
+| 🟢 **Session Messaging App** | E2E encrypted, custom onion-routing, metadata-free |
+
 ```
 
 
