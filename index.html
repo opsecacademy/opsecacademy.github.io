@@ -55,21 +55,12 @@
       margin-bottom: 20px;
     }
 
-    .session-id {
-      word-break: break-word;
-      font-family: monospace;
-      font-size: 0.9rem;
-      color: var(--accent);
-      background-color: #111;
-      padding: 10px;
-      border-radius: 6px;
-      border: 1px solid var(--border-color);
-      margin-top: 10px;
-      max-width: 90%;
-    }
-
     .btn-session {
       margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px; /* spacing between buttons */
+      align-items: center;
     }
 
     .btn-outline-light {
@@ -94,7 +85,6 @@
     }
 
     .img-button {
-      margin-top: 12px;
       background-color: #000;
       padding: 8px 20px;
       border-radius: 8px;
@@ -154,7 +144,6 @@
       border: 1px solid var(--onion-purple);
       color: var(--onion-purple);
       background-color: transparent;
-      margin-bottom: 10px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -169,6 +158,15 @@
       color: #fff;
       text-decoration: none;
     }
+
+    .btn-onion svg {
+      fill: var(--onion-purple);
+      transition: fill 0.2s ease;
+    }
+
+    .btn-onion:hover svg {
+      fill: #fff;
+    }
   </style>
 </head>
 <body>
@@ -182,23 +180,32 @@
     <p>Connect with us via <strong>OnionMail</strong> — send anonymous and encrypted messages securely.</p>
 
     <div class="btn-session">
+      <!-- OnionMail Button -->
       <a href="mailto:Opsecacademy@onionmail.org" class="btn-onion">
-        🧅 Contact Securely
+        🧅
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+          <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.555L0 4.697zM6.761 8.83l-6.761 4.14A2 2 0 0 0 2 14h12a2 2 0 0 0 1.999-1.03l-6.761-4.14L8 9.586l-1.239-.757zM16 11.801V4.697l-5.803 3.552L16 11.801z"/>
+        </svg>
+        <span>Opsecacademy@onionmail.org</span>
       </a>
-      <br>
-      <a href="https://coinos.io/pay/opsecacademy" target="_blank" class="btn btn-outline-orange mt-2">
+
+      <!-- Bitcoin Payment Button -->
+      <a href="https://coinos.io/pay/opsecacademy" target="_blank" class="btn btn-outline-orange">
         Pay with ₿itcoin
       </a>
-      <br>
+
+      <!-- SeedSigner Button -->
       <a href="https://seedsigner.com/" target="_blank" class="img-button">
         <img src="53cb2fc9-50ca-4334-9935-052cf98dbaec.png" alt="SeedSigner">
       </a>
-      <br>
+
+      <!-- Tails OS Button -->
       <a href="https://tails.net/install/index.en.html" target="_blank" class="img-button">
         <img src="4d9cc63a-c26d-4291-b8e8-7954bc52e0fb.png" alt="Tails OS">
       </a>
-      <br>
-      <a href="https://github.com/opsecacademy/opsecacademy.github.io/blob/main/README.md" target="_blank" class="img-button white-transparent-btn" style="text-decoration: none;">
+
+      <!-- Protocol Stack Button -->
+      <a href="https://github.com/opsecacademy/opsecacademy.github.io/blob/main/README.md" target="_blank" class="img-button white-transparent-btn">
         <svg height="40" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width:auto;">
           <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.58.82-2.14-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82a7.54 7.54 0 012-.27 7.54 7.54 0 012 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.14 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0016 8c0-4.42-3.58-8-8-8z"/>
         </svg>
@@ -209,3 +216,4 @@
 
 </body>
 </html>
+
