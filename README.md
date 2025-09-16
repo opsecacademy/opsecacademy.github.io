@@ -1,18 +1,12 @@
  #OpSec Academy Security Stack
 
-<img width="558" height="644" alt="image" src="https://github.com/user-attachments/assets/870dec1b-697f-468e-aafb-b83b1d959f0c" />
-
-
-```
-| Layer                     | Description                                           |
-|---------------------------|-------------------------------------------------------|
-| 🔒 **Tails OS (OpSecOS)** | Custom OpSec OS, non-persistent, Tor-only           |
-| ₿ **Sparrow Wallet**      | Integrated wallet, GPG-verified binaries            |
-| 🔑 **KeePassXC**           | Secure local key and password management            |
-| **SeedSigner**            | Airgapped, open-source hardware & firmware         |
-| 🟠 **Bitcoin Payments (LN)** | Lightning Network: fast, pseudonymous, censorship-resistant payments |
-| 🟢 **Session Messaging App** | E2E encrypted, custom onion-routing, metadata-free |
-
-```
+| Layer                                   | Description                                           |
+|----------------------------------------|-------------------------------------------------------|
+| 🖥️ [**Tails OS (OpSecOS)**](https://tails.boum.org/) | Custom OpSec OS, non-persistent, Tor-only             |
+| ₿ [**Sparrow Wallet**](https://sparrowwallet.com/) | Integrated wallet, GPG-verified binaries              |
+| 🔑 [**KeePassXC**](https://keepassxc.org/) | Secure local key and password management              |
+| 🔒 [**SeedSigner**](https://www.seedsigner.com/) | Airgapped, open-source hardware & firmware            |
+| ⚡ [**Bitcoin Payments (LN)**](https://coinos.io/pay/opsecacademy) & [Opsecacademy@coinos.io](https://coinos.io/pay/opsecacademy) | Lightning Network: fast, pseudonymous, censorship-resistant payments |
+| 📧 [**OnionMail (Opsecacademy@onionmail.org)**](https://onionmail.org/) | E2E encrypted, Tor-based email system                 |
 
 
