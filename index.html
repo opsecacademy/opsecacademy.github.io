@@ -14,6 +14,7 @@
       --accent: #00ffcc;
       --border-color: #444;
       --bitcoin-orange: #f7931a;
+      --onion-purple: #8000ff;
     }
 
     html, body {
@@ -52,16 +53,6 @@
     .lead {
       font-size: 1.1rem;
       margin-bottom: 20px;
-    }
-
-    .qr-img {
-      width: 180px;
-      max-width: 70vw;
-      border: 2px solid var(--accent);
-      border-radius: 12px;
-      background-color: #ffffff;
-      padding: 10px;
-      margin: 15px 0;
     }
 
     .session-id {
@@ -124,7 +115,7 @@
       box-shadow: 0 0 8px rgba(0, 255, 204, 0.2);
     }
 
-    /* Updated white transparent button style */
+    /* White transparent button style */
     .white-transparent-btn {
       background-color: transparent !important;
       border: 1px solid rgba(255, 255, 255, 0.7);
@@ -141,9 +132,9 @@
     }
 
     .white-transparent-btn:hover {
-      background-color: #d3d3d3; /* light grey background */
+      background-color: #d3d3d3;
       box-shadow: none;
-      color: #555 !important; /* light grey text */
+      color: #555 !important;
       text-decoration: none;
     }
 
@@ -153,10 +144,31 @@
     }
 
     .white-transparent-btn:hover svg {
-      fill: #555; /* light grey icon */
+      fill: #555;
     }
 
     .white-transparent-btn span {
+      text-decoration: none;
+    }
+
+    /* OnionMail purple button */
+    .btn-onion {
+      border: 1px solid var(--onion-purple);
+      color: var(--onion-purple);
+      background-color: transparent;
+      margin-bottom: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-onion:hover {
+      background-color: var(--onion-purple);
+      color: #fff;
       text-decoration: none;
     }
   </style>
@@ -169,18 +181,11 @@
     <h1 class="fw-bold">OpSec Academy</h1>
     <p class="lead">Private. Secure. Decentralised Education.</p>
 
-    <p>Connect with us via <strong>Session</strong> — an anonymous, encrypted messenger.</p>
-    
-    <img src="qr.png" alt="Session QR Code" class="qr-img img-fluid" />
-
-    <div class="session-id">
-      Session ID:<br>
-      0573a4b0d67777595a95a12a4a1e06f59479cf9c9eb50ac35c15d5adb5fecdab33
-    </div>
+    <p>Connect with us via <strong>OnionMail</strong> — a private and encrypted email service.</p>
 
     <div class="btn-session">
-      <a href="https://getsession.org" target="_blank" class="btn btn-outline-light">
-        Download Session
+      <a href="mailto:Opsecacademy@onionmail.org" class="btn-onion">
+        ✉️🔒 OnionMail
       </a>
       <br>
       <a href="https://coinos.io/pay/opsecacademy" target="_blank" class="btn btn-outline-orange mt-2">
@@ -206,3 +211,4 @@
 
 </body>
 </html>
+
