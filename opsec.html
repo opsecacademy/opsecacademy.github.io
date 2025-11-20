@@ -12,16 +12,51 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --header-bg: #000000;
+            --border: #ffffff;
+            --section-border: #333333;
+            --muted: #999999;
+            --card-bg: #000000;
+            --card-border: #ffffff;
+            --feature-bg: #0a0a0a;
+            --accent-bg: #ffffff;
+            --accent-text: #000000;
+            --footer-muted: #666666;
+        }
+
+        body.light-theme {
+            --bg: #f5f5f5;
+            --text: #111111;
+            --header-bg: #ffffff;
+            --border: #111111;
+            --section-border: #dddddd;
+            --muted: #555555;
+            --card-bg: #ffffff;
+            --card-border: #111111;
+            --feature-bg: #f0f0f0;
+            --accent-bg: #111111;
+            --accent-text: #f5f5f5;
+            --footer-muted: #888888;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-            background: #000;
-            color: #fff;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
         }
 
         header {
-            background: #000;
-            border-bottom: 2px solid #fff;
+            background: var(--header-bg);
+            border-bottom: 2px solid var(--border);
             padding: 1.5rem 0;
             position: sticky;
             top: 0;
@@ -38,6 +73,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 1.5rem;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
         }
 
         .logo {
@@ -49,8 +91,12 @@
         .logo img {
             height: 50px;
             width: auto;
-            /* Invert logo colour */
             filter: invert(1);
+            transition: filter 0.3s ease;
+        }
+
+        body.light-theme .logo img {
+            filter: none;
         }
 
         .logo-text {
@@ -60,21 +106,46 @@
         }
 
         nav a {
-            color: #fff;
+            color: var(--text);
             text-decoration: none;
             margin-left: 2rem;
             font-weight: 500;
             transition: opacity 0.3s;
         }
 
+        nav a:first-child {
+            margin-left: 0;
+        }
+
         nav a:hover {
             opacity: 0.7;
+        }
+
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--border);
+            border-radius: 999px;
+            padding: 0.35rem 0.9rem;
+            color: var(--text);
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: translateY(-1px);
+            background: var(--accent-bg);
+            color: var(--accent-text);
+            border-color: var(--accent-bg);
         }
 
         .hero {
             padding: 6rem 0;
             text-align: center;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid var(--section-border);
         }
 
         .hero h1 {
@@ -85,118 +156,38 @@
 
         .hero p {
             font-size: 1.3rem;
-            color: #ccc;
+            color: var(--muted);
             max-width: 700px;
             margin: 0 auto 2rem;
         }
 
         .cta-button {
             display: inline-block;
-            background: #fff;
-            color: #000;
+            background: var(--accent-bg);
+            color: var(--accent-text);
             padding: 1rem 3rem;
             text-decoration: none;
             font-weight: 600;
-            border: 2px solid #fff;
+            border: 2px solid var(--accent-bg);
             transition: all 0.3s;
             margin: 0.5rem;
+            border-radius: 999px;
         }
 
         .cta-button:hover {
-            background: #000;
-            color: #fff;
+            background: transparent;
+            color: var(--accent-bg);
         }
 
         .section {
             padding: 5rem 0;
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid var(--section-border);
         }
 
         .section h2 {
             font-size: 2.5rem;
             margin-bottom: 3rem;
             text-align: center;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            border: 2px solid #fff;
-            padding: 2rem;
-            transition: all 0.3s;
-        }
-
-        .service-card:hover {
-            background: #fff;
-            color: #000;
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .breaches-feed {
-            background: #111;
-            border: 2px solid #333;
-            padding: 2rem;
-            margin-top: 2rem;
-            max-height: 600px;
-            overflow-y: auto;
-        }
-
-        .breach-item {
-            border-left: 3px solid #fff;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            background: #000;
-            transition: all 0.3s;
-        }
-
-        .breach-item:hover {
-            border-left-color: #999;
-            background: #0a0a0a;
-        }
-
-        .breach-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .breach-item p {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .breach-item a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.85rem;
-            border-bottom: 1px solid #fff;
-            transition: opacity 0.3s;
-        }
-
-        .breach-item a:hover {
-            opacity: 0.7;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: #666;
-        }
-
-        footer {
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 2px solid #fff;
-            background: #000;
         }
 
         .stats {
@@ -208,8 +199,15 @@
         }
 
         .stat-box {
-            border: 2px solid #fff;
+            border: 2px solid var(--card-border);
             padding: 2rem;
+            border-radius: 16px;
+            background: var(--card-bg);
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-3px);
         }
 
         .stat-number {
@@ -217,6 +215,106 @@
             font-weight: 700;
             display: block;
             margin-bottom: 0.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            border: 2px solid var(--card-border);
+            padding: 2rem;
+            border-radius: 16px;
+            background: var(--card-bg);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            background: var(--accent-bg);
+            color: var(--accent-text);
+            transform: translateY(-3px);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .breaches-feed {
+            background: #111111;
+            border: 2px solid var(--section-border);
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 16px;
+            /* remove inner scrolling so it feels part of the page */
+            max-height: none;
+            overflow-y: visible;
+        }
+
+        .breach-item {
+            border-left: 3px solid var(--border);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            background: var(--bg);
+            transition: all 0.3s;
+            border-radius: 12px;
+        }
+
+        .breach-item:hover {
+            border-left-color: #999999;
+            background: #0a0a0a;
+        }
+
+        body.light-theme .breach-item:hover {
+            background: #eaeaea;
+        }
+
+        .breach-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .breach-item p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .breach-item a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--text);
+            transition: opacity 0.3s;
+        }
+
+        .breach-item a:hover {
+            opacity: 0.7;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666666;
+        }
+
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 2px solid var(--border);
+            background: var(--header-bg);
+        }
+
+        footer p {
+            color: var(--text);
+        }
+
+        footer p.footer-muted {
+            margin-top: 1rem;
+            color: var(--footer-muted);
         }
 
         .feature-grid {
@@ -227,33 +325,90 @@
         }
 
         .feature-item {
-            border: 1px solid #333;
+            border: 1px solid var(--section-border);
             padding: 1.5rem;
-            background: #0a0a0a;
+            background: var(--feature-bg);
+            border-radius: 16px;
         }
 
         .feature-item h4 {
             font-size: 1.1rem;
             margin-bottom: 0.5rem;
-            color: #fff;
+            color: var(--text);
         }
 
         .feature-item p {
-            color: #999;
+            color: var(--muted);
             font-size: 0.9rem;
         }
 
         .os-highlight {
-            background: #fff;
-            color: #000;
+            background: var(--accent-bg);
+            color: var(--accent-text);
             padding: 3rem;
             margin: 3rem 0;
-            border: 3px solid #000;
+            border: 3px solid var(--header-bg);
+            border-radius: 20px;
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
 
         .os-highlight h3 {
             font-size: 2rem;
             margin-bottom: 1rem;
+        }
+
+        .os-highlight p {
+            font-size: 1.1rem;
+        }
+
+        .os-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .os-text {
+            flex: 1 1 320px;
+        }
+
+        .os-image {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .os-image img {
+            max-width: 320px; /* larger USB */
+            height: auto;
+            filter: invert(1);
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+        }
+
+        body.light-theme .os-image img {
+            filter: none;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .os-image img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Fade-in on scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         @media (max-width: 768px) {
@@ -263,17 +418,36 @@
 
             .header-content {
                 flex-direction: column;
-                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .header-right {
+                width: 100%;
+                justify-content: space-between;
             }
 
             nav {
                 display: flex;
                 flex-wrap: wrap;
-                justify-content: center;
+                justify-content: flex-start;
+                gap: 0.75rem;
             }
 
             nav a {
-                margin: 0.5rem;
+                margin: 0;
+            }
+
+            .os-layout {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .os-text {
+                text-align: left;
+            }
+
+            .os-image {
+                order: -1;
             }
         }
     </style>
@@ -286,17 +460,22 @@
                     <img src="https://opsecacademy.org/assets/images/opsec-academy-492x422.png" alt="OpSec Academy Logo">
                     <span class="logo-text">OpSec Academy</span>
                 </div>
-                <nav>
-                    <a href="#services">Services</a>
-                    <a href="#opsec-os">OpSec OS</a>
-                    <a href="#breaches">Latest Breaches</a>
-                    <a href="#contact">Contact</a>
-                </nav>
+                <div class="header-right">
+                    <nav>
+                        <a href="#services">Services</a>
+                        <a href="#opsec-os">OpSec OS</a>
+                        <a href="#breaches">Latest Breaches</a>
+                        <a href="#contact">Contact</a>
+                    </nav>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark or light mode">
+                        🌙
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
-    <section class="hero">
+    <section class="hero fade-in-section">
         <div class="container">
             <h1>Professional OpSec Workshops</h1>
             <p>Empowering businesses and educational institutions with comprehensive operational security training. Protect your organisation from evolving cyber threats.</p>
@@ -305,14 +484,14 @@
         </div>
     </section>
 
-    <section class="section" id="services">
+    <section class="section fade-in-section" id="services">
         <div class="container">
             <h2>Our Workshop Services</h2>
             
             <div class="stats">
                 <div class="stat-box">
                     <span class="stat-number">120+</span>
-                    <p>Combined Years of Technical & OpSec Experience</p>
+                    <p>Combined Years of Technical &amp; OpSec Experience</p>
                 </div>
                 <div class="stat-box">
                     <span class="stat-number">Expert</span>
@@ -358,59 +537,66 @@
         </div>
     </section>
 
-    <section class="section" id="opsec-os">
+    <section class="section fade-in-section" id="opsec-os">
         <div class="container">
             <h2>OpSec OS</h2>
-            <p style="text-align: center; color: #999; max-width: 800px; margin: 0 auto 2rem;">
-                A customised, enterprise-grade operating system designed by our security experts. Built on the principles of privacy, security, and anonymity – tailored specifically for business environments.
+            <p style="text-align: center; color: var(--muted); max-width: 800px; margin: 0 auto 2rem;">
+                An amnesic, live operating system you boot from a hardened USB, inspired by TailsOS. All traffic is forced through privacy networks, sessions leave no trace on the host machine, and you still get the enterprise controls and workflows your organisation needs.
             </p>
 
-            <div class="os-highlight">
-                <h3>Enterprise Security by Design</h3>
-                <p style="color: #333; font-size: 1.1rem;">
-                    OpSec OS combines the privacy-first approach of Tails with enterprise features needed for modern business operations. Every component has been carefully selected and configured to provide maximum security without compromising productivity.
-                </p>
+            <div class="os-layout">
+                <div class="os-text">
+                    <div class="os-highlight">
+                        <h3>Amnesic, Live &amp; Enterprise-Ready</h3>
+                        <p>
+                            OpSec OS takes the core ideas behind TailsOS — Tor by default, amnesic sessions, and strong cryptography — and layers on enterprise features. Boot from a verified USB, work in a hardened environment, shut down, and leave nothing recoverable behind, apart from an optional encrypted persistent volume you fully control.
+                        </p>
+                    </div>
+                </div>
+                <div class="os-image">
+                    <img src="https://github.com/opsecacademy/opsecacademy.github.io/raw/main/usb.png" alt="OpSec OS secure USB drive">
+                </div>
             </div>
 
             <div class="feature-grid">
                 <div class="feature-item">
-                    <h4>🔒 Complete Anonymity</h4>
-                    <p>All connections route through Tor by default. Leave no trace on the host system with live boot capability.</p>
+                    <h4>🔒 Tor-First Networking</h4>
+                    <p>Like Tails, all network traffic is routed through Tor by default. No clearnet traffic leakage, with sensible defaults for Tor Browser and privacy-preserving DNS.</p>
                 </div>
 
                 <div class="feature-item">
-                    <h4>🛡️ Military-Grade Encryption</h4>
-                    <p>Full-disk encryption, encrypted communications, and secure file storage protect your sensitive business data.</p>
+                    <h4>🧠 Amnesic by Design</h4>
+                    <p>Sessions are non-persistent: no logs, browser history, or file remnants are left on the host machine. Memory is wiped on shutdown to reduce forensic traces.</p>
                 </div>
 
                 <div class="feature-item">
-                    <h4>🔐 Zero Data Persistence</h4>
-                    <p>Automatically wipes all activity upon shutdown. Optional encrypted persistence for business continuity.</p>
+                    <h4>🔐 Encrypted Persistent Storage</h4>
+                    <p>Optional encrypted persistence for documents, configurations, and keys. Choose exactly what survives reboots while keeping the rest ephemeral.</p>
                 </div>
 
                 <div class="feature-item">
-                    <h4>📱 Business-Ready Tools</h4>
-                    <p>Pre-configured with secure communication tools, encrypted email, document editing, and collaboration software.</p>
+                    <h4>💾 Verified Live USB Workflow</h4>
+                    <p>Boot from a dedicated, cryptographically-verifiable USB image (paired with your OpSec Academy USB). Ideal for investigations, travel, or high-risk environments.</p>
                 </div>
 
                 <div class="feature-item">
-                    <h4>🌐 Network Isolation</h4>
-                    <p>Built-in VPN support, MAC address spoofing, and advanced firewall configurations protect your network identity.</p>
+                    <h4>🧰 Pre-Hardened Toolset</h4>
+                    <p>Ships with a curated set of secure tools: Tor Browser, password management, cryptographic utilities, and compartmentalised workspaces for sensitive roles.</p>
                 </div>
 
                 <div class="feature-item">
-                    <h4>⚡ Enterprise Management</h4>
-                    <p>Centralised deployment options, policy management, and audit logging for corporate environments.</p>
+                    <h4>🌐 Network &amp; Metadata Protection</h4>
+                    <p>MAC address spoofing, strict firewall rules, and DNS leak protection minimise trackable metadata, closely mirroring the safety model of TailsOS.</p>
                 </div>
 
                 <div class="feature-item">
-                    <h4>🔍 Intrusion Detection</h4>
-                    <p>Real-time monitoring and alerting systems detect suspicious activity and potential compromises.</p>
+                    <h4>📦 Supply Chain &amp; Updates</h4>
+                    <p>Signed images and controlled update channels help ensure integrity, so teams can trust what they’re booting in high-stakes contexts.</p>
                 </div>
 
                 <div class="feature-item">
-                    <h4>✅ Compliance Ready</h4>
-                    <p>Meets requirements for GDPR, HIPAA, and other regulatory frameworks requiring data protection.</p>
+                    <h4>🏢 Enterprise Policy Layer</h4>
+                    <p>Policy templates, deployment guides, and optional logging bridges align OpSec OS with organisational compliance requirements without sacrificing privacy.</p>
                 </div>
             </div>
 
@@ -428,7 +614,7 @@
                     </div>
                     
                     <div class="service-card">
-                        <h3>Legal & Finance</h3>
+                        <h3>Legal &amp; Finance</h3>
                         <p>Law firms and financial institutions protecting client data and maintaining attorney-client privilege.</p>
                     </div>
                 </div>
@@ -441,10 +627,10 @@
         </div>
     </section>
 
-    <section class="section" id="breaches">
+    <section class="section fade-in-section" id="breaches">
         <div class="container">
-            <h2>Latest Security Breaches & Threats</h2>
-            <p style="text-align: center; color: #999; margin-bottom: 2rem;">Stay informed about the latest cybersecurity incidents and vulnerabilities reported worldwide.</p>
+            <h2>Latest Security Breaches &amp; Threats</h2>
+            <p style="text-align: center; color: var(--muted); margin-bottom: 2rem;">Stay informed about the latest cybersecurity incidents and vulnerabilities reported worldwide.</p>
             
             <div class="breaches-feed" id="breachFeed">
                 <div class="loading">Loading latest security breaches...</div>
@@ -452,10 +638,10 @@
         </div>
     </section>
 
-    <section class="section" id="contact">
+    <section class="section fade-in-section" id="contact">
         <div class="container">
             <h2>Schedule Your Workshop</h2>
-            <p style="text-align: center; color: #999; max-width: 600px; margin: 0 auto 2rem;">Ready to strengthen your organisation's security posture? Contact us today to discuss a customised training programme for your team.</p>
+            <p style="text-align: center; color: var(--muted); max-width: 600px; margin: 0 auto 2rem;">Ready to strengthen your organisation's security posture? Contact us today to discuss a customised training programme for your team.</p>
             
             <div style="text-align: center; margin-top: 2rem;">
                 <a href="mailto:workshops@opsecacademy.org" class="cta-button">Email Us</a>
@@ -466,7 +652,7 @@
     <footer>
         <div class="container">
             <p>&copy; 2024 OpSec Academy. All rights reserved.</p>
-            <p style="margin-top: 1rem; color: #666;">Private. Secure. Professional Training.</p>
+            <p class="footer-muted">Private. Secure. Professional Training.</p>
         </div>
     </footer>
 
@@ -505,7 +691,7 @@
                     breachItem.className = 'breach-item';
                     breachItem.innerHTML = `
                         <h3>${title}</h3>
-                        <p style="color: #666; font-size: 0.8rem;">${date}</p>
+                        <p style="color: var(--muted); font-size: 0.8rem;">${date}</p>
                         <p>${cleanDesc}</p>
                         <a href="${link}" target="_blank" rel="noopener">Read Full Story →</a>
                     `;
@@ -518,8 +704,49 @@
                 console.error('Error loading feed:', err);
             }
         }
+
+        function initFadeInOnScroll() {
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        function initThemeToggle() {
+            const toggle = document.getElementById('themeToggle');
+            if (!toggle) return;
+
+            const storedTheme = localStorage.getItem('opsec-theme');
+            if (storedTheme === 'light') {
+                document.body.classList.add('light-theme');
+                toggle.textContent = '☾';
+            } else {
+                toggle.textContent = '🌙';
+            }
+
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                const isLight = document.body.classList.contains('light-theme');
+                toggle.textContent = isLight ? '☾' : '🌙';
+                localStorage.setItem('opsec-theme', isLight ? 'light' : 'dark');
+            });
+        }
         
         loadBreaches();
+        initFadeInOnScroll();
+        initThemeToggle();
     </script>
 </body>
 </html>
