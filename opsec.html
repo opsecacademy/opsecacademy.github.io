@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpSec Academy - Professional Security Workshops</title>
+    <link rel="icon" type="image/png" href="https://opsecacademy.org/assets/images/opsec-academy-492x422.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #000;
+            border-bottom: 2px solid #fff;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            /* Invert logo colour */
+            filter: invert(1);
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #fff;
+            color: #000;
+            padding: 1rem 3rem;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid #fff;
+            transition: all 0.3s;
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            background: #000;
+            color: #fff;
+        }
+
+        .section {
+            padding: 5rem 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            border: 2px solid #fff;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .breaches-feed {
+            background: #111;
+            border: 2px solid #333;
+            padding: 2rem;
+            margin-top: 2rem;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .breach-item {
+            border-left: 3px solid #fff;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            background: #000;
+            transition: all 0.3s;
+        }
+
+        .breach-item:hover {
+            border-left-color: #999;
+            background: #0a0a0a;
+        }
+
+        .breach-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .breach-item p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .breach-item a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #fff;
+            transition: opacity 0.3s;
+        }
+
+        .breach-item a:hover {
+            opacity: 0.7;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 2px solid #fff;
+            background: #000;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .stat-box {
+            border: 2px solid #fff;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            border: 1px solid #333;
+            padding: 1.5rem;
+            background: #0a0a0a;
+        }
+
+        .feature-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #fff;
+        }
+
+        .feature-item p {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .os-highlight {
+            background: #fff;
+            color: #000;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 3px solid #000;
+        }
+
+        .os-highlight h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://opsecacademy.org/assets/images/opsec-academy-492x422.png" alt="OpSec Academy Logo">
+                    <span class="logo-text">OpSec Academy</span>
+                </div>
+                <nav>
+                    <a href="#services">Services</a>
+                    <a href="#opsec-os">OpSec OS</a>
+                    <a href="#breaches">Latest Breaches</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Professional OpSec Workshops</h1>
+            <p>Empowering businesses and educational institutions with comprehensive operational security training. Protect your organisation from evolving cyber threats.</p>
+            <a href="#contact" class="cta-button">Schedule a Workshop</a>
+            <a href="#services" class="cta-button">Learn More</a>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <div class="container">
+            <h2>Our Workshop Services</h2>
+            
+            <div class="stats">
+                <div class="stat-box">
+                    <span class="stat-number">120+</span>
+                    <p>Combined Years of Technical & OpSec Experience</p>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">Expert</span>
+                    <p>Instructors with Real-World Security Background</p>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">Proven</span>
+                    <p>Track Record Protecting Organisations</p>
+                </div>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Corporate Training</h3>
+                    <p>Comprehensive OpSec workshops tailored for businesses of all sizes. From startups to Fortune 500 companies, we ensure your entire staff understands security protocols and best practices.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Educational Institutions</h3>
+                    <p>Specialised training programmes for schools, colleges, and universities. Protect student data, research, and institutional assets with proper operational security procedures.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Staff Certification</h3>
+                    <p>Industry-recognised certification programmes that validate your team's security knowledge. Build a security-conscious culture throughout your organisation.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Incident Response</h3>
+                    <p>Learn how to properly respond to security incidents. Our workshops cover breach protocols, communication strategies, and recovery procedures.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Data Protection</h3>
+                    <p>Master the fundamentals of data classification, handling, and protection. Ensure compliance with privacy regulations and industry standards.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Social Engineering Defense</h3>
+                    <p>Train your staff to recognise and defend against phishing, pretexting, and other social engineering attacks that target human vulnerabilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="opsec-os">
+        <div class="container">
+            <h2>OpSec OS</h2>
+            <p style="text-align: center; color: #999; max-width: 800px; margin: 0 auto 2rem;">
+                A customised, enterprise-grade operating system designed by our security experts. Built on the principles of privacy, security, and anonymity – tailored specifically for business environments.
+            </p>
+
+            <div class="os-highlight">
+                <h3>Enterprise Security by Design</h3>
+                <p style="color: #333; font-size: 1.1rem;">
+                    OpSec OS combines the privacy-first approach of Tails with enterprise features needed for modern business operations. Every component has been carefully selected and configured to provide maximum security without compromising productivity.
+                </p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>🔒 Complete Anonymity</h4>
+                    <p>All connections route through Tor by default. Leave no trace on the host system with live boot capability.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>🛡️ Military-Grade Encryption</h4>
+                    <p>Full-disk encryption, encrypted communications, and secure file storage protect your sensitive business data.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>🔐 Zero Data Persistence</h4>
+                    <p>Automatically wipes all activity upon shutdown. Optional encrypted persistence for business continuity.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>📱 Business-Ready Tools</h4>
+                    <p>Pre-configured with secure communication tools, encrypted email, document editing, and collaboration software.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>🌐 Network Isolation</h4>
+                    <p>Built-in VPN support, MAC address spoofing, and advanced firewall configurations protect your network identity.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>⚡ Enterprise Management</h4>
+                    <p>Centralised deployment options, policy management, and audit logging for corporate environments.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>🔍 Intrusion Detection</h4>
+                    <p>Real-time monitoring and alerting systems detect suspicious activity and potential compromises.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>✅ Compliance Ready</h4>
+                    <p>Meets requirements for GDPR, HIPAA, and other regulatory frameworks requiring data protection.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3 style="margin-bottom: 1rem;">Use Cases</h3>
+                <div class="services-grid" style="margin-top: 2rem;">
+                    <div class="service-card">
+                        <h3>Investigative Work</h3>
+                        <p>Journalists, investigators, and researchers conducting sensitive work requiring complete operational security.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3>Executive Protection</h3>
+                        <p>C-suite executives handling confidential communications, mergers, acquisitions, and strategic planning.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3>Legal & Finance</h3>
+                        <p>Law firms and financial institutions protecting client data and maintaining attorney-client privilege.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contact" class="cta-button">Request OpSec OS Demo</a>
+                <a href="#contact" class="cta-button">Enterprise Licensing</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="breaches">
+        <div class="container">
+            <h2>Latest Security Breaches & Threats</h2>
+            <p style="text-align: center; color: #999; margin-bottom: 2rem;">Stay informed about the latest cybersecurity incidents and vulnerabilities reported worldwide.</p>
+            
+            <div class="breaches-feed" id="breachFeed">
+                <div class="loading">Loading latest security breaches...</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="contact">
+        <div class="container">
+            <h2>Schedule Your Workshop</h2>
+            <p style="text-align: center; color: #999; max-width: 600px; margin: 0 auto 2rem;">Ready to strengthen your organisation's security posture? Contact us today to discuss a customised training programme for your team.</p>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="mailto:workshops@opsecacademy.org" class="cta-button">Email Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 OpSec Academy. All rights reserved.</p>
+            <p style="margin-top: 1rem; color: #666;">Private. Secure. Professional Training.</p>
+        </div>
+    </footer>
+
+    <script>
+        async function loadBreaches() {
+            const feedUrl = 'https://feeds.feedburner.com/TheHackersNews';
+            const proxyUrl = 'https://api.allorigins.win/raw?url=';
+            
+            try {
+                const response = await fetch(proxyUrl + encodeURIComponent(feedUrl));
+                const text = await response.text();
+                
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'text/xml');
+                const items = xml.querySelectorAll('item');
+                
+                const feedContainer = document.getElementById('breachFeed');
+                feedContainer.innerHTML = '';
+                
+                const maxItems = 15;
+                for (let i = 0; i < Math.min(items.length, maxItems); i++) {
+                    const item = items[i];
+                    const title = item.querySelector('title')?.textContent || 'No title';
+                    const link = item.querySelector('link')?.textContent || '#';
+                    const desc = item.querySelector('description')?.textContent || '';
+                    const pubDate = item.querySelector('pubDate')?.textContent || '';
+                    
+                    const cleanDesc = desc.replace(/<[^>]*>/g, '').substring(0, 200) + '...';
+                    const date = new Date(pubDate).toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'short', 
+                        day: 'numeric' 
+                    });
+                    
+                    const breachItem = document.createElement('div');
+                    breachItem.className = 'breach-item';
+                    breachItem.innerHTML = `
+                        <h3>${title}</h3>
+                        <p style="color: #666; font-size: 0.8rem;">${date}</p>
+                        <p>${cleanDesc}</p>
+                        <a href="${link}" target="_blank" rel="noopener">Read Full Story →</a>
+                    `;
+                    
+                    feedContainer.appendChild(breachItem);
+                }
+            } catch (err) {
+                document.getElementById('breachFeed').innerHTML = 
+                    '<div class="loading">Unable to load breach feed. Please check back later.</div>';
+                console.error('Error loading feed:', err);
+            }
+        }
+        
+        loadBreaches();
+    </script>
+</body>
+</html>
+
