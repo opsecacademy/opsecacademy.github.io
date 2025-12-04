@@ -1,219 +1,764 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>OpSec Academy</title>
-  <link rel="icon" href="https://opsecacademy.org/assets/images/inverte-416x331.png" type="image/png" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpSec Academy - Professional Security Workshops</title>
+    <link rel="icon" type="image/png" href="https://opsecacademy.org/assets/images/opsec-academy-492x422.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <style>
-    :root {
-      --bg-color: #000000;
-      --text-color: #ffffff;
-      --accent: #00ffcc;
-      --border-color: #444;
-      --bitcoin-orange: #f7931a;
-      --onion-purple: #8000ff;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: 'Segoe UI', sans-serif;
-    }
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --header-bg: #000000;
+            --border: #ffffff;
+            --section-border: #333333;
+            --muted: #999999;
+            --card-bg: #000000;
+            --card-border: #ffffff;
+            --feature-bg: #0a0a0a;
+            --accent-bg: #ffffff;
+            --accent-text: #000000;
+            --footer-muted: #666666;
+        }
 
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 20px;
-      box-sizing: border-box;
-    }
+        body.light-theme {
+            --bg: #f5f5f5;
+            --text: #111111;
+            --header-bg: #ffffff;
+            --border: #111111;
+            --section-border: #dddddd;
+            --muted: #555555;
+            --card-bg: #ffffff;
+            --card-border: #111111;
+            --feature-bg: #f0f0f0;
+            --accent-bg: #111111;
+            --accent-text: #f5f5f5;
+            --footer-muted: #888888;
+        }
 
-    .branding {
-      max-width: 250px;
-      width: 60%;
-      height: auto;
-      margin-bottom: 20px;
-      filter: brightness(0) invert(1);
-    }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
 
-    h1 {
-      font-size: 2.4rem;
-      margin-bottom: 10px;
-    }
+        header {
+            background: var(--header-bg);
+            border-bottom: 2px solid var(--border);
+            padding: 1.5rem 0 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-    .lead {
-      font-size: 1.1rem;
-      margin-bottom: 20px;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    .btn-session {
-      margin-top: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px; /* spacing between buttons */
-      align-items: center;
-    }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
 
-    .btn-outline-light {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-    .btn-outline-light:hover {
-      background-color: var(--accent);
-      color: #000;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: var(--text);
+        }
 
-    .btn-outline-orange {
-      border: 1px solid var(--bitcoin-orange);
-      color: var(--bitcoin-orange);
-      background-color: transparent;
-    }
+        .logo img {
+            height: 50px;
+            width: auto;
+            filter: invert(1);
+            transition: filter 0.3s ease;
+        }
 
-    .btn-outline-orange:hover {
-      background-color: var(--bitcoin-orange);
-      color: #000;
-    }
+        body.light-theme .logo img {
+            filter: none;
+        }
 
-    .img-button {
-      background-color: #000;
-      padding: 8px 20px;
-      border-radius: 8px;
-      display: inline-block;
-      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.05);
-      border: 1px solid #333;
-      transition: background-color 0.2s ease, box-shadow 0.2s ease;
-    }
+        .logo-text {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
 
-    .img-button img {
-      height: 40px;
-      width: auto;
-      display: block;
-    }
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
 
-    .img-button:hover {
-      background-color: #111;
-      box-shadow: 0 0 8px rgba(0, 255, 204, 0.2);
-    }
+        nav a:first-child {
+            margin-left: 0;
+        }
 
-    .white-transparent-btn {
-      background-color: transparent !important;
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      color: rgba(255, 255, 255, 0.85) !important;
-      padding: 8px 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(255, 255, 255, 0.1);
-      transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
+        nav a:hover {
+            opacity: 0.7;
+        }
 
-    .white-transparent-btn:hover {
-      background-color: #d3d3d3;
-      box-shadow: none;
-      color: #555 !important;
-      text-decoration: none;
-    }
+        .theme-toggle {
+            background: var(--bg);
+            border: 2px solid var(--border);
+            border-radius: 999px;
+            padding: 0.4rem;
+            color: var(--text);
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 32px;
+            position: relative;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
 
-    .white-transparent-btn svg {
-      fill: rgba(255, 255, 255, 0.85);
-      transition: fill 0.2s ease;
-    }
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: var(--text);
+            left: 3px;
+            transition: transform 0.3s ease;
+        }
 
-    .white-transparent-btn:hover svg {
-      fill: #555;
-    }
+        body.light-theme .theme-toggle::before {
+            transform: translateX(28px);
+        }
 
-    .white-transparent-btn span {
-      text-decoration: none;
-    }
+        .theme-toggle:hover {
+            border-color: var(--accent-bg);
+        }
 
-    .btn-onion {
-      border: 1px solid var(--onion-purple);
-      color: var(--onion-purple);
-      background-color: transparent;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            border-bottom: 1px solid var(--section-border);
+        }
 
-    .btn-onion:hover {
-      background-color: var(--onion-purple);
-      color: #fff;
-      text-decoration: none;
-    }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
 
-    .btn-onion svg {
-      fill: var(--onion-purple);
-      transition: fill 0.2s ease;
-    }
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--muted);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
 
-    .btn-onion:hover svg {
-      fill: #fff;
-    }
-  </style>
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-bg);
+            color: var(--accent-text);
+            padding: 1rem 3rem;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--accent-bg);
+            transition: all 0.3s;
+            margin: 0.5rem;
+            border-radius: 999px;
+        }
+
+        .cta-button:hover {
+            background: transparent;
+            color: var(--accent-bg);
+        }
+
+        .section {
+            padding: 5rem 0;
+            border-bottom: 1px solid var(--section-border);
+            scroll-margin-top: 80px;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .stat-box {
+            border: 2px solid var(--card-border);
+            padding: 2rem;
+            border-radius: 16px;
+            background: var(--card-bg);
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-3px);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            border: 2px solid var(--card-border);
+            padding: 2rem;
+            border-radius: 16px;
+            background: var(--card-bg);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            background: var(--accent-bg);
+            color: var(--accent-text);
+            transform: translateY(-3px);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .breaches-feed {
+            background: #111111;
+            border: 2px solid var(--section-border);
+            padding: 2rem;
+            margin-top: 2rem;
+            border-radius: 16px;
+            max-height: none;
+            overflow-y: visible;
+        }
+
+        .breach-item {
+            border-left: 3px solid var(--border);
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            background: var(--bg);
+            transition: all 0.3s;
+            border-radius: 12px;
+        }
+
+        .breach-item:hover {
+            border-left-color: #999999;
+            background: #0a0a0a;
+        }
+
+        body.light-theme .breach-item:hover {
+            background: #eaeaea;
+        }
+
+        .breach-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .breach-item p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .breach-item a {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--text);
+            transition: opacity 0.3s;
+        }
+
+        .breach-item a:hover {
+            opacity: 0.7;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #666666;
+        }
+
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 2px solid var(--border);
+            background: var(--header-bg);
+        }
+
+        footer p {
+            color: var(--text);
+        }
+
+        footer p.footer-muted {
+            margin-top: 1rem;
+            color: var(--footer-muted);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-item {
+            border: 1px solid var(--section-border);
+            padding: 1.5rem;
+            background: var(--feature-bg);
+            border-radius: 16px;
+        }
+
+        .feature-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text);
+            filter: grayscale(1);
+        }
+
+        .feature-item p {
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .os-highlight {
+            background: var(--accent-bg);
+            color: var(--accent-text);
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 3px solid var(--header-bg);
+            border-radius: 20px;
+            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .os-highlight h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .os-highlight p {
+            font-size: 1.1rem;
+        }
+
+        .os-layout {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .os-text {
+            flex: 1 1 320px;
+        }
+
+        .os-image {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .os-image img {
+            max-width: 320px;
+            height: auto;
+            filter: invert(1);
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+        }
+
+        body.light-theme .os-image img {
+            filter: none;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .os-image img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-right {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                gap: 0.75rem;
+            }
+
+            nav a {
+                margin: 0;
+            }
+
+            .os-layout {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .os-text {
+                text-align: left;
+            }
+
+            .os-image {
+                order: -1;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="#" class="logo">
+                    <img src="https://opsecacademy.org/assets/images/opsec-academy-492x422.png" alt="OpSec Academy Logo">
+                    <span class="logo-text">OpSec Academy</span>
+                </a>
+                <div class="header-right">
+                    <nav>
+                        <a href="#services">Services</a>
+                        <a href="#opsec-os">OpSec OS</a>
+                        <a href="#breaches">Latest Breaches</a>
+                        <a href="#contact">Contact</a>
+                    </nav>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark or light mode">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
 
-  <div class="container hero">
-    <img src="https://opsecacademy.org/assets/images/opsec-academy-492x422.png" alt="OpSec Academy Logo" class="branding img-fluid">
+    <section class="hero fade-in-section">
+        <div class="container">
+            <h1>Professional OpSec Workshops</h1>
+            <p>Empowering businesses and educational institutions with comprehensive operational security training. Protect your organisation from evolving cyber threats.</p>
+            <a href="#contact" class="cta-button">Schedule a Workshop</a>
+            <a href="#services" class="cta-button">Learn More</a>
+        </div>
+    </section>
 
-    <h1 class="fw-bold">OpSec Academy</h1>
-    <p class="lead">Private. Secure. Decentralised Education.</p>
+    <section class="section fade-in-section" id="services">
+        <div class="container">
+            <h2>Our Workshop Services</h2>
+            
+            <div class="stats">
+                <div class="stat-box">
+                    <span class="stat-number">120+</span>
+                    <p>Combined Years of Technical &amp; OpSec Experience</p>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">Expert</span>
+                    <p>Instructors with Real-World Security Background</p>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-number">Proven</span>
+                    <p>Track Record Protecting Organisations</p>
+                </div>
+            </div>
 
-    <p>Connect with us via <strong>OnionMail</strong> — send anonymous and encrypted messages securely.</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Corporate Training</h3>
+                    <p>Comprehensive OpSec workshops tailored for businesses of all sizes. From startups to Fortune 500 companies, we ensure your entire staff understands security protocols and best practices.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Educational Institutions</h3>
+                    <p>Specialised training programmes for schools, colleges, and universities. Protect student data, research, and institutional assets with proper operational security procedures.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Staff Certification</h3>
+                    <p>Industry-recognised certification programmes that validate your team's security knowledge. Build a security-conscious culture throughout your organisation.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Incident Response</h3>
+                    <p>Learn how to properly respond to security incidents. Our workshops cover breach protocols, communication strategies, and recovery procedures.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Data Protection</h3>
+                    <p>Master the fundamentals of data classification, handling, and protection. Ensure compliance with privacy regulations and industry standards.</p>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Social Engineering Defense</h3>
+                    <p>Train your staff to recognise and defend against phishing, pretexting, and other social engineering attacks that target human vulnerabilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <div class="btn-session">
-      <!-- OnionMail Button -->
-      <a href="mailto:Opsecacademy@onionmail.org" class="btn-onion">
-        🧅
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
-          <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.555L0 4.697zM6.761 8.83l-6.761 4.14A2 2 0 0 0 2 14h12a2 2 0 0 0 1.999-1.03l-6.761-4.14L8 9.586l-1.239-.757zM16 11.801V4.697l-5.803 3.552L16 11.801z"/>
-        </svg>
-        <span>Opsecacademy@onionmail.org</span>
-      </a>
+    <section class="section fade-in-section" id="opsec-os">
+        <div class="container">
+            <h2>OpSec OS</h2>
+            <p style="text-align: center; color: var(--muted); max-width: 800px; margin: 0 auto 2rem;">
+                An amnesic, live operating system you boot from a hardened USB, inspired by TailsOS. All traffic is forced through privacy networks, sessions leave no trace on the host machine, and you still get the enterprise controls and workflows your organisation needs.
+            </p>
 
-      <!-- Bitcoin Payment Button -->
-      <a href="https://coinos.io/pay/opsecacademy" target="_blank" class="btn btn-outline-orange">
-        Pay with ₿itcoin
-      </a>
+            <div class="os-layout">
+                <div class="os-text">
+                    <div class="os-highlight">
+                        <h3>Amnesic, Live &amp; Enterprise-Ready</h3>
+                        <p>
+                            OpSec OS takes the core ideas behind TailsOS - Tor by default, amnesic sessions, and strong cryptography - and layers on enterprise features. Boot from a verified USB, work in a hardened environment, shut down, and leave nothing recoverable behind, apart from an optional encrypted persistent volume you fully control.
+                        </p>
+                    </div>
+                </div>
+                <div class="os-image">
+                    <img src="https://github.com/opsecacademy/opsecacademy.github.io/raw/main/usb.png" alt="OpSec OS secure USB drive">
+                </div>
+            </div>
 
-      <!-- SeedSigner Button -->
-      <a href="https://seedsigner.com/" target="_blank" class="img-button">
-        <img src="53cb2fc9-50ca-4334-9935-052cf98dbaec.png" alt="SeedSigner">
-      </a>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h4>🔒 Tor-First Networking</h4>
+                    <p>Like Tails, all network traffic is routed through Tor by default. No clearnet traffic leakage, with sensible defaults for Tor Browser and privacy-preserving DNS.</p>
+                </div>
 
-      <!-- Tails OS Button -->
-      <a href="https://tails.net/install/index.en.html" target="_blank" class="img-button">
-        <img src="4d9cc63a-c26d-4291-b8e8-7954bc52e0fb.png" alt="Tails OS">
-      </a>
+                <div class="feature-item">
+                    <h4>🧠 Amnesic by Design</h4>
+                    <p>Sessions are non-persistent: no logs, browser history, or file remnants are left on the host machine. Memory is wiped on shutdown to reduce forensic traces.</p>
+                </div>
 
-      <!-- Protocol Stack Button -->
-      <a href="https://github.com/opsecacademy/opsecacademy.github.io/blob/main/README.md" target="_blank" class="img-button white-transparent-btn">
-        <svg height="40" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style="width:auto;">
-          <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8a8 8 0 005.47 7.59c.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2 .37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.58.82-2.14-.08-.2-.36-1.02.08-2.12 0 0 .67-.22 2.2.82a7.54 7.54 0 012-.27 7.54 7.54 0 012 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.14 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8 8 0 0016 8c0-4.42-3.58-8-8-8z"/>
-        </svg>
-        <span>Protocol Stack</span>
-      </a>
-    </div>
-  </div>
+                <div class="feature-item">
+                    <h4>🔐 Encrypted Persistent Storage</h4>
+                    <p>Optional encrypted persistence for documents, configurations, and keys. Choose exactly what survives reboots while keeping the rest ephemeral.</p>
+                </div>
 
+                <div class="feature-item">
+                    <h4>💾 Verified Live USB Workflow</h4>
+                    <p>Boot from a dedicated, cryptographically-verifiable USB image (paired with your OpSec Academy USB). Ideal for investigations, travel, or high-risk environments.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>🧰 Pre-Hardened Toolset</h4>
+                    <p>Ships with a curated set of secure tools: Tor Browser, password management, cryptographic utilities, and compartmentalised workspaces for sensitive roles.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>🌐 Network &amp; Metadata Protection</h4>
+                    <p>MAC address spoofing, strict firewall rules, and DNS leak protection minimise trackable metadata, closely mirroring the safety model of TailsOS.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>📦 Supply Chain &amp; Updates</h4>
+                    <p>Signed images and controlled update channels help ensure integrity, so teams can trust what they're booting in high-stakes contexts.</p>
+                </div>
+
+                <div class="feature-item">
+                    <h4>🏢 Enterprise Policy Layer</h4>
+                    <p>Policy templates, deployment guides, and optional logging bridges align OpSec OS with organisational compliance requirements without sacrificing privacy.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3 style="margin-bottom: 1rem;">Use Cases</h3>
+                <div class="services-grid" style="margin-top: 2rem;">
+                    <div class="service-card">
+                        <h3>Investigative Work</h3>
+                        <p>Journalists, investigators, and researchers conducting sensitive work requiring complete operational security.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3>Executive Protection</h3>
+                        <p>C-suite executives handling confidential communications, mergers, acquisitions, and strategic planning.</p>
+                    </div>
+                    
+                    <div class="service-card">
+                        <h3>Legal &amp; Finance</h3>
+                        <p>Law firms and financial institutions protecting client data and maintaining attorney-client privilege.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contact" class="cta-button">Request OpSec OS Demo</a>
+                <a href="#contact" class="cta-button">Enterprise Licensing</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section fade-in-section" id="breaches">
+        <div class="container">
+            <h2>Latest Security Breaches &amp; Threats</h2>
+            <p style="text-align: center; color: var(--muted); margin-bottom: 2rem;">Stay informed about the latest cybersecurity incidents and vulnerabilities reported worldwide.</p>
+            
+            <div class="breaches-feed" id="breachFeed">
+                <div class="loading">Loading latest security breaches...</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section fade-in-section" id="contact">
+        <div class="container">
+            <h2>Schedule Your Workshop</h2>
+            <p style="text-align: center; color: var(--muted); max-width: 600px; margin: 0 auto 2rem;">Ready to strengthen your organisation's security posture? Contact us today to discuss a customised training programme for your team.</p>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="mailto:OpSec2140@proton.me" class="cta-button">Email Us</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 OpSec Academy. All rights reserved.</p>
+            <p class="footer-muted">Private. Secure. Professional Training.</p>
+        </div>
+    </footer>
+
+    <script>
+        async function loadBreaches() {
+            const feedUrl = 'https://feeds.feedburner.com/TheHackersNews';
+            const proxyUrl = 'https://api.allorigins.win/raw?url=';
+            
+            try {
+                const response = await fetch(proxyUrl + encodeURIComponent(feedUrl));
+                const text = await response.text();
+                
+                const parser = new DOMParser();
+                const xml = parser.parseFromString(text, 'text/xml');
+                const items = xml.querySelectorAll('item');
+                
+                const feedContainer = document.getElementById('breachFeed');
+                feedContainer.innerHTML = '';
+                
+                const maxItems = 15;
+                for (let i = 0; i < Math.min(items.length, maxItems); i++) {
+                    const item = items[i];
+                    const title = item.querySelector('title')?.textContent || 'No title';
+                    const link = item.querySelector('link')?.textContent || '#';
+                    const desc = item.querySelector('description')?.textContent || '';
+                    const pubDate = item.querySelector('pubDate')?.textContent || '';
+                    
+                    const cleanDesc = desc.replace(/<[^>]*>/g, '').substring(0, 200) + '...';
+                    const date = new Date(pubDate).toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'short', 
+                        day: 'numeric' 
+                    });
+                    
+                    const breachItem = document.createElement('div');
+                    breachItem.className = 'breach-item';
+                    breachItem.innerHTML = `
+                        <h3>${title}</h3>
+                        <p style="color: var(--muted); font-size: 0.8rem;">${date}</p>
+                        <p>${cleanDesc}</p>
+                        <a href="${link}" target="_blank" rel="noopener">Read Full Story →</a>
+                    `;
+                    
+                    feedContainer.appendChild(breachItem);
+                }
+            } catch (err) {
+                document.getElementById('breachFeed').innerHTML = 
+                    '<div class="loading">Unable to load breach feed. Please check back later.</div>';
+                console.error('Error loading feed:', err);
+            }
+        }
+
+        function initFadeInOnScroll() {
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('fade-in-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.15
+                }
+            );
+
+            sections.forEach(section => observer.observe(section));
+        }
+
+        function initThemeToggle() {
+            const toggle = document.getElementById('themeToggle');
+            if (!toggle) return;
+
+            const storedTheme = localStorage.getItem('opsec-theme');
+            if (storedTheme === 'light') {
+                document.body.classList.add('light-theme');
+            }
+
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('light-theme');
+                const isLight = document.body.classList.contains('light-theme');
+                localStorage.setItem('opsec-theme', isLight ? 'light' : 'dark');
+            });
+        }
+        
+        loadBreaches();
+        initFadeInOnScroll();
+        initThemeToggle();
+    </script>
 </body>
 </html>
-
