@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Networking CTF - OpSec Academy</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+:root {
+  --bg:#000000; --text:#ffffff; --header-bg:#000000;
+  --border:#ffffff; --section-border:#333333; --muted:#999999;
+  --card-bg:#000000; --card-border:#ffffff;
+  --feature-bg:#0a0a0a; --accent-bg:#ffffff; --accent-text:#000000;
+  --footer-muted:#666666;
+}
+
+body.light-theme {
+  --bg:#f5f5f5; --text:#111111; --header-bg:#ffffff;
+  --border:#111111; --section-border:#dddddd; --muted:#555555;
+  --card-bg:#ffffff; --card-border:#111111;
+  --feature-bg:#f0f0f0; --accent-bg:#111111; --accent-text:#f5f5f5;
+  --footer-muted:#888888;
+}
+
+body {
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Helvetica','Arial',sans-serif;
+  background:var(--bg); color:var(--text); line-height:1.6;
+  transition:background .3s ease,color .3s ease;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 32px),
+    repeating-linear-gradient(90deg, rgba(255,255,255,0.012) 0, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 32px);
+  pointer-events: none;
+  z-index: 0;
+}
+body.light-theme::before {
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.04) 0, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 32px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.04) 0, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 32px);
+}
+
+.icon-img { filter: brightness(0) invert(1); transition: filter .3s ease; }
+body.light-theme .icon-img { filter: brightness(0); }
+.icon-svg { color: var(--text); display:block; transition:color .3s ease; }
+
+header {
+  background:var(--header-bg); border-bottom:2px solid var(--border);
+  padding:1.5rem 0; position:sticky; top:0; z-index:1000;
+  transition:background .3s ease,border-color .3s ease;
+}
+
+.container { max-width:1200px; margin:0 auto; padding:0 2rem; }
+
+.header-content {
+  display:flex; justify-content:space-between; align-items:center; gap:1.5rem;
+}
+.header-right { display:flex; align-items:center; gap:1rem; }
+
+.logo {
+  display:flex; align-items:center; gap:1rem;
+  text-decoration:none; color:var(--text);
+}
+.logo img {
+  height:50px; width:auto;
+  filter:brightness(0) invert(1);
+  transition:filter .3s ease;
+}
+body.light-theme .logo img { filter:brightness(0); }
+.logo-text { font-size:1.6rem; font-weight:700; letter-spacing:-0.5px; }
+.logo-sub { font-size:.7rem; color:var(--muted); text-transform:uppercase; letter-spacing:1.5px; display:block; }
+
+/* THEME TOGGLE */
+.theme-toggle {
+  background:var(--bg); border:2px solid var(--border); border-radius:999px;
+  padding:.4rem; cursor:pointer; display:inline-flex; align-items:center;
+  justify-content:center; width:60px; height:32px; position:relative;
+  transition:background .3s ease,border-color .3s ease;
+}
+.theme-toggle::before {
+  content:''; position:absolute; width:24px; height:24px; border-radius:50%;
+  background:var(--text); left:3px; transition:transform .3s ease,background .3s ease;
+}
+body.light-theme .theme-toggle::before { transform:translateX(28px); }
+.theme-toggle:hover { border-color:var(--muted); }
+
+/* HERO — condensed */
+.hero {
+  padding:3.5rem 0 2.5rem; text-align:center;
+  border-bottom:1px solid var(--section-border);
+}
+.hero-logo {
+  height:64px; width:auto; margin:0 auto 1rem; display:block;
+  filter:brightness(0) invert(1); transition:filter .3s ease;
+}
+body.light-theme .hero-logo { filter:brightness(0); }
+
+.pixel-title {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(13px, 2.8vw, 24px);
+  color: var(--text);
+  text-shadow: none;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+body.light-theme .pixel-title { color: var(--text); text-shadow: none; }
+
+.pixel-sub {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(6px, 1.2vw, 10px);
+  color: var(--muted);
+  margin-bottom: 14px;
+  line-height: 1.8;
+}
+body.light-theme .pixel-sub { color: var(--muted); }
+
+.badge-strip { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin:10px 0 0; }
+.badge-pill {
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 5px 16px;
+  font-size: 13px;
+  font-weight: 700;
+}
+body.light-theme .badge-pill { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.12); }
+
+/* SECTIONS */
+.section { padding:4rem 0; border-bottom:1px solid var(--section-border); }
+.section h2 { font-size:2rem; font-weight:700; margin-bottom:.5rem; text-align:center; }
+.section-sub { text-align:center; color:var(--muted); max-width:700px; margin:0 auto 2rem; font-size:.92rem; }
+
+/* PHASE HEADERS */
+.net-phase-hdr {
+  display: flex; align-items: center; gap: 14px; margin: 36px 0 16px;
+}
+.net-phase-hdr h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px; white-space: nowrap; text-align:left; margin-bottom:0;
+}
+.net-phase-hdr .ph-line { flex: 1; height: 3px; border-radius: 2px; }
+.net-phase-hdr.p1 h2 { color: #00b4d8; }
+.net-phase-hdr.p1 .ph-line { background: linear-gradient(90deg, #00b4d8, transparent); }
+.net-phase-hdr.p2 h2 { color: #ff9f1c; }
+.net-phase-hdr.p2 .ph-line { background: linear-gradient(90deg, #ff9f1c, transparent); }
+.net-phase-hdr.p3 h2 { color: #ffd460; }
+.net-phase-hdr.p3 .ph-line { background: linear-gradient(90deg, #ffd460, transparent); }
+.net-phase-hdr.p-raid h2 { color: #e94560; }
+.net-phase-hdr.p-raid .ph-line { background: linear-gradient(90deg, #e94560, transparent); }
+
+/* LESSON CARD ACCORDION */
+.lesson-card {
+  border:2px solid var(--card-border); border-radius:16px;
+  background:var(--card-bg); margin-bottom:.6rem; overflow:hidden;
+  transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.lesson-card:hover { transform:translateY(-1px); }
+.lesson-card.open { border-color:#4ecca3; box-shadow: 0 0 20px rgba(78,204,163,0.08); }
+
+.lesson-top {
+  display:grid; grid-template-columns:52px 1fr auto;
+  align-items:center; gap:1rem; padding:1.25rem 1.5rem;
+  cursor:pointer; user-select:none;
+}
+
+.lesson-emoji {
+  font-size: 28px; line-height: 1; text-align: center; min-width: 48px;
+}
+
+.lesson-meta h3 { font-size:.95rem; font-weight:700; margin-bottom:.4rem; line-height:1.3; }
+
+.tags { display:flex; flex-wrap:wrap; gap:.35rem; }
+.tag {
+  font-size:.68rem; font-weight:600; padding:2px 8px; border-radius:999px;
+  border:1px solid var(--section-border); color:var(--muted);
+}
+.tag.t-topic,.tag.t-ctf,.tag.t-raid,.tag.t-nostr { border-color:var(--border); color:var(--text); }
+.tag.t-raid { font-weight:700; }
+
+.chevron-icon { width:20px; height:20px; flex-shrink:0; transition:transform .3s ease; color:var(--muted); }
+.lesson-card.open .chevron-icon { transform:rotate(180deg); color:#4ecca3; }
+
+.lesson-body {
+  display:none; border-top:1px solid var(--section-border);
+  padding:1.5rem; background:var(--feature-bg);
+}
+.lesson-card.open .lesson-body { display:block; }
+
+/* TIMING BAR */
+.timing-bar {
+  display:flex; border:1px solid var(--section-border); border-radius:10px;
+  overflow:hidden; margin-bottom:1.25rem; font-size:.72rem;
+}
+.timing-seg {
+  flex:1; padding:.55rem .3rem; text-align:center;
+  border-right:1px solid var(--section-border); line-height:1.3;
+}
+.timing-seg:last-child { border-right:none; }
+.ts-time { font-family:monospace; font-size:.65rem; color:var(--muted); display:block; margin-bottom:2px; }
+.ts-label { font-size:.68rem; font-weight:700; }
+
+/* VIDEO BLOCK */
+.video-block {
+  border:1px solid var(--section-border); border-radius:10px;
+  padding:.9rem 1.1rem; margin-bottom:1.1rem; display:flex;
+  align-items:center; gap:1rem; flex-wrap:wrap; background:var(--bg);
+}
+.vb-label { font-size:.65rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); white-space:nowrap; }
+.video-link {
+  display:inline-flex; align-items:center; gap:.5rem;
+  border:1px solid var(--border); border-radius:999px;
+  padding:.45rem 1.1rem; color:var(--text); font-size:.82rem; font-weight:600;
+  text-decoration:none; transition:background .2s,color .2s; flex:1; min-width:180px;
+}
+.video-link:hover { background:var(--accent-bg); color:var(--accent-text); }
+.dur { font-size:.72rem; color:var(--muted); font-family:monospace; margin-left:3px; }
+.video-link:hover .dur { color:var(--accent-text); opacity:.7; }
+.teacher-note {
+  font-size:.75rem; color:var(--muted); font-style:italic; width:100%;
+  margin-top:.4rem; padding-top:.4rem; border-top:1px solid var(--section-border);
+}
+
+/* BODY GRID */
+.body-grid { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; margin-bottom:.9rem; }
+@media (max-width:620px) { .body-grid { grid-template-columns:1fr; } }
+
+.panel { border:1px solid var(--section-border); border-radius:10px; padding:1.1rem; background:var(--bg); }
+.panel h4 {
+  font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:1px;
+  margin-bottom:.7rem; border-bottom:1px solid var(--section-border); padding-bottom:.5rem;
+}
+.panel ul { list-style:none; }
+.panel ul li {
+  font-size:.85rem; color:var(--muted); padding:.35rem 0 .35rem 1rem;
+  position:relative; line-height:1.5; border-bottom:1px solid var(--section-border);
+}
+.panel ul li:last-child { border-bottom:none; }
+.panel ul li::before { content:'\203A'; position:absolute; left:0; top:.35rem; font-size:1rem; font-weight:700; }
+
+/* TEACH PANEL — full-width direct instruction */
+.teach-panel {
+  border:1px solid var(--section-border); border-radius:10px;
+  padding:1.1rem 1.3rem; background:var(--bg); margin-bottom:.9rem;
+  border-left:3px solid var(--text);
+}
+.teach-panel h4 {
+  font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:1px;
+  margin-bottom:.7rem; border-bottom:1px solid var(--section-border); padding-bottom:.5rem;
+}
+.teach-panel ol { list-style:none; counter-reset:teach; }
+.teach-panel ol li {
+  font-size:.85rem; color:var(--muted); padding:.5rem 0 .5rem 2rem;
+  position:relative; line-height:1.6; border-bottom:1px solid var(--section-border);
+  counter-increment:teach;
+}
+.teach-panel ol li:last-child { border-bottom:none; }
+.teach-panel ol li::before {
+  content:counter(teach); position:absolute; left:0; top:.5rem;
+  width:1.4rem; height:1.4rem; border:1.5px solid var(--border); border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.65rem; font-weight:700; color:var(--text);
+}
+.teach-panel ol li strong { color:var(--text); }
+
+/* FLAG BOX */
+.flag-box {
+  border:1px solid var(--section-border); border-left:3px solid var(--border);
+  border-radius:10px; padding:.9rem 1.1rem; font-size:.85rem;
+  color:var(--muted); line-height:1.7; background:var(--bg);
+}
+.flag-box strong { color:var(--text); }
+.nostr-note {
+  border:1px solid var(--section-border); border-radius:8px;
+  padding:.55rem .85rem; font-size:.78rem; color:var(--muted);
+  margin-top:.7rem; background:var(--feature-bg); line-height:1.6;
+}
+
+/* RAID */
+.lesson-card.raid-card { border-color: rgba(233,69,96,0.45) !important; }
+.lesson-card.raid-card.open { border-color: #e94560 !important; box-shadow: 0 0 22px rgba(233,69,96,0.12); }
+.lesson-card.raid-card.open .chevron-icon { color:#e94560; }
+
+.raid-banner {
+  border:1px solid var(--section-border); border-radius:10px;
+  padding:1.1rem 1.3rem; margin-bottom:1.1rem; display:flex;
+  gap:1rem; background:var(--bg);
+}
+.rb-icon { font-size:.9rem; font-family:monospace; font-weight:700; flex-shrink:0; padding-top:3px; color:var(--muted); }
+.raid-banner h3 { font-size:.95rem; font-weight:700; margin-bottom:.3rem; }
+.raid-banner p { font-size:.85rem; color:var(--muted); line-height:1.6; }
+
+.timeline { display:flex; flex-direction:column; gap:4px; margin-bottom:.9rem; }
+.tl-row {
+  display:grid; grid-template-columns:95px 1fr; gap:.7rem;
+  border:1px solid var(--section-border); border-radius:8px;
+  padding:.6rem .85rem; background:var(--bg); align-items:start;
+}
+.tl-time { font-family:monospace; font-size:.72rem; font-weight:700; line-height:1.8; }
+.tl-desc { font-size:.85rem; color:var(--muted); line-height:1.5; }
+.tl-desc strong { color:var(--text); }
+
+.score-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:.5rem; margin-top:.5rem; }
+.score-item { border:1px solid var(--section-border); border-radius:10px; padding:.75rem; text-align:center; background:var(--bg); }
+.score-pts { font-family:monospace; font-size:1rem; font-weight:700; margin-bottom:2px; }
+.score-label { font-size:.72rem; color:var(--muted); line-height:1.3; }
+
+/* NOSTR COMBINED SECTION */
+.nostr-section { padding:4rem 0; border-bottom:1px solid var(--section-border); }
+
+.nostr-explainer-box {
+  background: linear-gradient(135deg, #2d1b69, #16213e);
+  border: 3px solid #c77dff;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px;
+  align-items: start;
+}
+body.light-theme .nostr-explainer-box {
+  background: linear-gradient(135deg, #ede0ff, #f8f0ff);
+  border-color: #9b5de5;
+}
+.nostr-explainer-box .nostr-em { font-size: 44px; line-height: 1; }
+.nostr-explainer-box h3 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  color: #c77dff;
+  margin-bottom: 10px;
+  line-height: 1.7;
+}
+body.light-theme .nostr-explainer-box h3 { color: #7b2d8b; }
+.nostr-explainer-box p { font-size: 14px; margin-bottom: 10px; line-height: 1.7; }
+.nostr-key-box {
+  background: rgba(0,0,0,0.35);
+  border: 2px dashed rgba(255,212,96,0.4);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #ffd460;
+  line-height: 1.9;
+}
+body.light-theme .nostr-key-box {
+  background: rgba(0,0,0,0.06);
+  border-color: rgba(180,120,0,0.4);
+  color: #8a5800;
+}
+
+/* NOS2X STEPS */
+.nos2x-box {
+  border:1px solid var(--section-border); background:var(--feature-bg);
+  border-radius:16px; padding:2rem; margin-bottom:2rem;
+}
+.nos2x-box h3 { font-size:1.1rem; font-weight:700; margin-bottom:.4rem; }
+.nos2x-box .sub { color:var(--muted); font-size:.88rem; margin-bottom:1.5rem; line-height:1.6; }
+
+.steps { display:flex; flex-direction:column; }
+.step { display:grid; grid-template-columns:40px 1fr; gap:1.25rem; padding-bottom:1.5rem; position:relative; }
+.step:last-child { padding-bottom:0; }
+.step-num {
+  width:32px; height:32px; border:2px solid var(--border); border-radius:50%;
+  display:flex; align-items:center; justify-content:center; font-size:.85rem;
+  font-weight:700; flex-shrink:0; background:var(--bg); position:relative; z-index:1;
+  transition:background .3s,border-color .3s;
+}
+.step:not(:last-child)::before {
+  content:''; position:absolute; left:15px; top:32px; bottom:0;
+  width:2px; background:var(--section-border);
+}
+.step-body h4 { font-size:.92rem; font-weight:700; margin-bottom:.3rem; padding-top:4px; }
+.step-body p { font-size:.85rem; color:var(--muted); line-height:1.6; margin-bottom:.3rem; }
+.step-link {
+  display:inline-block; font-size:.82rem; color:var(--text);
+  border-bottom:1px solid var(--section-border); text-decoration:none;
+  transition:border-color .2s;
+}
+.step-link:hover { border-color:var(--border); }
+.code-line {
+  font-family:monospace; font-size:.78rem; background:var(--bg);
+  border:1px solid var(--section-border); border-radius:8px;
+  padding:.5rem .85rem; color:var(--text); display:block;
+  margin-top:.5rem; white-space:pre-wrap; word-break:break-word;
+}
+.warn-box {
+  border:1px solid var(--section-border); border-radius:8px;
+  padding:.75rem 1rem; font-size:.82rem; color:var(--muted);
+  margin-top:.6rem; background:var(--bg); line-height:1.6;
+}
+
+/* KEY EXPLAINER */
+.key-explainer {
+  border:2px solid var(--card-border); border-radius:16px;
+  padding:2rem; background:var(--card-bg);
+}
+.key-explainer h3 { font-size:1.05rem; font-weight:700; margin-bottom:.5rem; }
+.key-explainer p { color:var(--muted); font-size:.88rem; margin-bottom:.5rem; line-height:1.7; }
+.key-explainer p strong { color:var(--text); }
+.code-block {
+  font-family:monospace; font-size:.78rem; background:var(--feature-bg);
+  border:1px solid var(--section-border); border-radius:12px;
+  padding:1.25rem 1.5rem; color:var(--text); line-height:2;
+  white-space:pre-wrap; word-break:break-word; margin-top:1rem;
+}
+
+/* NOSTR ACCORDION */
+.nostr-accordion { margin-top:1.5rem; }
+.nostr-acc-item {
+  border:1px solid var(--section-border); border-radius:12px;
+  margin-bottom:.5rem; overflow:hidden; background:var(--card-bg);
+}
+.nostr-acc-top {
+  padding:1rem 1.25rem; cursor:pointer; user-select:none;
+  display:flex; justify-content:space-between; align-items:center;
+  font-weight:700; font-size:.92rem;
+}
+.nostr-acc-top:hover { background:var(--feature-bg); }
+.nostr-acc-body { display:none; padding:0 1.25rem 1.25rem; }
+.nostr-acc-item.open .nostr-acc-body { display:block; }
+.nostr-acc-item.open .nostr-acc-chev { transform:rotate(180deg); }
+.nostr-acc-chev { transition:transform .3s; font-size:.8rem; color:var(--muted); }
+
+/* CTA BUTTON */
+.cta-button {
+  display:inline-block; background:var(--accent-bg); color:var(--accent-text);
+  padding:.85rem 2.5rem; text-decoration:none; font-weight:600;
+  border:2px solid var(--accent-bg); transition:all .3s; border-radius:999px;
+}
+.cta-button:hover { background:transparent; color:var(--accent-bg); }
+
+footer {
+  padding:3rem 0; text-align:center;
+  border-top:2px solid var(--border); background:var(--header-bg);
+  transition:background .3s,border-color .3s;
+}
+footer p { color:var(--text); }
+footer p.footer-muted { margin-top:.5rem; color:var(--footer-muted); font-size:.85rem; }
+footer a { color:var(--text); border-bottom:1px solid var(--section-border); text-decoration:none; }
+
+@media (max-width:768px) {
+  .header-content { flex-direction:column; align-items:flex-start; }
+  .header-right { width:100%; justify-content:space-between; }
+  .lesson-top { grid-template-columns:40px 1fr auto; padding:1rem 1.1rem; }
+  .body-grid { grid-template-columns:1fr; }
+  .tl-row { grid-template-columns:80px 1fr; }
+  .nostr-explainer-box { grid-template-columns:1fr; }
+  .nostr-explainer-box .nostr-em { display:none; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="https://opsecacademy.org" class="logo">
+        <img src="https://opsecacademy.org/assets/images/opsec-academy-492x422.png" alt="OpSec Academy">
+        <div>
+          <span class="logo-text">OpSec Academy</span>
+          <span class="logo-sub">Networking CTF</span>
+        </div>
+      </a>
+      <div class="header-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO — condensed -->
+<section class="hero">
+  <div class="container">
+    <img src="https://opsecacademy.org/assets/images/opsec-academy-492x422.png" alt="OpSec Academy" class="hero-logo">
+    <div class="pixel-title">NETWORKING CTF ⚔️</div>
+    <div class="pixel-sub">MINECRAFT EDUCATION · CAPTURE THE FLAG · PRIMARY SCHOOL</div>
+    <div class="badge-strip">
+      <span class="badge-pill">📅 11 Lessons · 45 min</span>
+      <span class="badge-pill">👥 Teams of 4</span>
+      <span class="badge-pill">⛏️ Minecraft Education</span>
+      <span class="badge-pill">🔑 Nostr Keys as Flags</span>
+    </div>
+  </div>
+</section>
+
+<!-- LESSONS (first!) -->
+<section class="section" id="lessons">
+  <div class="container">
+    <h2>Lesson Plans</h2>
+    <p class="section-sub">Click any lesson to expand. Each session is 45 minutes with a video, discussion, Minecraft build, and flag challenge.</p>
+    <div id="root"></div>
+  </div>
+</section>
+
+<!-- COMBINED NOSTR SECTION (below lessons) -->
+<section class="nostr-section" id="nostr">
+  <div class="container">
+    <h2>Nostr &amp; Key Setup</h2>
+    <p class="section-sub">Everything you need to know about Nostr keys, how to set up nos2x, and how the flag capture system works.</p>
+
+    <!-- Key Concept -->
+    <div class="nostr-explainer-box">
+      <div class="nostr-em">⚡</div>
+      <div>
+        <h3>🔑 How the Key System Works</h3>
+        <p>Each team gets <strong>two codes</strong> at the start of term:</p>
+        <p>🟢 <strong>Public Key (npub)</strong> — your team's name badge. Share freely.<br>
+           🔴 <strong>Private Key (nsec)</strong> — your team's FLAG. Split into 4 pieces and hidden in Minecraft.</p>
+        <p>If another team finds all 4 pieces and proves it with a signed Nostr message — they score big. Hide them well. 🏆</p>
+        <div class="nostr-key-box">🟢 npub = Public Key  → Share freely — your team's ID
+🔴 nsec = Private Key → THIS IS YOUR FLAG — hide it in Minecraft!
+
+💡 Padlock (public) vs. key that opens it (private)
+   Only the key holder can prove who they are!</div>
+      </div>
+    </div>
+
+    <!-- Expandable sub-sections -->
+    <div class="nostr-accordion">
+
+      <!-- nos2x Setup -->
+      <div class="nostr-acc-item" id="nos2x-acc">
+        <div class="nostr-acc-top" onclick="toggleNostrAcc('nos2x-acc')">
+          Setting Up nos2x (Chrome Extension)
+          <span class="nostr-acc-chev">▾</span>
+        </div>
+        <div class="nostr-acc-body">
+          <div class="nos2x-box" style="margin-bottom:0;">
+            <p class="sub">nos2x stores your Nostr private key in Chrome and signs messages on your behalf. A signed event is mathematical proof of flag capture.</p>
+            <div class="steps">
+              <div class="step"><div class="step-num">1</div><div class="step-body">
+                <h4>Install nos2x</h4>
+                <p>Search for nos2x in the Chrome Web Store. Click Add to Chrome.</p>
+                <a class="step-link" href="https://chrome.google.com/webstore/detail/nos2x/kpgefcfmnafjgpblomihpgmejjdanjjp" target="_blank" rel="noopener">Chrome Web Store → nos2x</a>
+              </div></div>
+              <div class="step"><div class="step-num">2</div><div class="step-body">
+                <h4>Generate your team key pair</h4>
+                <p>Visit the key generator. Copy both keys and save in your team folder. Teacher keeps a sealed copy.</p>
+                <a class="step-link" href="https://nostrtool.com" target="_blank" rel="noopener">nostrtool.com → Generate Key Pair</a>
+                <span class="code-line">npub1...  ← PUBLIC KEY — share with class
+nsec1...  ← PRIVATE KEY — THIS IS YOUR FLAG</span>
+              </div></div>
+              <div class="step"><div class="step-num">3</div><div class="step-body">
+                <h4>Load your private key</h4>
+                <p>Click the nos2x icon → Options → paste your nsec1... → Save.</p>
+              </div></div>
+              <div class="step"><div class="step-num">4</div><div class="step-body">
+                <h4>Test it</h4>
+                <p>Go to nostter.app → Login with extension. If nos2x asks to approve, it's working.</p>
+                <a class="step-link" href="https://nostter.app" target="_blank" rel="noopener">nostter.app → Login → Use Extension</a>
+              </div></div>
+              <div class="step"><div class="step-num">5</div><div class="step-body">
+                <h4>Proving flag capture</h4>
+                <p>Load the captured nsec into nos2x, sign a message with both team names, show the teacher. That signature is cryptographic proof.</p>
+                <div class="warn-box">After proving capture, reload your own nsec immediately. Write the captured key on paper first!</div>
+              </div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- How Keys Work -->
+      <div class="nostr-acc-item" id="keys-acc">
+        <div class="nostr-acc-top" onclick="toggleNostrAcc('keys-acc')">
+          How Public &amp; Private Keys Work
+          <span class="nostr-acc-chev">▾</span>
+        </div>
+        <div class="nostr-acc-body">
+          <div class="key-explainer" style="border:none; padding:0;">
+            <p>The <strong>public key (npub)</strong> is your team's identity — share it everywhere. The <strong>private key (nsec)</strong> is your flag — keep it secret.</p>
+            <p>It is <strong>mathematically impossible to fake a signature</strong> without the private key. When a team signs a message using your nsec, the maths proves they found it. No screenshots needed. This is the same system that protects real identities on the Nostr network.</p>
+            <div class="code-block"># PUBLIC KEY (npub) — share with everyone
+npub1abc123...  ← your team's identity on Nostr
+
+# PRIVATE KEY (nsec) — THIS IS YOUR FLAG
+nsec1xyz789...  ← split into 4 fragments, hide in Minecraft!
+
+# Capture flow:
+Enemy finds all 4 fragments → reconstructs nsec
+→ loads into nos2x → signs a message
+→ teacher verifies against known npub = CAPTURED!</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /nostr-accordion -->
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2024 <a href="https://opsecacademy.org">OpSec Academy</a>. Networking CTF Curriculum.</p>
+    <p class="footer-muted">Primary School · 11 Lessons · 45 min each · Teams of 4<br>nos2x requires Chrome. Preview all videos before class.</p>
+  </div>
+</footer>
+
+<script>
+// THEME TOGGLE
+(function() {
+  var toggle = document.getElementById('themeToggle');
+  if (!toggle) return;
+  if (localStorage.getItem('opsec-theme') === 'light') document.body.classList.add('light-theme');
+  toggle.addEventListener('click', function() {
+    document.body.classList.toggle('light-theme');
+    localStorage.setItem('opsec-theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+  });
+})();
+
+// LESSON TOGGLE
+function toggleLesson(id) {
+  var el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+
+// NOSTR ACCORDION TOGGLE
+function toggleNostrAcc(id) {
+  var el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+
+function chevron() {
+  return '<svg class="chevron-icon icon-svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>';
+}
+
+// LESSON DATA — full content from networking-ctf-primary-v3
+var LESSONS = [
+
+// ── L1: ENCRYPTION & NOSTR KEY CREATION ─────────────────────────────────────
+{num:1,phase:1,emoji:'🔑',raid:false,
+  title:'Secret Keys & Your Nostr Identity',
+  tags:[{l:'Encryption',c:'t-topic'},{l:'Nostr Keys',c:'t-nostr'},{l:'Build',c:'t-mc'},{l:'Video',c:'t-video'}],
+  timing:[{label:'Watch Video',time:'0–8 min'},{label:'Teacher Explains',time:'8–18 min'},{label:'Generate Keys & Build Vault',time:'18–38 min'},{label:'nos2x Setup',time:'38–45 min'}],
+  teach:{h:'Direct Teaching — Teacher Explains to Class',items:[
+    '<strong>Start with a question:</strong> "Has anyone ever written a secret message to a friend? Maybe you swapped letters around so nobody else could read it?" Let a few students share. Explain that this is called <strong>encryption</strong> — scrambling a message so only the right person can read it.',
+    '<strong>Introduce the decoder ring:</strong> Hold up a printed Caesar cipher wheel (or draw one on the board). Show how shifting every letter by 3 turns "HELLO" into "KHOOR". Ask: "Could someone read this without knowing the shift number?" That shift number is the <strong>key</strong>.',
+    '<strong>Public vs Private keys:</strong> Draw a padlock and a key on the board. Say: "Imagine you give everyone a copy of your padlock. Anyone can lock a box for you. But only YOU have the key to open it." The padlock is the <strong>public key</strong>. The key is the <strong>private key</strong>. Nobody can make a copy of the key just by looking at the padlock.',
+    '<strong>Connect to the CTF game:</strong> "This term, every team is going to get their own padlock and key — a real one, using a system called Nostr. Your private key is your team\'s FLAG. You\'ll split it into 4 secret pieces and hide them in your Minecraft world. Other teams will try to find them!"',
+    '<strong>Live demo on the board:</strong> Open nostrtool.com on the projector. Show the class what an npub and nsec look like. Point out how long and random they are. Say: "This is mathematically impossible to guess. That\'s what makes it safe."',
+    '<strong>Set the rule:</strong> "Your npub goes on a sign at your front door — everyone can see it. Your nsec is TOP SECRET. If another team finds it and proves it to me, they win big points. So we need to protect it!"'
+  ]},
+  topic:{h:'Key Concepts',items:[
+    'Encryption = scrambling a message so only the right person can read it',
+    'A "key" scrambles and unscrambles — like a secret decoder ring',
+    'Public key (npub) = your team\'s padlock — share with everyone',
+    'Private key (nsec) = the only key that opens it — TOP SECRET',
+    'Your nsec is the FLAG for the whole term — split it and hide it well!'
+  ]},
+  mc:{h:'Build in Minecraft Education',items:[
+    'Set up your team world — home base for the whole term!',
+    'Build a VAULT room — the most secure room in your base',
+    'Iron vault = basic lock, Gold = medium, Diamond = super strong',
+    'Write your public key (npub) on a sign at your base entrance',
+    'Write a message in a Book using a Caesar cipher (shift every letter by 3)'
+  ]},
+  video:{title:'Encryption & Public Keys — Code.org',url:'https://www.youtube.com/watch?v=AQDCe585Lnc',dur:'6:39',note:'Google\'s Security Princess explains encryption brilliantly. The perfect opener — sets up the entire term\'s key concept. One of the best videos in the series.'},
+  flag:'<strong>Lesson 1 Task:</strong> Visit nostrtool.com to generate your team\'s Nostr key pair. Write your public key (npub) on a sign at your base entrance. Your private key (nsec) is your FLAG — the teacher will show you how to split it into 4 hidden fragments across the term. Set up nos2x in Chrome and test it works!',
+  nostr:'Your nsec IS a private key — just like in the video! Only someone with your nsec can sign messages as you. If a rival team gets it, they can prove capture with a nos2x signature. Guard it with your life!'
+},
+
+// ── L2: HOW THE INTERNET WORKS ──────────────────────────────────────────────
+{num:2,phase:1,emoji:'🌐',raid:false,
+  title:'How the Internet Works — The Minecraft Layers',
+  tags:[{l:'Internet Basics',c:'t-topic'},{l:'Build',c:'t-mc'},{l:'Video',c:'t-video'}],
+  timing:[{label:'Watch Video',time:'0–8 min'},{label:'Teacher Explains',time:'8–20 min'},{label:'Build in MC',time:'20–40 min'},{label:'Debrief',time:'40–45 min'}],
+  teach:{h:'Direct Teaching — Teacher Explains to Class',items:[
+    '<strong>Start with a question:</strong> "When you send a message to a friend on a tablet, how does it get there? Does a tiny person carry it?" Let students guess. Explain: "The internet is like a giant postal service — but instead of postmen, it uses wires, radio waves, and light!"',
+    '<strong>Introduce packets:</strong> Hold up a piece of paper with a sentence written on it. Tear it into 4 pieces. Say: "The internet doesn\'t send your message all in one go. It chops it into tiny pieces called <strong>packets</strong>, sends them separately, and puts them back together at the other end — like slices of pizza that get reassembled into a whole pizza!"',
+    '<strong>Explain IP addresses:</strong> "Every device on the internet has its own address, called an IP address. It\'s like your home address but for computers. Without it, the packets wouldn\'t know where to go!" Write 192.168.1.5 on the board.',
+    '<strong>Teach the 7 layers (OSI model):</strong> Draw a 7-storey building on the board. Say: "The internet works in layers, like floors of a building. Each floor has a different job." Walk through each one:<br>• <strong>Layer 1 — Physical:</strong> The actual wires, cables, and radio waves. The foundation.<br>• <strong>Layer 2 — Data Link:</strong> Makes sure data gets to the right device on your local network. Like a postman on your street.<br>• <strong>Layer 3 — Network:</strong> Handles IP addresses and routing. Decides which road the packet takes.<br>• <strong>Layer 4 — Transport:</strong> Makes sure all the packets arrive and are in the right order. Checks nothing got lost.<br>• <strong>Layer 5 — Session:</strong> Opens and closes the conversation. Like picking up and hanging up the phone.<br>• <strong>Layer 6 — Presentation:</strong> Translates the data so both sides understand it. Like a language translator.<br>• <strong>Layer 7 — Application:</strong> The apps you actually use — browsers, games, email.',
+    '<strong>Real-world connection:</strong> "When you open YouTube on your tablet, ALL seven layers are working at the same time! Layer 7 is the YouTube app, Layer 4 makes sure the video doesn\'t glitch, and Layer 1 is the WiFi radio waves flying through the air right now."',
+    '<strong>Transition to Minecraft:</strong> "Now your team is going to build this 7-layer tower underground in Minecraft. Bedrock at the bottom for the physical layer, Glass at the top for the application layer. Signs on every floor explaining what it does."'
+  ]},
+  topic:{h:'Key Concepts',items:[
+    'The internet is like a giant postal service for information',
+    'Messages get cut into tiny pieces called <strong>packets</strong>',
+    'Every device has its own <strong>IP address</strong>',
+    'The internet has 7 layers (OSI model) — each with a different job',
+    'Cables, WiFi and radio waves all carry data around the world'
+  ]},
+  mc:{h:'Build in Minecraft Education — OSI Tower (All 7 Layers)',items:[
+    '<strong>Floor 1 — Physical (Bedrock):</strong> The unbreakable foundation. Place redstone dust on the floor to represent wires and cables carrying electrical signals.',
+    '<strong>Floor 2 — Data Link (Copper):</strong> Use copper blocks. Place item frames with maps showing your local network. This layer gets packets to the right device nearby.',
+    '<strong>Floor 3 — Network (Stone):</strong> The routing layer. Place signs with IP addresses (10.0.1.1, 10.0.2.1). Add a compass — this layer decides which direction packets travel.',
+    '<strong>Floor 4 — Transport (Iron):</strong> Use iron blocks for strength. Place numbered signs (1, 2, 3, 4) on items in a chest to represent packets arriving in order. Nothing gets lost here.',
+    '<strong>Floor 5 — Session (Oak Wood):</strong> Place a door — this layer opens and closes connections. A lever beside it: ON = session open, OFF = session closed.',
+    '<strong>Floor 6 — Presentation (Glazed Terracotta):</strong> Use colourful glazed terracotta. Place a Book & Quill with the same message written in two different "codes". This layer translates data.',
+    '<strong>Floor 7 — Application (Glass):</strong> Transparent glass at the top — this is what users see. Place signs for apps: "Browser", "Email", "Minecraft!" This is where you interact with the internet.'
+  ]},
+  video:{title:'What is the Internet? — Code.org',url:'https://www.youtube.com/watch?v=Dxcc6ycZ73M',dur:'3:44',note:'The classic Code.org explainer — perfectly pitched for primary school. Features Vint Cerf, one of the inventors of the internet!'},
+  flag:'<strong>Lesson 2 Task:</strong> Your OSI tower is the foundation of your base. Every floor must have a sign explaining what that layer does in your own words. The teacher will check!',
+  nostr:null
+},
+
+// ── L3: IP ADDRESSES ────────────────────────────────────────────────────────
+{num:3,phase:1,emoji:'📮',raid:false,
+  title:'IP Addresses — Every Device Needs an Address',
+  tags:[{l:'IP Addresses',c:'t-topic'},{l:'Build',c:'t-mc'},{l:'Video',c:'t-video'}],
+  timing:[{label:'Watch Video',time:'0–8 min'},{label:'Teacher Explains',time:'8–18 min'},{label:'Build in MC',time:'18–40 min'},{label:'Hide Fragment 1',time:'40–45 min'}],
+  teach:{h:'Direct Teaching — Teacher Explains to Class',items:[
+    '<strong>Recap last lesson:</strong> "Who remembers what Layer 3 of our tower does?" (Network — handles addresses and routing.) "Today we\'re going deep into how addresses work."',
+    '<strong>Real-world analogy:</strong> Write your school\'s address on the board: number, street, suburb, state. Then write 192.168.1.5. Say: "An IP address works the same way. 192 is like the city. 168 is the area. 1 is the street. 5 is the house number. Every single device has one."',
+    '<strong>Teach subnets:</strong> "A subnet is a neighbourhood. All the houses on the same street are in the same subnet. Your home network is one subnet. The school network is another. They\'re connected together by a <strong>router</strong> — like a bridge between suburbs."',
+    '<strong>Private vs Public:</strong> "Addresses that start with 192.168 or 10.0 are <strong>private</strong> — they only work inside your home or school. When your data goes out to the internet, your router swaps it for a <strong>public</strong> address that the whole world can see. It\'s like putting a return address on an envelope."',
+    '<strong>Check for understanding:</strong> Write three addresses on the board (10.0.1.5, 10.0.2.3, 10.0.1.8). Ask: "Which two are in the same neighbourhood?" (The ones starting with 10.0.1.)',
+    '<strong>Transition to Minecraft:</strong> "In your Minecraft world, each biome is a different neighbourhood. Forest is 10.0.1.x, Desert is 10.0.2.x. Every building gets an address sign. You\'re going to map your whole world like a real network engineer!"'
+  ]},
+  topic:{h:'Key Concepts',items:[
+    'Every device online has a unique IP address — like a home address',
+    '192.168.1.5 = House 5, Street 1, Area 168, City 192',
+    'Subnets = neighbourhoods — groups of nearby addresses',
+    'Private addresses (192.168.x.x, 10.0.x.x) stay inside your local network',
+    'Public addresses let the rest of the internet find you'
+  ]},
+  mc:{h:'Build in Minecraft Education',items:[
+    'Each biome = a different neighbourhood (subnet)',
+    'Forest = 10.0.1.x, Desert = 10.0.2.x, Snowy = 10.0.3.x',
+    'Put address signs at every building in each biome',
+    'Build a big signpost at world centre with a hand-drawn address map',
+    'Nether portals = tunnels connecting different neighbourhoods (routers!)'
+  ]},
+  video:{title:'IP Addresses & DNS — Code.org',url:'https://www.youtube.com/watch?v=5o8CwafCxnU',dur:'6:44',note:'Covers both IP and DNS. Pause at 3:30 for this lesson and finish the DNS section in Lesson 4.'},
+  flag:'<strong>Fragment 1 of 4:</strong> Write the first part of your nsec using wool blocks — white = 0, black = 1 (binary code!). Hide the pattern at the bottom of your world at Y=5.',
+  nostr:null
+},
+
+// ── L4: DNS ─────────────────────────────────────────────────────────────────
+{num:4,phase:1,emoji:'📖',raid:false,
+  title:'DNS — The Internet\'s Giant Phonebook',
+  tags:[{l:'DNS',c:'t-topic'},{l:'Build',c:'t-mc'},{l:'Video',c:'t-video'}],
+  timing:[{label:'Watch Video',time:'0–8 min'},{label:'Teacher Explains',time:'8–20 min'},{label:'Build in MC',time:'20–40 min'},{label:'Hide Fragment 2',time:'40–45 min'}],
+  teach:{h:'Direct Teaching — Teacher Explains to Class',items:[
+    '<strong>Start with a challenge:</strong> "I want you to visit this website. The address is 142.250.70.142. Go on — type that into a browser." (Students will be confused.) "Okay, what if I told you that\'s actually google.com? Which one is easier to remember?" This is why we need DNS.',
+    '<strong>Explain DNS:</strong> "DNS stands for Domain Name System. It\'s like a giant phonebook for the internet. You look up a name like google.com, and DNS tells your computer the number — 142.250.70.142. Without DNS, you\'d have to memorise numbers for every website you visit!"',
+    '<strong>Walk through a lookup:</strong> Draw on the board: You type "youtube.com" → your computer asks DNS "What\'s the number?" → DNS looks it up → sends back 208.65.153.238 → your computer connects. "This happens in less than a second, every single time you visit a website."',
+    '<strong>Introduce DNS spoofing:</strong> "What if someone sneaked into the phonebook and changed the number next to your friend\'s name? You\'d call the wrong person! That\'s called <strong>DNS spoofing</strong>. A bad guy changes the address so when you type google.com, you end up on a fake copy of Google that steals your password."',
+    '<strong>How to spot it:</strong> "Look for the little padlock icon in your browser. If it\'s missing, something might be wrong. Also, if a website looks slightly different or asks for information it normally doesn\'t — that\'s a red flag."',
+    '<strong>Transition to Minecraft:</strong> "Today you\'re building a DNS Beacon Tower at the centre of your world. It will hold a Book & Quill listing every base and its coordinates — your world\'s phonebook. And we\'re going to try a spoofing prank with compass swaps!"'
+  ]},
+  topic:{h:'Key Concepts',items:[
+    'Computers use numbers (IP addresses) but we use names (google.com)',
+    'DNS translates names into numbers — the internet\'s phonebook',
+    'Every website visit starts with a DNS lookup',
+    'DNS spoofing = swapping the real address for a fake one',
+    'Defence: look for the padlock, watch for things that look "off"'
+  ]},
+  mc:{h:'Build in Minecraft Education',items:[
+    'Build a tall Beacon Tower at your world centre — your DNS server!',
+    'Write a Book & Quill listing all bases and their coordinates',
+    'Place a Lodestone + Compass in each base — points home = DNS lookup!',
+    'Challenge: secretly swap a compass to point the wrong way (DNS spoofing!)',
+    'The victim compass misdirects them — just like a real DNS attack'
+  ]},
+  video:{title:'IP Addresses & DNS — Code.org (continued)',url:'https://www.youtube.com/watch?v=5o8CwafCxnU',dur:'6:44',note:'Same video as Lesson 3 — finish the DNS half from ~3:30.'},
+  flag:'<strong>Fragment 2 of 4:</strong> Hide the second part of your nsec inside a Lectern Book in your DNS Beacon Tower. Give it a boring name like "World Rules" so snoopers ignore it! <strong>End of Phase 1:</strong> Check your world has Fragment 1 (wool binary at Y=5) and Fragment 2 (book in DNS tower).',
+  nostr:null
+},
+
+// ── L5: FIREWALLS ───────────────────────────────────────────────────────────
+{num:5,phase:2,emoji:'🧱',raid:false,
+  title:'Firewalls — The Great Wall of Your Network',
+  tags:[{l:'Firewalls',c:'t-topic'},{l:'Build',c:'t-mc'},{l:'Video',c:'t-video'}],
+  timing:[{label:'Watch Video',time:'0–8 min'},{label:'Teacher Explains',time:'8–18 min'},{label:'Build the Wall',time:'18–40 min'},{label:'World Swap',time:'40–45 min'}],
+  teach:{h:'Direct Teaching — Teacher Explains to Class',items:[
+    '<strong>Start with a scenario:</strong> "Imagine your school has no doors, no fences, no gates. Anyone could walk in at any time — strangers, animals, anyone. Would that be safe?" (No!) "A firewall is like putting walls, doors, and a security guard around your computer network."',
+    '<strong>Explain firewall rules:</strong> "A firewall checks every single piece of data trying to come in or go out. It has a list of rules. Rule 1: Let in web traffic from known websites ✅. Rule 2: Block anything from unknown sources ❌. Rule 3: Never let passwords leave the network ❌." Write these on the board.',
+    '<strong>Introduce the DMZ:</strong> "Some things need to be halfway accessible — like a school reception desk. It\'s inside the fence but before the classrooms. In networking, this is called a <strong>DMZ</strong> (demilitarised zone). It\'s a safe middle ground between your protected network and the wild internet."',
+    '<strong>Real-world examples:</strong> "Your home router has a firewall built in. When you connect to WiFi, the router is checking every packet that tries to come in. Games and websites you trust get through. Random unknown connections get blocked."',
+    '<strong>Connect to the CTF:</strong> "From today, teams swap world seeds. Other teams will be visiting your Minecraft world soon! So you need to build the best defences possible. Your Obsidian wall is your firewall. Your gates are your firewall rules. Build them wisely."',
+    '<strong>Announce world swap:</strong> "At the end of today, every team gives their world seed to one other team. The hunt officially begins next lesson! Make sure your fragments are hidden and your defences are up."'
+  ]},
+  topic:{h:'Key Concepts',items:[
+    'A firewall is like a bouncer at a door — it decides who gets in',
+    'It checks every packet and applies rules: allow or block',
+    'DMZ = a safe middle zone between your network and the outside',
+    'Home routers have built-in firewalls protecting your devices',
+    'Good rules + strong walls = strong defence'
+  ]},
+  mc:{h:'Build in Minecraft Education',items:[
+    'Build a wall around your whole base using Obsidian — the strongest block!',
+    'Design 3 gates: Iron Door = friends only, Wood = open, Barrier = blocked',
+    'Build a buffer zone between wall and wilderness — your DMZ',
+    'Watchtowers at each corner with Observer blocks to spot approaching players',
+    'Redstone gate that only opens when you hold a specific item = firewall rule!'
+  ]},
+  video:{title:'Cybersecurity & Crime — Code.org',url:'https://www.youtube.com/watch?v=5k24We8pED8',dur:'5:01',note:'A fantastic intro to why network security matters. Features a Symantec security expert. Perfect hook for the firewall concept.'},
+  flag:'<strong>World Swap:</strong> Screenshot your firewall wall! Teams now swap world seeds with another team — the hunt begins! Add decoy signs with WRONG fragments to confuse the competition!',
+  nostr:null
+},
+
+// ── L6: MAN IN THE MIDDLE ───────────────────────────────────────────────────
+{num:6,phase:2,emoji:'🕵️',raid:false,
+  title:'Man in the Middle — The Sneaky Eavesdropper',
+  tags:[{l:'MITM Attacks',c:'t-topic'},{l:'Build',c:'t-mc'},{l:'Scout Mission',c:'t-ctf'},{l:'Video',c:'t-video'}],
+  timing:[{label:'Watch Video',time:'0–8 min'},{label:'Teacher Explains',time:'8–18 min'},{label:'Build Relay',time:'18–35 min'},{label:'Scout Mission',time:'35–45 min'}],
+  teach:{h:'Direct Teaching — Teacher Explains to Class',items:[
+    '<strong>Act it out:</strong> Pick three students. Student A writes a note to Student C and passes it through Student B. But Student B secretly reads the note, copies it, and passes it on. Ask Student A: "Did you know your message was read?" (No!) "That\'s a <strong>Man in the Middle</strong> attack."',
+    '<strong>Explain how it works on a network:</strong> "On a real network, a MITM attacker tricks your computer into thinking they ARE the router. All your data goes through them first. They can read your messages, steal passwords, even change what you see on websites — and you\'d never know."',
+    '<strong>Teach ARP spoofing:</strong> "Every device on your local network uses something called ARP to find the router. An attacker sends fake ARP messages saying \'I\'m the router!\' Your computer believes it and sends everything to the attacker instead." Draw this on the board with arrows.',
+    '<strong>How to spot it:</strong> "Things run slower than normal. Websites look slightly weird. You get logged out of things unexpectedly. Your browser warns you about security certificates."',
+    '<strong>The defence — encryption:</strong> "Remember Lesson 1? Encryption! Even if someone intercepts your message, they can\'t read it if it\'s encrypted. That\'s why the padlock in your browser matters so much — it means your connection is encrypted."',
+    '<strong>Transition to Minecraft:</strong> "Today you\'re building a relay station and trying to secretly intercept another team\'s \'data\'. Then you get your first scout mission — visiting another team\'s world to gather intelligence. Eyes only — no breaking blocks!"'
+  ]},
+  topic:{h:'Key Concepts',items:[
+    'MITM attack = secretly reading messages between two people',
+    'ARP spoofing tricks your computer into sending data to the wrong place',
+    'Signs: slow network, odd-looking websites, unexpected logouts',
+    'Encryption is the best defence — even intercepted data can\'t be read',
+    'The browser padlock means your connection is encrypted'
+  ]},
+  mc:{h:'Build in Minecraft Education',items:[
+    'Build a Relay Station between two bases — the MITM position',
+    'Hopper chains underground = intercepted message streams',
+    'Observer block + note block alarm = alert when someone enters',
+    'Challenge: secretly place a relay between another team\'s bases',
+    'If undetected for 10 minutes — spy bonus points!'
+  ]},
+  video:{title:'Packets, Routing & Reliability — Code.org',url:'https://www.youtube.com/watch?v=AYdF7b3nMto',dur:'6:25',note:'Shows how data travels across networks. Great mental model for how messages can be intercepted in transit.'},
+  flag:'<strong>First Scout Mission (15 min):</strong> Teams visit one other team\'s world. Look only — no breaking blocks. Write down suspicious coordinates. Fragment hunting begins next lesson!',
+  nostr:null
+},
+
+// ── L7: SOCIAL ENGINEERING ──────────────────────────────────────────────────
+{num:7,phase:2,emoji:'🎭',raid:false,
+  title:'Social Engineering — Tricks and Traps',
+  tags:[{l:'Social Engineering',c:'t-topic'},{l:'Build',c:'t-mc'},{l:'Video',c:'t-video'}],
+  timing:[{label:'Watch Video',time:'0–8 min'},{label:'Teacher Explains',time:'8–20 min'},{label:'Build Decoys',time:'20–40 min'},{label:'Move Fragment',time:'40–45 min'}],
+  teach:{h:'Direct Teaching — Teacher Explains to Class',items:[
+    '<strong>Start with a trick:</strong> Before class, write a fake "message from the principal" on the board: "ALL STUDENTS: Go to the library immediately for a surprise pizza party." Ask: "Should you go? How do you know this is real?" Reveal it\'s fake. "I just <strong>socially engineered</strong> you!"',
+    '<strong>Define social engineering:</strong> "Sometimes hackers don\'t use any code at all. They just <strong>trick people</strong>. They pretend to be someone you trust — a teacher, a parent, a company — and ask you to hand over information. It\'s the oldest trick in the book."',
+    '<strong>Teach phishing:</strong> Show a printed example of a phishing email (or draw one on the board). Point out: "Look — it says it\'s from your bank, but the email address is weird. It says \'urgent action required!\' and there\'s a link. If you click that link, it takes you to a fake website that looks real but steals your password."',
+    '<strong>Red flags to spot:</strong> Write on the board: <strong>1.</strong> Urgency ("Do this NOW or your account will be deleted!"). <strong>2.</strong> Too good to be true ("You\'ve won a free iPhone!"). <strong>3.</strong> Spelling mistakes and odd email addresses. <strong>4.</strong> Asking for passwords or personal info.',
+    '<strong>The golden rule:</strong> "Stop. Think. Check. Never click a link or give out information without stopping to think about whether it\'s real. If in doubt, ask a trusted adult."',
+    '<strong>Transition to Minecraft:</strong> "Today you\'re going to become social engineers yourselves! Build a FAKE base that looks exactly like your real one. Fill it with fake flag fragments and traps. Drop a fake treasure map where enemies might find it. If they waste time in your fake base — you win!"'
+  ]},
+  topic:{h:'Key Concepts',items:[
+    'Social engineering = tricking people instead of hacking computers',
+    'Phishing = fake messages designed to steal your information',
+    'Red flags: urgency, too-good-to-be-true, spelling errors, odd addresses',
+    'Golden rule: Stop → Think → Check before clicking or sharing',
+    'Even smart people get tricked — it\'s about awareness, not intelligence'
+  ]},
+  mc:{h:'Build in Minecraft Education',items:[
+    'Build a FAKE BASE that looks like your real one — 300 blocks away',
+    'Add fake flag signs with wrong nsec fragments to trick visitors',
+    'Rename a mob "Friendly Trader" but make it a zombie — fake identity!',
+    'Drop a fake treasure map leading to the fake base',
+    'Trapped chests near the entrance = phishing trap (launches fireworks!)'
+  ]},
+  video:{title:'Cybersecurity & Crime — Code.org (phishing focus)',url:'https://www.youtube.com/watch?v=5k24We8pED8',dur:'5:01',note:'Focus on the phishing scam section. Brilliant for sparking conversation about social engineering tricks.'},
+  flag:'<strong>Move a Fragment:</strong> Your team can move one fragment to a new hiding spot. Update your team\'s secret logbook. Your fake base is your best defence!',
+  nostr:null
+},
+
+// ── L8: INTRUSION DETECTION ─────────────────────────────────────────────────
+{num:8,phase:2,emoji:'👁️',raid:false,
+  title:'Intrusion Detection — Spotting the Bad Guys',
+  tags:[{l:'IDS & Monitoring',c:'t-topic'},{l:'Build',c:'t-mc'},{l:'Fragment Hunt',c:'t-ctf'},{l:'Video',c:'t-video'}],
+  timing:[{label:'Watch Video',time:'0–8 min'},{label:'Teacher Explains',time:'8–18 min'},{label:'Build IDS',time:'18–35 min'},{label:'Coordinate Hunt',time:'35–45 min'}],
+  teach:{h:'Direct Teaching — Teacher Explains to Class',items:[
+    '<strong>Start with a scenario:</strong> "Imagine you come home and your bedroom door is open, the window is up, and your bag has been moved. Nothing is missing — but you KNOW someone was there. How? Because you noticed things were different. That\'s what an Intrusion Detection System does for a computer network."',
+    '<strong>Explain IDS:</strong> "An IDS watches everything happening on a network and looks for anything unusual. Logging in at 3am? 🚨 Suspicious. Sending a 10GB file to a country you\'ve never contacted? 🚨 Suspicious. A brand new device connecting? 🚨 Suspicious. It flags it and alerts a human."',
+    '<strong>Teach honeypots:</strong> "A honeypot is a trap disguised as something valuable. Imagine leaving a fake wallet on the ground with a hidden camera pointed at it. When the thief picks it up — caught! On a network, a honeypot is a fake server that looks important. When a hacker touches it, the alarm goes off."',
+    '<strong>Introduce logging:</strong> "Every good security system keeps a <strong>log</strong> — a written diary of everything that happened. Who came in, when, what they did. If something goes wrong, you read the log to work out what happened. It\'s like CCTV footage but for data."',
+    '<strong>Real-world connection:</strong> "Big companies like banks have teams of people watching IDS screens 24/7. They look for patterns: \'That account just logged in from Australia AND Japan in the same minute — that\'s impossible!\' That\'s how they catch hackers."',
+    '<strong>Transition to Minecraft:</strong> "You\'re building an alarm system around your base. Tripwires, observer blocks, note blocks that ring when someone walks through. Honey block pits that slow down snoopers. And a log book at the gate. This lesson ends with a fragment hunt — AND the teacher will try to sneak into your base to test your IDS!"'
+  ]},
+  topic:{h:'Key Concepts',items:[
+    'IDS = Intrusion Detection System — a network alarm',
+    'Watches for unusual behaviour: odd times, big files, new devices',
+    'Honeypot = a fake target that catches intruders',
+    'Logs = a security diary recording everything that happened',
+    'Detection doesn\'t prevent attacks — it catches them in progress'
+  ]},
+  mc:{h:'Build in Minecraft Education',items:[
+    'Build an Observer block + Bell alarm system around your whole base',
+    'Tripwire hooks along all paths = motion sensors (link to note blocks!)',
+    'A Book & Quill "log book" near the gate — visitors must sign in',
+    'Honey block pits hidden under paths = honeypots (snoopers get stuck!)',
+    'Build a Security Room with item-frame maps showing all sensor positions'
+  ]},
+  video:{title:'Wires, Cables & WiFi — Code.org',url:'https://www.youtube.com/watch?v=ZhEf7e4kopM',dur:'6:40',note:'Explains the physical layer — how data actually moves. Great for discussing how we monitor network traffic.'},
+  flag:'<strong>Active Fragment Hunt:</strong> Each team submits ONE coordinate guess for a fragment in an enemy world. Correct = 25 bonus points. Your tripwire alarms will also be tested — can your IDS catch the teacher sneaking in?',
+  nostr:null
+},
+
+// ── L9: VPNs & SECRET TUNNELS ───────────────────────────────────────────────
+{num:9,phase:3,emoji:'🕳️',raid:false,
+  title:'VPNs & Secret Tunnels',
+  tags:[{l:'VPNs & Tunnels',c:'t-topic'},{l:'Build',c:'t-mc'},{l:'Nostr',c:'t-nostr'},{l:'Video',c:'t-video'}],
+  timing:[{label:'Watch Video',time:'0–8 min'},{label:'Teacher Explains',time:'8–18 min'},{label:'Build VPN Tunnel',time:'18–38 min'},{label:'Hide Fragment 3',time:'38–45 min'}],
+  teach:{h:'Direct Teaching — Teacher Explains to Class',items:[
+    '<strong>Start with an analogy:</strong> "Imagine you\'re sending a letter, but you don\'t want anyone at the post office to read it. So you put your letter inside ANOTHER sealed envelope, addressed to a trusted friend. The post office delivers the outer envelope. Your friend opens it, takes out your real letter, and delivers it to the right person. Nobody in between could read it. That\'s a <strong>VPN</strong>."',
+    '<strong>Explain VPN:</strong> "VPN stands for Virtual Private Network. It creates a secret tunnel through the internet. Everything you send travels inside the tunnel — encrypted and hidden. Even your internet provider can\'t see what websites you\'re visiting. They just see a stream of scrambled data going to the VPN."',
+    '<strong>Why do schools use VPNs?</strong> "When you connect to public WiFi at a café or airport, anyone else on that WiFi could potentially see your data. A VPN protects you. Schools and businesses use VPNs so their staff can work safely from anywhere."',
+    '<strong>Introduce Tor:</strong> "What if instead of one tunnel, you sent your message through THREE tunnels in a row, each one run by a different person? Nobody knows the full path — the first person knows where it came from but not where it\'s going. The last person knows where it\'s going but not where it came from. This is called <strong>Tor</strong> — The Onion Router. Layers of encryption, like an onion."',
+    '<strong>Connect to Nostr:</strong> "Nostr works a bit like this too. Your messages go through <strong>multiple relays</strong> — not just one server controlled by one company. Even if one relay shuts down, your posts get through on another. No single point of failure, no single point of control."',
+    '<strong>Transition to Minecraft:</strong> "Today you\'re building a Nether Highway — a fast, hidden tunnel between your base and a secret outpost. The Nether is your VPN! You\'ll also build an underwater entrance and a 3-turn maze representing Tor relay hops. Fragment 3 hides in the deepest part of your tunnel."'
+  ]},
+  topic:{h:'Key Concepts',items:[
+    'VPN = a secret encrypted tunnel through the internet',
+    'Everything inside the tunnel is hidden — even from your ISP',
+    'Public WiFi is dangerous without a VPN — anyone can snoop',
+    'Tor = multiple tunnels in a row — extra anonymous',
+    'Nostr uses multiple relays — no single point of control'
+  ]},
+  mc:{h:'Build in Minecraft Education',items:[
+    'Build a Nether Highway between your base and a secret outpost — your VPN!',
+    'The Nether is fast and hidden — just like a real VPN',
+    'Build a hidden underwater entrance to your base = the VPN entry point',
+    'Create a 3-turn underground maze = Tor relay hops (hard to trace back!)',
+    'Fragment 3 hides here: deepest part of your Nether tunnel'
+  ]},
+  video:{title:'HTTP & HTML — Code.org',url:'https://www.youtube.com/watch?v=kBXQZMmiA4s',dur:'7:06',note:'Explains how web requests travel. The envelope-inside-a-tunnel metaphor maps perfectly to how VPN traffic is wrapped.'},
+  flag:'<strong>Fragment 3 of 4:</strong> Hide the third nsec fragment in a chest behind a hidden piston door in your Nether tunnel. Encode it as A=1, B=2, C=3. Players must pull a secret lever to reveal the door!',
+  nostr:'Nostr connection: Nostr uses multiple relays just like Tor uses multiple hops. No single company controls your messages. Even if one relay shuts down, posts get through another.'
+},
+
+// ── L10: RAID DAY 1 ─────────────────────────────────────────────────────────
+{num:10,phase:'raid',emoji:'🚨',raid:true,
+  title:'RAID DAY 1 — Live Flag Hunt',
+  tags:[{l:'LIVE CTF RAID',c:'t-raid'},{l:'Nostr Capture',c:'t-nostr'},{l:'Capture the Flag',c:'t-ctf'}],
+  raidIntro:{icon:'🎮',title:'Your First Live Flag Raid',desc:'Teams load up another team\'s Minecraft Education world and go hunting for hidden key fragments! All 4 fragments must be placed. Hide Fragment 4 before the hunt begins!'},
+  timeline:[
+    {time:'0–10 min',desc:'<strong>Final prep:</strong> Hide Fragment 4 anywhere. Add last-minute decoys, test alarms. Once hunting starts — no more changes!'},
+    {time:'10–15 min',desc:'<strong>World swap:</strong> Teacher opens assigned enemy world. Make a plan before diving in.'},
+    {time:'15–45 min',desc:'<strong>RAID IN PROGRESS:</strong> Search for binary wool patterns, suspicious books, hidden levers, underground tunnels. No breaking blocks!'},
+    {time:'45–55 min',desc:'<strong>Report time:</strong> Report fragment coordinates to teacher. Teacher verifies and awards points.'},
+    {time:'55–60 min',desc:'<strong>Debrief:</strong> Where did defences work? Where were the weak spots? Update hiding spots for the final.'}
+  ],
+  raidRules:[
+    'No breaking blocks, no TNT — exploration only',
+    'You may fly in Creative Mode to look, but not break or place',
+    'Decoy signs and fake fragments don\'t count — teacher verifies real ones',
+    'Found all 4? Sign a Nostr event with nos2x for maximum bonus',
+    'Triggered traps score bonus points for the defending team!'
+  ],
+  score:[
+    {pts:'25',label:'Each fragment found'},
+    {pts:'50',label:'3+ fragments from one team'},
+    {pts:'150',label:'All 4 fragments found!'},
+    {pts:'75',label:'Zero fragments stolen (defence)'}
+  ],
+  flag:'<strong>After the raid:</strong> Teams with captured fragments reconstruct the nsec, load into nos2x, sign a message with both team names, show the teacher. That signed message is cryptographic proof of capture.',
+  nostr:'Why nos2x? A signed message with the correct nsec can ONLY have been created by someone who has that key. No screenshots, no arguments. The maths proves the win!'
+},
+
+// ── L11: GRAND FINAL ────────────────────────────────────────────────────────
+{num:11,phase:'raid',emoji:'🏆',raid:true,
+  title:'GRAND FINAL — The Great Key Hunt',
+  tags:[{l:'GRAND FINAL',c:'t-raid'},{l:'Nostr Victory',c:'t-nostr'},{l:'Final CTF',c:'t-ctf'}],
+  raidIntro:{icon:'🎯',title:'The Grand Final — Everything on the Line',desc:'All worlds open simultaneously for a full raid. Best hiders, best builders, and most cunning hunters all score. May the best squad win!'},
+  timeline:[
+    {time:'0–5 min',desc:'<strong>Final prep:</strong> Last chance to move a fragment or add decoys. Once hunting starts — world is locked.'},
+    {time:'5–10 min',desc:'<strong>Teacher audit:</strong> Quick check that each world has 4 findable fragments.'},
+    {time:'10–55 min',desc:'<strong>GRAND FINAL RAID:</strong> ALL teams get access to ALL other worlds simultaneously! Hunt as many fragments as you can. Total chaos — totally brilliant!'},
+    {time:'55–65 min',desc:'<strong>nos2x verification:</strong> Teams with a full set of 4 fragments sign a Nostr event with the captured nsec. Teacher verifies.'},
+    {time:'65–75 min',desc:'<strong>Prize ceremony:</strong> Scores announced, certificates awarded. What did you learn? What would you do differently?'}
+  ],
+  raidRules:[
+    'All worlds open simultaneously — hunt everywhere!',
+    'No block-breaking, no TNT, no griefing of any kind',
+    'Signed Nostr event with captured nsec = official proof',
+    'Judges score world builds separately (OSI tower, vault, IDS, firewall)',
+    'Written reflection submitted = 50 bonus points'
+  ],
+  score:[
+    {pts:'25',label:'Each fragment found'},
+    {pts:'200',label:'Full key + Nostr proof!'},
+    {pts:'150',label:'Best defence — 0 stolen'},
+    {pts:'50',label:'Best world build'},
+    {pts:'50',label:'Written reflection'},
+    {pts:'+25',label:'Explain how you found it'}
+  ],
+  flag:'<strong>The Win Condition:</strong> Sign a valid Nostr event using the enemy team\'s nsec and show the teacher. They verify against the known npub. Cryptographic proof — no disputes possible!',
+  nostr:'Final Nostr moment: Every student now understands why private keys matter. Your Nostr nsec is your identity online. Losing it means someone can post as you. Keep your private keys safe — always!'
+}
+];
+
+// RENDER
+function mkTag(t) { return '<span class="tag ' + t.c + '">' + t.l + '</span>'; }
+function mkLi(s) { return '<li>' + s + '</li>'; }
+
+function mkTimingBar(segs) {
+  var h = '<div class="timing-bar">';
+  for (var i = 0; i < segs.length; i++) {
+    h += '<div class="timing-seg"><span class="ts-time">' + segs[i].time + '</span><span class="ts-label">' + segs[i].label + '</span></div>';
+  }
+  return h + '</div>';
+}
+
+function mkPhaseHdr(p) {
+  return '<div class="net-phase-hdr ' + p.cls + '"><h2>' + p.label + '</h2><div class="ph-line"></div></div>';
+}
+
+function renderRegular(l) {
+  var nostrHtml = l.nostr ? '<div class="nostr-note">' + l.nostr + '</div>' : '';
+  var tags = ''; for (var i=0;i<l.tags.length;i++) tags += mkTag(l.tags[i]);
+  var timing = mkTimingBar(l.timing);
+  var topicItems = ''; for (var i=0;i<l.topic.items.length;i++) topicItems += mkLi(l.topic.items[i]);
+  var mcItems = ''; for (var i=0;i<l.mc.items.length;i++) mcItems += mkLi(l.mc.items[i]);
+  var teachHtml = '';
+  if (l.teach) {
+    teachHtml = '<div class="teach-panel"><h4>' + l.teach.h + '</h4><ol>';
+    for (var i=0;i<l.teach.items.length;i++) teachHtml += '<li>' + l.teach.items[i] + '</li>';
+    teachHtml += '</ol></div>';
+  }
+  return '<div class="lesson-card" id="lc' + l.num + '">'
+    + '<div class="lesson-top" onclick="toggleLesson(\'lc' + l.num + '\')">'
+    + '<div class="lesson-emoji">' + l.emoji + '</div>'
+    + '<div class="lesson-meta"><h3>Lesson ' + l.num + ' — ' + l.title + '</h3><div class="tags">' + tags + '</div></div>'
+    + chevron()
+    + '</div>'
+    + '<div class="lesson-body">'
+    + timing
+    + '<div class="video-block"><span class="vb-label">Watch First</span>'
+    + '<a class="video-link" href="' + l.video.url + '" target="_blank" rel="noopener">&#9654; ' + l.video.title + ' <span class="dur">(' + l.video.dur + ')</span></a>'
+    + '<span class="teacher-note">Teacher note: ' + l.video.note + '</span></div>'
+    + teachHtml
+    + '<div class="body-grid">'
+    + '<div class="panel"><h4>' + l.topic.h + '</h4><ul>' + topicItems + '</ul></div>'
+    + '<div class="panel"><h4>' + l.mc.h + '</h4><ul>' + mcItems + '</ul></div>'
+    + '</div>'
+    + '<div class="flag-box">' + l.flag + nostrHtml + '</div>'
+    + '</div></div>';
+}
+
+function renderRaid(l) {
+  var nostrHtml = l.nostr ? '<div class="nostr-note">' + l.nostr + '</div>' : '';
+  var tags = ''; for (var i=0;i<l.tags.length;i++) tags += mkTag(l.tags[i]);
+  var tl = ''; for (var i=0;i<l.timeline.length;i++) {
+    tl += '<div class="tl-row"><div class="tl-time">' + l.timeline[i].time + '</div><div class="tl-desc">' + l.timeline[i].desc + '</div></div>';
+  }
+  var rules = ''; for (var i=0;i<l.raidRules.length;i++) rules += mkLi(l.raidRules[i]);
+  var score = ''; for (var i=0;i<l.score.length;i++) {
+    score += '<div class="score-item"><div class="score-pts">' + l.score[i].pts + '</div><div class="score-label">' + l.score[i].label + '</div></div>';
+  }
+  return '<div class="lesson-card raid-card" id="lc' + l.num + '">'
+    + '<div class="lesson-top" onclick="toggleLesson(\'lc' + l.num + '\')">'
+    + '<div class="lesson-emoji">' + l.emoji + '</div>'
+    + '<div class="lesson-meta"><h3>Lesson ' + l.num + ' — ' + l.title + '</h3><div class="tags">' + tags + '</div></div>'
+    + chevron()
+    + '</div>'
+    + '<div class="lesson-body">'
+    + '<div class="raid-banner"><div class="rb-icon">' + l.raidIntro.icon + '</div><div>'
+    + '<h3>' + l.raidIntro.title + '</h3><p>' + l.raidIntro.desc + '</p></div></div>'
+    + '<div class="timeline">' + tl + '</div>'
+    + '<div class="body-grid">'
+    + '<div class="panel"><h4>Raid Rules</h4><ul>' + rules + '</ul></div>'
+    + '<div class="panel"><h4>Points on Offer</h4><div class="score-grid">' + score + '</div></div>'
+    + '</div>'
+    + '<div class="flag-box">' + l.flag + nostrHtml + '</div>'
+    + '</div></div>';
+}
+
+(function buildLessons() {
+  var root = document.getElementById('root');
+  if (!root) return;
+  var phaseLabels = {
+    '1': { label: '🔑 PHASE 1 — KEYS & FOUNDATIONS (Lessons 1–4)', cls: 'p1' },
+    '2': { label: '⚔️ PHASE 2 — ATTACK & DEFEND (Lessons 5–8)', cls: 'p2' },
+    '3': { label: '🕳️ PHASE 3 — ADVANCED TECHNIQUES (Lesson 9)', cls: 'p3' },
+    'raid': { label: '🚨 RAID PHASE — LIVE FLAG HUNTS (Lessons 10–11)', cls: 'p-raid' }
+  };
+  var html = '';
+  var lastPhase = null;
+  for (var i = 0; i < LESSONS.length; i++) {
+    var l = LESSONS[i];
+    var p = String(l.phase);
+    if (p !== lastPhase) {
+      lastPhase = p;
+      html += mkPhaseHdr(phaseLabels[p]);
+    }
+    html += l.raid ? renderRaid(l) : renderRegular(l);
+  }
+  root.innerHTML = html;
+})();
+</script>
+</body>
+</html>
