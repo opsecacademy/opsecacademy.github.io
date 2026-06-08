@@ -1,764 +1,1378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpSec Academy - Professional Security Workshops</title>
-    <link rel="icon" type="image/png" href="https://opsecacademy.org/assets/images/opsec-academy-492x422.png">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        :root {
-            --bg: #000000;
-            --text: #ffffff;
-            --header-bg: #000000;
-            --border: #ffffff;
-            --section-border: #333333;
-            --muted: #999999;
-            --card-bg: #000000;
-            --card-border: #ffffff;
-            --feature-bg: #0a0a0a;
-            --accent-bg: #ffffff;
-            --accent-text: #000000;
-            --footer-muted: #666666;
-        }
-
-        body.light-theme {
-            --bg: #f5f5f5;
-            --text: #111111;
-            --header-bg: #ffffff;
-            --border: #111111;
-            --section-border: #dddddd;
-            --muted: #555555;
-            --card-bg: #ffffff;
-            --card-border: #111111;
-            --feature-bg: #f0f0f0;
-            --accent-bg: #111111;
-            --accent-text: #f5f5f5;
-            --footer-muted: #888888;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-            transition: background 0.3s ease, color 0.3s ease;
-        }
-
-        header {
-            background: var(--header-bg);
-            border-bottom: 2px solid var(--border);
-            padding: 1.5rem 0 2rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            color: var(--text);
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
-            filter: invert(1);
-            transition: filter 0.3s ease;
-        }
-
-        body.light-theme .logo img {
-            filter: none;
-        }
-
-        .logo-text {
-            font-size: 2rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            margin-left: 2rem;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
-
-        nav a:first-child {
-            margin-left: 0;
-        }
-
-        nav a:hover {
-            opacity: 0.7;
-        }
-
-        .theme-toggle {
-            background: var(--bg);
-            border: 2px solid var(--border);
-            border-radius: 999px;
-            padding: 0.4rem;
-            color: var(--text);
-            font-size: 0.9rem;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 32px;
-            position: relative;
-            transition: background 0.3s ease, border-color 0.3s ease;
-        }
-
-        .theme-toggle::before {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background: var(--text);
-            left: 3px;
-            transition: transform 0.3s ease;
-        }
-
-        body.light-theme .theme-toggle::before {
-            transform: translateX(28px);
-        }
-
-        .theme-toggle:hover {
-            border-color: var(--accent-bg);
-        }
-
-        .hero {
-            padding: 6rem 0;
-            text-align: center;
-            border-bottom: 1px solid var(--section-border);
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--muted);
-            max-width: 700px;
-            margin: 0 auto 2rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--accent-bg);
-            color: var(--accent-text);
-            padding: 1rem 3rem;
-            text-decoration: none;
-            font-weight: 600;
-            border: 2px solid var(--accent-bg);
-            transition: all 0.3s;
-            margin: 0.5rem;
-            border-radius: 999px;
-        }
-
-        .cta-button:hover {
-            background: transparent;
-            color: var(--accent-bg);
-        }
-
-        .section {
-            padding: 5rem 0;
-            border-bottom: 1px solid var(--section-border);
-            scroll-margin-top: 80px;
-        }
-
-        .section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-        }
-
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-            text-align: center;
-        }
-
-        .stat-box {
-            border: 2px solid var(--card-border);
-            padding: 2rem;
-            border-radius: 16px;
-            background: var(--card-bg);
-            transition: background 0.3s ease, transform 0.2s ease;
-        }
-
-        .stat-box:hover {
-            transform: translateY(-3px);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            border: 2px solid var(--card-border);
-            padding: 2rem;
-            border-radius: 16px;
-            background: var(--card-bg);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            background: var(--accent-bg);
-            color: var(--accent-text);
-            transform: translateY(-3px);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .breaches-feed {
-            background: #111111;
-            border: 2px solid var(--section-border);
-            padding: 2rem;
-            margin-top: 2rem;
-            border-radius: 16px;
-            max-height: none;
-            overflow-y: visible;
-        }
-
-        .breach-item {
-            border-left: 3px solid var(--border);
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-            background: var(--bg);
-            transition: all 0.3s;
-            border-radius: 12px;
-        }
-
-        .breach-item:hover {
-            border-left-color: #999999;
-            background: #0a0a0a;
-        }
-
-        body.light-theme .breach-item:hover {
-            background: #eaeaea;
-        }
-
-        .breach-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .breach-item p {
-            color: var(--muted);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .breach-item a {
-            color: var(--text);
-            text-decoration: none;
-            font-size: 0.85rem;
-            border-bottom: 1px solid var(--text);
-            transition: opacity 0.3s;
-        }
-
-        .breach-item a:hover {
-            opacity: 0.7;
-        }
-
-        .loading {
-            text-align: center;
-            padding: 2rem;
-            color: #666666;
-        }
-
-        footer {
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 2px solid var(--border);
-            background: var(--header-bg);
-        }
-
-        footer p {
-            color: var(--text);
-        }
-
-        footer p.footer-muted {
-            margin-top: 1rem;
-            color: var(--footer-muted);
-        }
-
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .feature-item {
-            border: 1px solid var(--section-border);
-            padding: 1.5rem;
-            background: var(--feature-bg);
-            border-radius: 16px;
-        }
-
-        .feature-item h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-            color: var(--text);
-            filter: grayscale(1);
-        }
-
-        .feature-item p {
-            color: var(--muted);
-            font-size: 0.9rem;
-        }
-
-        .os-highlight {
-            background: var(--accent-bg);
-            color: var(--accent-text);
-            padding: 3rem;
-            margin: 3rem 0;
-            border: 3px solid var(--header-bg);
-            border-radius: 20px;
-            transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-
-        .os-highlight h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .os-highlight p {
-            font-size: 1.1rem;
-        }
-
-        .os-layout {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 2.5rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .os-text {
-            flex: 1 1 320px;
-        }
-
-        .os-image {
-            flex: 0 0 auto;
-            display: flex;
-            justify-content: center;
-        }
-
-        .os-image img {
-            max-width: 320px;
-            height: auto;
-            filter: invert(1);
-            border-radius: 20px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
-        }
-
-        body.light-theme .os-image img {
-            filter: none;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .os-image img:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
-        }
-
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .fade-in-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .header-content {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .header-right {
-                width: 100%;
-                justify-content: space-between;
-            }
-
-            nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: flex-start;
-                gap: 0.75rem;
-            }
-
-            nav a {
-                margin: 0;
-            }
-
-            .os-layout {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .os-text {
-                text-align: left;
-            }
-
-            .os-image {
-                order: -1;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpSec Academy</title>
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaAAAAFLCAYAAACQtVgYAAABCGlDQ1BJQ0MgUHJvZmlsZQAAeJxjYGA8wQAELAYMDLl5JUVB7k4KEZFRCuwPGBiBEAwSk4sLGHADoKpv1yBqL+viUYcLcKakFicD6Q9ArFIEtBxopAiQLZIOYWuA2EkQtg2IXV5SUAJkB4DYRSFBzkB2CpCtkY7ETkJiJxcUgdT3ANk2uTmlyQh3M/Ck5oUGA2kOIJZhKGYIYnBncAL5H6IkfxEDg8VXBgbmCQixpJkMDNtbGRgkbiHEVBYwMPC3MDBsO48QQ4RJQWJRIliIBYiZ0tIYGD4tZ2DgjWRgEL7AwMAVDQsIHG5TALvNnSEfCNMZchhSgSKeDHkMyQx6QJYRgwGDIYMZAKbWPz9HbOBQAABNaklEQVR4nO3de3ScVbk/8O878859cuuN9N609EIppS2USlug5V7lIgIqB7mjS0VQz1GXy3X0py49y3WOHjiiICg3RbyACirYgyBVoAIttpbaQq9p2rRJc53M/X3fmf37o+fZ3TNJ00qSJmm+n7W6msvMZJJJ9vM+ez/72QARERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERERER0TBgWRYsywIA+Hw+/TYABINBfRv5nPl58+2e3u/t68lt/X5/j4/j8/ng8/n0x8qfm3ysp8cnIqJhIBQKATgUCEQwGCwJED0N9Ob9bdvuMTjYtg3gUFDw+/1HfazyAFf+8fLg19tjERHRIDvSgO7z+XTQCQaDejAPBoMlwag8uEgwsW1bB5jyzx1LYPD5fDr49fTcbNvWGdixfG9m1iTBrvz5EdHQwvmKE5wM0kqpko/JlNadd96pLrvsMmSzWbS0tCCTyWDHjh1IJpNwHAdNTU3I5/PIZDLIZDLI5/NWLpdDLpeD4zjw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">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#000;--text:#fff;--header-bg:#000;--border:#fff;
+  --section-border:#222;--muted:#888;--card-bg:#000;
+  --card-border:#fff;--feature-bg:#0a0a0a;
+  --accent-bg:#fff;--accent-text:#000;--footer-muted:#555;
+}
+body.light-theme{
+  --bg:#f5f5f5;--text:#111;--header-bg:#fff;--border:#111;
+  --section-border:#ddd;--muted:#555;--card-bg:#fff;
+  --card-border:#111;--feature-bg:#f0f0f0;
+  --accent-bg:#111;--accent-text:#f5f5f5;--footer-muted:#888;
+}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;transition:background .3s,color .3s}
+a{color:var(--text);text-decoration:none}
+.container{max-width:1160px;margin:0 auto;padding:0 2rem}
+
+/* HEADER */
+header{background:var(--header-bg);border-bottom:2px solid var(--border);position:sticky;top:0;z-index:1000}
+.header-content{display:flex;align-items:center;height:60px;gap:2rem}
+.logo{display:flex;align-items:center;gap:.75rem;flex-shrink:0;color:var(--text)}
+.logo img{height:36px;width:auto;transition:filter 0s}
+body.light-theme .logo img{filter:invert(1)}
+.logo-text{font-size:1.25rem;font-weight:700;letter-spacing:-.5px;white-space:nowrap}
+nav{display:flex;align-items:center;gap:.1rem;flex:1;justify-content:center;flex-wrap:nowrap}
+nav a{color:var(--muted);font-weight:500;font-size:.82rem;padding:5px 10px;border-radius:999px;white-space:nowrap;transition:color .2s,background .2s}
+nav a:hover{color:var(--text);background:rgba(255,255,255,.07)}
+body.light-theme nav a:hover{background:rgba(0,0,0,.06)}
+.header-actions{display:flex;align-items:center;flex-shrink:0}
+.theme-toggle{background:var(--bg);border:2px solid var(--border);border-radius:999px;cursor:pointer;display:inline-flex;width:48px;height:26px;position:relative;transition:background .3s,border-color .3s;flex-shrink:0}
+.theme-toggle::before{content:'';position:absolute;width:18px;height:18px;border-radius:50%;background:var(--text);left:3px;top:2px;transition:transform .3s}
+body.light-theme .theme-toggle::before{transform:translateX(22px)}
+
+/* HERO */
+.hero{padding:5rem 0 4rem;text-align:center;border-bottom:1px solid var(--section-border)}
+.hero-eyebrow{display:inline-block;font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--section-border);color:var(--muted);padding:4px 14px;border-radius:999px;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:700;margin-bottom:1rem;line-height:1.1}
+.hero p{font-size:1.05rem;color:var(--muted);max-width:640px;margin:0 auto 2rem}
+.cta-button{display:inline-block;background:var(--accent-bg);color:var(--accent-text);padding:.85rem 2.5rem;font-weight:600;border:2px solid var(--accent-bg);border-radius:999px;margin:.4rem;transition:all .3s;font-size:.9rem}
+.cta-button:hover{background:transparent;color:var(--accent-bg)}
+.cta-button.outline{background:transparent;color:var(--text);border-color:var(--section-border)}
+.cta-button.outline:hover{border-color:var(--border);color:var(--text)}
+
+/* SECTION */
+.section{padding:4.5rem 0;border-bottom:1px solid var(--section-border);scroll-margin-top:70px}
+.section-label{font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.section h2{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;margin-bottom:.75rem}
+.section-intro{color:var(--muted);max-width:680px;font-size:.95rem;margin-bottom:2.5rem}
+
+/* TIER LABELS */
+.tier-label{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--section-border)}
+.tier-badge{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:999px;white-space:nowrap}
+.tier-start{background:var(--accent-bg);color:var(--accent-text)}
+.tier-mid{background:transparent;color:var(--text);border:1px solid var(--section-border)}
+.tier-adv{background:transparent;color:var(--muted);border:1px solid var(--section-border)}
+.tier-desc{font-size:.88rem;color:var(--muted)}
+
+
+/* DEVICE ILLUSTRATIONS */
+.hw-img{width:100%;height:110px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;opacity:.85}
+.hw-img svg{max-height:100px;width:auto;max-width:100%}
+.hw-card:hover .hw-img{opacity:1}
+.hw-card:hover .hw-img svg *{stroke:var(--accent-text) !important;fill:var(--accent-text) !important}
+.hw-card:hover .hw-img svg [data-bg]{fill:none !important;stroke:var(--accent-text) !important}
+/* GRID */
+.hw-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;margin-bottom:1rem}
+.hw-card{border:2px solid var(--card-border);border-radius:16px;padding:1.75rem;background:var(--card-bg);transition:all .25s;display:flex;flex-direction:column}
+.hw-card:hover{background:var(--accent-bg);color:var(--accent-text);transform:translateY(-3px)}
+.hw-card:hover .hw-cat,.hw-card:hover .hw-desc,.hw-card:hover .hw-use,.hw-card:hover .hw-links a,.hw-card:hover .tier-badge{color:var(--accent-text);opacity:.8}
+.hw-card:hover .hw-name{color:var(--accent-text)}
+.hw-name{font-size:1.15rem;font-weight:700;margin-bottom:.2rem}
+.hw-cat{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.75rem}
+.hw-desc{font-size:.88rem;color:var(--muted);margin-bottom:.75rem;flex:1}
+.hw-use{font-size:.82rem;color:var(--muted);margin-bottom:.75rem}
+.hw-use strong{font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;color:var(--text)}
+.hw-card:hover .hw-use strong{color:var(--accent-text)}
+.hw-links{display:flex;flex-direction:column;gap:.3rem;margin-top:auto;padding-top:.85rem;border-top:1px solid var(--section-border)}
+.hw-links a{font-size:.78rem;font-weight:600;color:var(--text);border-bottom:1px solid var(--section-border);padding-bottom:1px;width:fit-content;transition:opacity .2s}
+.hw-links a:hover{opacity:.6}
+.hw-card:hover .hw-links{border-top-color:rgba(0,0,0,.2)}
+.hw-card:hover .hw-links a{color:var(--accent-text);border-bottom-color:rgba(0,0,0,.2)}
+
+/* BUILD STEPS */
+.build-steps{display:flex;flex-direction:column;gap:.75rem;margin:2rem 0}
+.build-step{display:flex;gap:1.25rem;align-items:flex-start;background:var(--feature-bg);border:1px solid var(--section-border);border-radius:12px;padding:1.25rem 1.5rem}
+.step-num{font-size:1.4rem;font-weight:700;color:var(--muted);flex-shrink:0;min-width:28px;line-height:1.4}
+.step-body h4{font-size:.95rem;font-weight:700;margin-bottom:.25rem}
+.step-body p{font-size:.85rem;color:var(--muted)}
+.step-body a{color:var(--text);border-bottom:1px solid var(--section-border)}
+.step-body a:hover{opacity:.6}
+
+/* NODE TABLE */
+.node-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.25rem;margin-top:1.5rem}
+.node-card{border:2px solid var(--card-border);border-radius:16px;padding:1.5rem;background:var(--card-bg);transition:all .25s}
+.node-card:hover{background:var(--accent-bg);color:var(--accent-text);transform:translateY(-3px)}
+.node-card:hover .node-sub,.node-card:hover .node-desc,.node-card:hover .node-spec{color:var(--accent-text);opacity:.75}
+.node-name{font-size:1.05rem;font-weight:700;margin-bottom:.2rem}
+.node-sub{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.65rem}
+.node-desc{font-size:.85rem;color:var(--muted);margin-bottom:.5rem}
+.node-spec{font-size:.78rem;color:var(--muted)}
+.node-spec strong{color:var(--text);font-size:.65rem;text-transform:uppercase;letter-spacing:.05em}
+.node-card:hover .node-spec strong{color:var(--accent-text)}
+.node-link{display:inline-block;margin-top:.75rem;font-size:.78rem;font-weight:600;color:var(--text);border-bottom:1px solid var(--section-border)}
+.node-img{width:100%;height:90px;display:flex;align-items:center;justify-content:center;margin-bottom:.75rem}
+.node-img svg{max-height:80px;width:auto;max-width:100%}
+.node-card:hover .node-img svg *{stroke:var(--accent-text) !important}
+.node-card:hover .node-link{color:var(--accent-text);border-bottom-color:rgba(0,0,0,.2)}
+
+/* APPS GRID */
+.app-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:1.5rem}
+.app-card{border:2px solid var(--card-border);border-radius:16px;padding:1.5rem;background:var(--card-bg);transition:all .25s}
+.app-card:hover{background:var(--accent-bg);color:var(--accent-text);transform:translateY(-3px)}
+.app-card:hover .app-cat,.app-card:hover .app-desc{color:var(--accent-text);opacity:.75}
+.app-card:hover a{color:var(--accent-text);border-bottom-color:rgba(0,0,0,.2)}
+.app-icon{width:28px;height:28px;margin-bottom:.75rem;display:block;opacity:.9}.app-icon svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}.app-icon svg [fill="currentColor"]{fill:currentColor}.hw-card:hover .app-icon svg,.app-card:hover .app-icon svg{stroke:var(--accent-text)}.app-card:hover .app-icon svg [fill="currentColor"]{fill:var(--accent-text)}.app-icon svg polygon,.app-icon svg polyline{fill:none}
+.app-name{font-size:1.05rem;font-weight:700;margin-bottom:.15rem}
+.app-cat{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:.6rem}
+.app-desc{font-size:.85rem;color:var(--muted);margin-bottom:.6rem}
+.app-card a{font-size:.78rem;font-weight:600;border-bottom:1px solid var(--section-border)}
+
+/* INFO BOX */
+.info-box{background:var(--feature-bg);border:1px solid var(--section-border);border-radius:12px;padding:1.5rem 2rem;margin:2rem 0}
+.info-box h4{font-size:.95rem;font-weight:700;margin-bottom:.5rem}
+.info-box p{font-size:.88rem;color:var(--muted)}
+.info-box a{color:var(--text);border-bottom:1px solid var(--section-border)}
+
+/* WALLET TABLE */
+.wallet-compare{width:100%;border-collapse:collapse;margin-top:1.5rem;font-size:.85rem}
+.wallet-compare th{text-align:left;padding:.75rem 1rem;border-bottom:2px solid var(--border);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.wallet-compare td{padding:.75rem 1rem;border-bottom:1px solid var(--section-border);vertical-align:top}
+.wallet-compare tr:hover td{background:var(--feature-bg)}
+.wallet-compare a{border-bottom:1px solid var(--section-border);font-weight:600}
+
+/* FOOTER */
+footer{padding:2.5rem 0;text-align:center;border-top:2px solid var(--border);background:var(--header-bg)}
+footer p{color:var(--text);font-size:.9rem}
+.footer-muted{margin-top:.6rem;color:var(--footer-muted);font-size:.8rem}
+
+/* FADE */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.fade-visible{opacity:1;transform:none}
+
+/* MOBILE */
+@media(max-width:768px){
+  .header-content{flex-wrap:wrap;height:auto;padding:.5rem 0;gap:.5rem}
+  nav{order:3;width:100%;justify-content:flex-start;flex-wrap:wrap;gap:0}
+  nav a{font-size:.75rem;padding:4px 8px}
+  .header-actions{margin-left:auto}
+  .wallet-compare{display:block;overflow-x:auto}
+}
+</style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">
-                    <img src="https://opsecacademy.org/assets/images/opsec-academy-492x422.png" alt="OpSec Academy Logo">
-                    <span class="logo-text">OpSec Academy</span>
-                </a>
-                <div class="header-right">
-                    <nav>
-                        <a href="#services">Services</a>
-                        <a href="#opsec-os">OpSec OS</a>
-                        <a href="#breaches">Latest Breaches</a>
-                        <a href="#contact">Contact</a>
-                    </nav>
-                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark or light mode">
-                    </button>
-                </div>
-            </div>
+
+<header>
+  <div class="container">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <img src="data:image/png;base64,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" alt="OpSec Academy">
+        <span class="logo-text">OpSec Academy</span>
+      </a>
+      <nav>
+        <a href="#signing">Signing Device</a>
+        <a href="#storage">Encrypted Storage</a>
+        <a href="#os">TailsOS</a>
+        <a href="#sparrow">Sparrow</a>
+        <a href="#wallets">Wallets</a>
+        <a href="#nunchuk">Nunchuk</a>
+        <a href="#nodes">Full Nodes</a>
+        <a href="#comms">Comms</a>
+        <a href="#everyday">Everyday Gear</a>
+      </nav>
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"></button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero fade-in">
+  <div class="container">
+    <div class="hero-eyebrow">Digital Playhouse Foundation · Open Source Initiative</div>
+    <h1>Security Hardware<br>Field Guide</h1>
+    <p>A plain-English guide to the physical tools, open-source operating systems, and privacy apps that give you genuine sovereignty over your data, communications, and finances. Start anywhere. Go at your own pace.</p>
+    <a href="#signing" class="cta-button">Start with the SeedSigner Build ↓</a>
+
+  </div>
+</section>
+
+<!-- ==================== SEEDSIGNER ==================== -->
+<section class="section fade-in" id="signing">
+  <div class="container">
+    <p class="section-label">// Featured Build · Air-gapped Signing Device</p>
+    <h2>SeedSigner</h2>
+    <p class="section-intro">The most important piece of hardware for anyone holding Bitcoin seriously. SeedSigner is a completely air-gapped, DIY signing device built from off-the-shelf components totalling around 0. It never touches the internet. Your keys are generated on-device, displayed once as a seed phrase, and never stored the device is stateless by design. Build it yourself so you trust every component.</p>
+
+    <div class="info-box">
+      <h4>Why build your own instead of buying a commercial hardware wallet?</h4>
+      <p>Commercial wallets are purchased from a known vendor, creating a supply chain record linking you to a signing device. SeedSigner components a Raspberry Pi Zero, a small screen, and a camera are generic electronics sold by thousands of retailers with no Bitcoin association. There is no firmware pre-installed, no vendor to be breached, and no supply chain risk. You verify the software yourself before every use. <a href="https://seedsigner.com" target="_blank" rel="noopener">seedsigner.com ↗</a></p>
+    </div>
+
+    <h3 style="margin-bottom:1.25rem;font-size:1.2rem;">What You Need The Parts List</h3>
+    <div class="hw-grid">
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 110 70" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="5" y="8" width="100" height="54" rx="4"/>
+  <rect x="12" y="14" width="28" height="22" rx="2" fill="currentColor" opacity=".15"/>
+  <text x="26" y="26" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">Pi Zero</text>
+  <text x="26" y="33" text-anchor="middle" font-size="5" fill="currentColor" stroke="none" font-family="monospace">v1.3</text>
+  <rect x="45" y="14" width="14" height="10" rx="1" fill="currentColor" opacity=".1"/>
+  <text x="52" y="22" text-anchor="middle" font-size="4.5" fill="currentColor" stroke="none" font-family="monospace">RAM</text>
+  <rect x="64" y="14" width="14" height="10" rx="1" fill="currentColor" opacity=".1"/>
+  <rect x="5" y="20" width="7" height="28" rx="1" fill="currentColor" opacity=".12"/>
+  <rect x="84" y="8" width="8" height="6" rx="1" fill="currentColor" opacity=".15"/>
+  <rect x="95" y="8" width="8" height="6" rx="1" fill="currentColor" opacity=".15"/>
+  <rect x="90" y="50" width="15" height="8" rx="2" fill="currentColor" opacity=".12"/>
+  <line x1="10" y1="44" x2="10" y2="44"/>
+  <circle cx="12" cy="14" r="2.5" fill="currentColor" opacity=".3"/>
+  <circle cx="98" cy="14" r="2.5" fill="currentColor" opacity=".3"/>
+  <circle cx="12" cy="56" r="2.5" fill="currentColor" opacity=".3"/>
+  <circle cx="98" cy="56" r="2.5" fill="currentColor" opacity=".3"/>
+  <text x="55" y="52" text-anchor="middle" font-size="5" fill="currentColor" stroke="none" font-family="monospace" opacity=".5">GPIO ··············</text>
+</svg></div>
+      <div class="hw-name">Raspberry Pi Zero v1.3</div>
+        <div class="hw-cat">Core Compute · ~0 15</div>
+        <p class="hw-desc">The brains of the device. Version 1.3 is preferred because it has <strong>no WiFi or Bluetooth</strong> air gap is guaranteed by hardware, not software. The Zero W version works but requires physically disabling the wireless chip. GPIO pins may need soldering if not pre-attached.</p>
+        <p class="hw-use"><strong>Note:</strong> Buy from a general electronics retailer not a Bitcoin-specific store. Adafruit, Pi Hut, Pimoroni, or Raspberry Pi Foundation direct.</p>
+        <div class="hw-links">
+          <a href="https://www.adafruit.com/product/2885" target="_blank" rel="noopener">Adafruit (USA) ↗</a>
+          <a href="https://thepihut.com/products/raspberry-pi-zero" target="_blank" rel="noopener">The Pi Hut (UK/AU) ↗</a>
+          <a href="https://rpilocator.com" target="_blank" rel="noopener">RPiLocator global stock tracker ↗</a>
         </div>
-    </header>
-
-    <section class="hero fade-in-section">
-        <div class="container">
-            <h1>Professional OpSec Workshops</h1>
-            <p>Empowering businesses and educational institutions with comprehensive operational security training. Protect your organisation from evolving cyber threats.</p>
-            <a href="#contact" class="cta-button">Schedule a Workshop</a>
-            <a href="#services" class="cta-button">Learn More</a>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="8" y="8" width="84" height="84" rx="5"/>
+  <rect x="14" y="14" width="72" height="55" rx="3" fill="currentColor" opacity=".1"/>
+  <rect x="18" y="18" width="64" height="47" rx="2" fill="currentColor" opacity=".08"/>
+  <text x="50" y="38" text-anchor="middle" font-size="7" fill="currentColor" stroke="none" font-family="monospace">240×240</text>
+  <text x="50" y="48" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace">LCD</text>
+  <circle cx="34" cy="80" r="6" fill="currentColor" opacity=".12"/>
+  <circle cx="34" cy="80" r="2.5"/>
+  <circle cx="50" cy="76" r="4" fill="currentColor" opacity=".12"/>
+  <circle cx="50" cy="76" r="2"/>
+  <circle cx="50" cy="84" r="4" fill="currentColor" opacity=".12"/>
+  <circle cx="50" cy="84" r="2"/>
+  <circle cx="63" cy="80" r="4" fill="currentColor" opacity=".12"/>
+  <circle cx="63" cy="80" r="2"/>
+  <circle cx="72" cy="80" r="4" fill="currentColor" opacity=".12"/>
+  <circle cx="72" cy="80" r="2"/>
+  <circle cx="82" cy="80" r="4" fill="currentColor" opacity=".12"/>
+  <circle cx="82" cy="80" r="2"/>
+</svg></div>
+      <div class="hw-name">WaveShare 1.3" LCD Hat</div>
+        <div class="hw-cat">Display + Controls · ~5 20</div>
+        <p class="hw-desc">A 240×240 pixel LCD display with a built-in joystick and three buttons that sits directly on the Pi Zero's GPIO pins no soldering required. <strong>Must be the 240×240 model.</strong> The controls navigate the SeedSigner menu entirely without a keyboard or mouse.</p>
+        <p class="hw-use"><strong>Note:</strong> Double-check the resolution before buying. Wrong models exist on Amazon search "Waveshare 1.3 inch LCD HAT 240x240".</p>
+        <div class="hw-links">
+          <a href="https://www.waveshare.com/1.3inch-lcd-hat.htm" target="_blank" rel="noopener">Waveshare official ↗</a>
+          <a href="https://www.amazon.com/dp/B07FDX5PJY" target="_blank" rel="noopener">Amazon (verify resolution) ↗</a>
+          <a href="https://www.aliexpress.com/item/32952472064.html" target="_blank" rel="noopener">AliExpress ↗</a>
         </div>
-    </section>
-
-    <section class="section fade-in-section" id="services">
-        <div class="container">
-            <h2>Our Workshop Services</h2>
-            
-            <div class="stats">
-                <div class="stat-box">
-                    <span class="stat-number">120+</span>
-                    <p>Combined Years of Technical &amp; OpSec Experience</p>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-number">Expert</span>
-                    <p>Instructors with Real-World Security Background</p>
-                </div>
-                <div class="stat-box">
-                    <span class="stat-number">Proven</span>
-                    <p>Track Record Protecting Organisations</p>
-                </div>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <h3>Corporate Training</h3>
-                    <p>Comprehensive OpSec workshops tailored for businesses of all sizes. From startups to Fortune 500 companies, we ensure your entire staff understands security protocols and best practices.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>Educational Institutions</h3>
-                    <p>Specialised training programmes for schools, colleges, and universities. Protect student data, research, and institutional assets with proper operational security procedures.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>Staff Certification</h3>
-                    <p>Industry-recognised certification programmes that validate your team's security knowledge. Build a security-conscious culture throughout your organisation.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>Incident Response</h3>
-                    <p>Learn how to properly respond to security incidents. Our workshops cover breach protocols, communication strategies, and recovery procedures.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>Data Protection</h3>
-                    <p>Master the fundamentals of data classification, handling, and protection. Ensure compliance with privacy regulations and industry standards.</p>
-                </div>
-                
-                <div class="service-card">
-                    <h3>Social Engineering Defense</h3>
-                    <p>Train your staff to recognise and defend against phishing, pretexting, and other social engineering attacks that target human vulnerabilities.</p>
-                </div>
-            </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 100 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="10" y="15" width="80" height="52" rx="4"/>
+  <circle cx="50" cy="41" r="18" fill="currentColor" opacity=".06"/>
+  <circle cx="50" cy="41" r="13" fill="currentColor" opacity=".08"/>
+  <circle cx="50" cy="41" r="8" fill="currentColor" opacity=".12"/>
+  <circle cx="50" cy="41" r="4" fill="currentColor" opacity=".2"/>
+  <circle cx="50" cy="41" r="1.5" fill="currentColor"/>
+  <rect x="22" y="20" width="10" height="7" rx="1" fill="currentColor" opacity=".15"/>
+  <line x1="40" y1="15" x2="60" y2="15"/>
+  <rect x="39" y="8" width="22" height="8" rx="2" fill="currentColor" opacity=".12"/>
+  <text x="50" y="64" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">CAMERA</text>
+</svg></div>
+      <div class="hw-name">Raspberry Pi Zero Camera</div>
+        <div class="hw-cat">Seed Entry · ~ 12</div>
+        <p class="hw-desc">Used to scan QR codes the primary way you load unsigned transactions (PSBTs) into the device and export signed transactions back out to your wallet software. Two styles exist: a generic Pi camera with a gold flex cable, and a smaller "Zero" format camera. Check which your enclosure supports.</p>
+        <p class="hw-use"><strong>Note:</strong> Buy the Pi Zero compatible flat-cable version, not the standard Pi camera.</p>
+        <div class="hw-links">
+          <a href="https://www.amazon.com/dp/B0769KS7C7" target="_blank" rel="noopener">Amazon Type 1 (USA) ↗</a>
+          <a href="https://www.amazon.com/dp/B0748FZXW3" target="_blank" rel="noopener">Amazon Type 2 (USA) ↗</a>
+          <a href="https://www.aliexpress.us/item/3256802019124598.html" target="_blank" rel="noopener">AliExpress ↗</a>
         </div>
-    </section>
-
-    <section class="section fade-in-section" id="opsec-os">
-        <div class="container">
-            <h2>OpSec OS</h2>
-            <p style="text-align: center; color: var(--muted); max-width: 800px; margin: 0 auto 2rem;">
-                An amnesic, live operating system you boot from a hardened USB, inspired by TailsOS. All traffic is forced through privacy networks, sessions leave no trace on the host machine, and you still get the enterprise controls and workflows your organisation needs.
-            </p>
-
-            <div class="os-layout">
-                <div class="os-text">
-                    <div class="os-highlight">
-                        <h3>Amnesic, Live &amp; Enterprise-Ready</h3>
-                        <p>
-                            OpSec OS takes the core ideas behind TailsOS - Tor by default, amnesic sessions, and strong cryptography - and layers on enterprise features. Boot from a verified USB, work in a hardened environment, shut down, and leave nothing recoverable behind, apart from an optional encrypted persistent volume you fully control.
-                        </p>
-                    </div>
-                </div>
-                <div class="os-image">
-                    <img src="https://github.com/opsecacademy/opsecacademy.github.io/raw/main/usb.png" alt="OpSec OS secure USB drive">
-                </div>
-            </div>
-
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <h4>🔒 Tor-First Networking</h4>
-                    <p>Like Tails, all network traffic is routed through Tor by default. No clearnet traffic leakage, with sensible defaults for Tor Browser and privacy-preserving DNS.</p>
-                </div>
-
-                <div class="feature-item">
-                    <h4>🧠 Amnesic by Design</h4>
-                    <p>Sessions are non-persistent: no logs, browser history, or file remnants are left on the host machine. Memory is wiped on shutdown to reduce forensic traces.</p>
-                </div>
-
-                <div class="feature-item">
-                    <h4>🔐 Encrypted Persistent Storage</h4>
-                    <p>Optional encrypted persistence for documents, configurations, and keys. Choose exactly what survives reboots while keeping the rest ephemeral.</p>
-                </div>
-
-                <div class="feature-item">
-                    <h4>💾 Verified Live USB Workflow</h4>
-                    <p>Boot from a dedicated, cryptographically-verifiable USB image (paired with your OpSec Academy USB). Ideal for investigations, travel, or high-risk environments.</p>
-                </div>
-
-                <div class="feature-item">
-                    <h4>🧰 Pre-Hardened Toolset</h4>
-                    <p>Ships with a curated set of secure tools: Tor Browser, password management, cryptographic utilities, and compartmentalised workspaces for sensitive roles.</p>
-                </div>
-
-                <div class="feature-item">
-                    <h4>🌐 Network &amp; Metadata Protection</h4>
-                    <p>MAC address spoofing, strict firewall rules, and DNS leak protection minimise trackable metadata, closely mirroring the safety model of TailsOS.</p>
-                </div>
-
-                <div class="feature-item">
-                    <h4>📦 Supply Chain &amp; Updates</h4>
-                    <p>Signed images and controlled update channels help ensure integrity, so teams can trust what they're booting in high-stakes contexts.</p>
-                </div>
-
-                <div class="feature-item">
-                    <h4>🏢 Enterprise Policy Layer</h4>
-                    <p>Policy templates, deployment guides, and optional logging bridges align OpSec OS with organisational compliance requirements without sacrificing privacy.</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem;">
-                <h3 style="margin-bottom: 1rem;">Use Cases</h3>
-                <div class="services-grid" style="margin-top: 2rem;">
-                    <div class="service-card">
-                        <h3>Investigative Work</h3>
-                        <p>Journalists, investigators, and researchers conducting sensitive work requiring complete operational security.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h3>Executive Protection</h3>
-                        <p>C-suite executives handling confidential communications, mergers, acquisitions, and strategic planning.</p>
-                    </div>
-                    
-                    <div class="service-card">
-                        <h3>Legal &amp; Finance</h3>
-                        <p>Law firms and financial institutions protecting client data and maintaining attorney-client privilege.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="#contact" class="cta-button">Request OpSec OS Demo</a>
-                <a href="#contact" class="cta-button">Enterprise Licensing</a>
-            </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 70 90" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M10,5 L10,85 Q10,90 15,90 L55,90 Q60,90 60,85 L60,25 L45,5 Z"/>
+  <path d="M45,5 L45,25 L60,25"/>
+  <line x1="18" y1="55" x2="52" y2="55"/>
+  <line x1="18" y1="63" x2="52" y2="63"/>
+  <line x1="18" y1="71" x2="52" y2="71"/>
+  <rect x="18" y="30" width="34" height="16" rx="2" fill="currentColor" opacity=".08"/>
+  <text x="35" y="42" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace">microSD</text>
+</svg></div>
+      <div class="hw-name">MicroSD Card (64MB+)</div>
+        <div class="hw-cat">Software Carrier · ~ 10</div>
+        <p class="hw-desc">Holds the SeedSigner OS image. Any microSD of 64MB or larger works a cheap 8GB card from a general retailer is fine. You flash the verified SeedSigner image to it before each session. The device is stateless: remove the card and nothing persists.</p>
+        <p class="hw-use"><strong>Tip:</strong> Keep a spare blank card. Verifying and reflashing fresh before sensitive use is good practice.</p>
+        <div class="hw-links">
+          <a href="https://seedsigner.com/software/" target="_blank" rel="noopener">SeedSigner OS download &amp; verify ↗</a>
         </div>
-    </section>
-
-    <section class="section fade-in-section" id="breaches">
-        <div class="container">
-            <h2>Latest Security Breaches &amp; Threats</h2>
-            <p style="text-align: center; color: var(--muted); margin-bottom: 2rem;">Stay informed about the latest cybersecurity incidents and vulnerabilities reported worldwide.</p>
-            
-            <div class="breaches-feed" id="breachFeed">
-                <div class="loading">Loading latest security breaches...</div>
-            </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 110 90" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="10" y="30" width="90" height="52" rx="5"/>
+  <rect x="10" y="30" width="90" height="22" rx="5" fill="currentColor" opacity=".06"/>
+  <line x1="10" y1="52" x2="100" y2="52"/>
+  <rect x="38" y="40" width="34" height="14" rx="3" fill="currentColor" opacity=".1"/>
+  <text x="55" y="50" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace">SCREEN</text>
+  <circle cx="24" cy="66" r="4" fill="currentColor" opacity=".12"/>
+  <circle cx="24" cy="66" r="2"/>
+  <circle cx="38" cy="66" r="4" fill="currentColor" opacity=".12"/>
+  <circle cx="38" cy="66" r="2"/>
+  <circle cx="55" cy="62" r="6" fill="currentColor" opacity=".12"/>
+  <circle cx="55" cy="62" r="2.5"/>
+  <circle cx="72" cy="66" r="4" fill="currentColor" opacity=".12"/>
+  <circle cx="72" cy="66" r="2"/>
+  <circle cx="86" cy="66" r="4" fill="currentColor" opacity=".12"/>
+  <circle cx="86" cy="66" r="2"/>
+  <path d="M15,30 L25,10 L85,10 L95,30" stroke-dasharray="3,2" opacity=".4"/>
+  <line x1="25" y1="10" x2="25" y2="30" stroke-dasharray="3,2" opacity=".4"/>
+  <line x1="85" y1="10" x2="85" y2="30" stroke-dasharray="3,2" opacity=".4"/>
+</svg></div>
+      <div class="hw-name">Enclosure / Case</div>
+        <div class="hw-cat">Optional but Recommended · ~5 40</div>
+        <p class="hw-desc">A 3D-printed or CNC-milled case protects the build and makes it genuinely portable. No official vendor choose a seller with good community reputation. The SeedSigner project lists vetted regional suppliers. Australian option: HansMade via ShopBitcoin.com.au.</p>
+        <div class="hw-links">
+          <a href="https://shopbitcoin.com.au/collections/hansmade" target="_blank" rel="noopener">HansMade (Australia) ↗</a>
+          <a href="https://btc-hardware-solutions.square.site" target="_blank" rel="noopener">BTC Hardware Solutions (USA) ↗</a>
+          <a href="https://www.gobrrr.me" target="_blank" rel="noopener">GoBrrr (EU/UK) ↗</a>
         </div>
-    </section>
+      </div>
+    </div>
 
-    <section class="section fade-in-section" id="contact">
-        <div class="container">
-            <h2>Schedule Your Workshop</h2>
-            <p style="text-align: center; color: var(--muted); max-width: 600px; margin: 0 auto 2rem;">Ready to strengthen your organisation's security posture? Contact us today to discuss a customised training programme for your team.</p>
-            
-            <div style="text-align: center; margin-top: 2rem;">
-                <a href="mailto:OpSec2140@proton.me" class="cta-button">Email Us</a>
-            </div>
+    <h3 style="margin:2.5rem 0 1.25rem;font-size:1.2rem;">How to Build It Step by Step</h3>
+    <div class="build-steps">
+      <div class="build-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Order components from non-Bitcoin retailers</h4>
+          <p>Purchase the Pi Zero, WaveShare LCD Hat, camera module, and a microSD card from general electronics suppliers (Adafruit, Amazon, AliExpress, Pi Hut). Buying from Bitcoin-specific shops creates a purchasing record. Pay with cash-purchased gift cards or a privacy-focused payment method if supply chain privacy matters to you.</p>
         </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 OpSec Academy. All rights reserved.</p>
-            <p class="footer-muted">Private. Secure. Professional Training.</p>
+      </div>
+      <div class="build-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Download and verify the SeedSigner OS image</h4>
+          <p>Go to <a href="https://github.com/SeedSigner/seedsigner/releases" target="_blank" rel="noopener">github.com/SeedSigner/seedsigner/releases ↗</a> and download the latest release image. Verify the SHA256 checksum and PGP signature before flashing. This step is non-negotiable you are trusting this software with key generation.</p>
         </div>
-    </footer>
+      </div>
+      <div class="build-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Flash the image to your microSD card</h4>
+          <p>Use <a href="https://www.raspberrypi.com/software/" target="_blank" rel="noopener">Raspberry Pi Imager ↗</a> or <a href="https://etcher.balena.io/" target="_blank" rel="noopener">Balena Etcher ↗</a> to write the verified image to your microSD card. Takes about two minutes. Eject the card once complete do not modify any files on it.</p>
+        </div>
+      </div>
+      <div class="build-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Assemble the hardware</h4>
+          <p>Attach the WaveShare LCD Hat directly to the GPIO header pins on the Pi Zero (it pushes on no soldering needed if pins are pre-attached). Connect the camera module via the flex cable. Insert the microSD card. Watch the official <a href="https://youtu.be/6-5cDneXoWs" target="_blank" rel="noopener">assembly demo video ↗</a> for a visual walkthrough.</p>
+        </div>
+      </div>
+      <div class="build-step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>Power on and generate your seed</h4>
+          <p>Power the Pi Zero via its micro-USB port. SeedSigner boots in about 45 seconds. Navigate to <strong>Seeds → Generate Seed</strong>. You can generate entropy by photographing a random image (dice, coin flips) or via the built-in dice-roll entropy tool. The 12 or 24-word seed phrase is displayed once write it down on paper or stamp it in metal. Never photograph it or type it into any connected device.</p>
+        </div>
+      </div>
+      <div class="build-step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h4>Connect to your wallet software via QR codes</h4>
+          <p>SeedSigner communicates with watch-only wallet software (Sparrow Wallet, Specter Desktop, BlueWallet) exclusively via QR codes never via USB, Bluetooth, or WiFi. Your wallet software generates an unsigned transaction, displays it as a QR code, you scan it with SeedSigner, sign it on the device, and scan the signed QR back. The private key never leaves the device. Resources: <a href="https://sparrowwallet.com" target="_blank" rel="noopener">Sparrow Wallet ↗</a> · <a href="https://seedsigner.com/explainers/" target="_blank" rel="noopener">SeedSigner explainers ↗</a></p>
+        </div>
+      </div>
+      <div class="build-step">
+        <div class="step-num">7</div>
+        <div class="step-body">
+          <h4>Power off it forgets everything</h4>
+          <p>SeedSigner is stateless. When you power off, all seed data in memory is destroyed. Nothing is stored on the microSD card or the device itself. For your next session: power on, re-enter your seed (manually or via QR backup), sign, power off. This is the security model no persistent storage means nothing to steal.</p>
+        </div>
+      </div>
+    </div>
 
-    <script>
-        async function loadBreaches() {
-            const feedUrl = 'https://feeds.feedburner.com/TheHackersNews';
-            const proxyUrl = 'https://api.allorigins.win/raw?url=';
-            
-            try {
-                const response = await fetch(proxyUrl + encodeURIComponent(feedUrl));
-                const text = await response.text();
-                
-                const parser = new DOMParser();
-                const xml = parser.parseFromString(text, 'text/xml');
-                const items = xml.querySelectorAll('item');
-                
-                const feedContainer = document.getElementById('breachFeed');
-                feedContainer.innerHTML = '';
-                
-                const maxItems = 15;
-                for (let i = 0; i < Math.min(items.length, maxItems); i++) {
-                    const item = items[i];
-                    const title = item.querySelector('title')?.textContent || 'No title';
-                    const link = item.querySelector('link')?.textContent || '#';
-                    const desc = item.querySelector('description')?.textContent || '';
-                    const pubDate = item.querySelector('pubDate')?.textContent || '';
-                    
-                    const cleanDesc = desc.replace(/<[^>]*>/g, '').substring(0, 200) + '...';
-                    const date = new Date(pubDate).toLocaleDateString('en-US', { 
-                        year: 'numeric', 
-                        month: 'short', 
-                        day: 'numeric' 
-                    });
-                    
-                    const breachItem = document.createElement('div');
-                    breachItem.className = 'breach-item';
-                    breachItem.innerHTML = `
-                        <h3>${title}</h3>
-                        <p style="color: var(--muted); font-size: 0.8rem;">${date}</p>
-                        <p>${cleanDesc}</p>
-                        <a href="${link}" target="_blank" rel="noopener">Read Full Story →</a>
-                    `;
-                    
-                    feedContainer.appendChild(breachItem);
-                }
-            } catch (err) {
-                document.getElementById('breachFeed').innerHTML = 
-                    '<div class="loading">Unable to load breach feed. Please check back later.</div>';
-                console.error('Error loading feed:', err);
-            }
-        }
+    <div class="info-box">
+      <h4>Further reading &amp; community resources</h4>
+      <p>
+        <a href="https://seedsigner.com" target="_blank" rel="noopener">seedsigner.com ↗</a> &nbsp;·&nbsp;
+        <a href="https://github.com/SeedSigner/seedsigner" target="_blank" rel="noopener">GitHub source code ↗</a> &nbsp;·&nbsp;
+        <a href="https://seedsigner.com/faqs/" target="_blank" rel="noopener">Official FAQ ↗</a> &nbsp;·&nbsp;
+        <a href="https://sparrowwallet.com/docs/coldcard-wallet.html" target="_blank" rel="noopener">Sparrow + air-gapped signing guide ↗</a>
+      </p>
+    </div>
+  </div>
+</section>
 
-        function initFadeInOnScroll() {
-            const sections = document.querySelectorAll('.fade-in-section');
-            const observer = new IntersectionObserver(
-                (entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('fade-in-visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                },
-                {
-                    threshold: 0.15
-                }
-            );
+<!-- ==================== ENCRYPTED USB ==================== -->
+<section class="section fade-in" id="storage">
+  <div class="container">
+    <p class="section-label">// Encrypted Storage · PIN-Protected USB Drives</p>
+    <h2>Encrypted USB Drives</h2>
+    <p class="section-intro">These drives encrypt everything in hardware no software, no driver, no computer involved in unlocking. You enter your PIN directly on the device's physical keypad. If someone steals it or brute-forces the PIN, it crypto-erases itself. FIPS 140-3 Level 3 is the gold standard the same certification used by US government and military.</p>
 
-            sections.forEach(section => observer.observe(section));
-        }
+    <div class="info-box">
+      <h4>Why hardware encryption beats software encryption</h4>
+      <p>Software encryption (like BitLocker or VeraCrypt) runs on your computer meaning it's vulnerable to keyloggers, cold-boot attacks, and malware running on the host. Hardware-encrypted drives handle all cryptography inside a dedicated secure element on the drive itself. The host computer only ever sees already-encrypted data. No PIN entered on your computer = no keylogger risk.</p>
+    </div>
 
-        function initThemeToggle() {
-            const toggle = document.getElementById('themeToggle');
-            if (!toggle) return;
+    <div class="hw-grid">
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 90 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="18" y="5" width="54" height="90" rx="8"/>
+  <rect x="26" y="14" width="38" height="28" rx="4" fill="currentColor" opacity=".12"/>
+  <text x="45" y="32" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace">IRONKEY</text>
+  <rect x="30" y="50" width="30" height="32" rx="2" fill="currentColor" opacity=".08"/>
+  <line x1="36" y1="58" x2="54" y2="58" stroke-width="1"/>
+  <line x1="36" y1="64" x2="54" y2="64" stroke-width="1"/>
+  <line x1="36" y1="70" x2="54" y2="70" stroke-width="1"/>
+  <text x="36" y="90" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">7</text>
+  <text x="45" y="90" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">8</text>
+  <text x="54" y="90" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">9</text>
+  <rect x="27" y="95" width="36" height="18" rx="4"/>
+  <rect x="30" y="99" width="30" height="8" rx="1" fill="currentColor" opacity=".15"/>
+  <line x1="33" y1="101" x2="33" y2="105" stroke-width="1"/>
+  <line x1="38" y1="101" x2="38" y2="105" stroke-width="1"/>
+  <line x1="43" y1="101" x2="43" y2="105" stroke-width="1"/>
+  <line x1="48" y1="101" x2="48" y2="105" stroke-width="1"/>
+  <line x1="53" y1="101" x2="53" y2="105" stroke-width="1"/>
+</svg></div>
+      <div class="hw-name">Kingston IronKey Keypad 200</div>
+        <div class="hw-cat">Best Overall · FIPS 140-3 Level 3</div>
+        <p class="hw-desc">Physical alphanumeric keypad on the drive itself PIN never touches your computer. XTS-AES 256-bit hardware encryption. Brute force protection auto-erases after too many wrong attempts. BadUSB protection via digitally signed firmware. OS-independent works with any computer, phone, or tablet with USB.</p>
+        <p class="hw-use"><strong>Why it matters:</strong> FIPS 140-3 Level 3 is among the highest security certifications available. The epoxy-potted circuit board makes chip-level tampering virtually impossible.</p>
+        <div class="hw-links">
+          <a href="https://www.amazon.com/s?k=Kingston+IronKey+Keypad+200" target="_blank" rel="noopener">Kingston IronKey KP200 official ↗</a>
+          <a href="https://www.amazon.com/s?k=Kingston+IronKey+Keypad+200" target="_blank" rel="noopener">IronKey KP200 on Amazon ↗</a>
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 90 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="18" y="5" width="54" height="90" rx="8"/>
+  <rect x="26" y="14" width="38" height="28" rx="4" fill="currentColor" opacity=".12"/>
+  <text x="45" y="32" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace">IRONKEY</text>
+  <rect x="30" y="50" width="30" height="32" rx="2" fill="currentColor" opacity=".08"/>
+  <line x1="36" y1="58" x2="54" y2="58" stroke-width="1"/>
+  <line x1="36" y1="64" x2="54" y2="64" stroke-width="1"/>
+  <line x1="36" y1="70" x2="54" y2="70" stroke-width="1"/>
+  <text x="36" y="90" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">7</text>
+  <text x="45" y="90" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">8</text>
+  <text x="54" y="90" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">9</text>
+  <rect x="27" y="95" width="36" height="18" rx="4"/>
+  <rect x="30" y="99" width="30" height="8" rx="1" fill="currentColor" opacity=".15"/>
+  <line x1="33" y1="101" x2="33" y2="105" stroke-width="1"/>
+  <line x1="38" y1="101" x2="38" y2="105" stroke-width="1"/>
+  <line x1="43" y1="101" x2="43" y2="105" stroke-width="1"/>
+  <line x1="48" y1="101" x2="48" y2="105" stroke-width="1"/>
+  <line x1="53" y1="101" x2="53" y2="105" stroke-width="1"/>
+</svg></div>
+      <div class="hw-name">Apricorn Aegis Secure Key 3Z</div>
+        <div class="hw-cat">Most Rugged · FIPS 140-2 Level 3</div>
+        <p class="hw-desc">Aluminium-encased, IP58-rated waterproof and dustproof USB drive with a 10-key onboard keypad. 256-bit AES XTS hardware encryption. No software required ever. Admin + user PIN modes. Auto crypto-erase on brute force. One of the most physically durable encrypted drives available.</p>
+        <p class="hw-use"><strong>Why it matters:</strong> Field-deployable, survives being dropped, submerged, or compressed. A field journalist or researcher's best option for encrypted portable storage.</p>
+        <div class="hw-links">
+          <a href="https://www.apricorn.com/aegis-secure-key-3z" target="_blank" rel="noopener">Apricorn Aegis Secure Key 3Z official ↗</a>
+          <a href="https://www.amazon.com/s?k=Apricorn+Aegis+Secure+Key+3Z" target="_blank" rel="noopener">Aegis Secure Key on Amazon ↗</a>
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 90 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="18" y="5" width="54" height="90" rx="8"/>
+  <rect x="26" y="14" width="38" height="28" rx="4" fill="currentColor" opacity=".12"/>
+  <text x="45" y="32" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace">IRONKEY</text>
+  <rect x="30" y="50" width="30" height="32" rx="2" fill="currentColor" opacity=".08"/>
+  <line x1="36" y1="58" x2="54" y2="58" stroke-width="1"/>
+  <line x1="36" y1="64" x2="54" y2="64" stroke-width="1"/>
+  <line x1="36" y1="70" x2="54" y2="70" stroke-width="1"/>
+  <text x="36" y="90" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">7</text>
+  <text x="45" y="90" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">8</text>
+  <text x="54" y="90" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">9</text>
+  <rect x="27" y="95" width="36" height="18" rx="4"/>
+  <rect x="30" y="99" width="30" height="8" rx="1" fill="currentColor" opacity=".15"/>
+  <line x1="33" y1="101" x2="33" y2="105" stroke-width="1"/>
+  <line x1="38" y1="101" x2="38" y2="105" stroke-width="1"/>
+  <line x1="43" y1="101" x2="43" y2="105" stroke-width="1"/>
+  <line x1="48" y1="101" x2="48" y2="105" stroke-width="1"/>
+  <line x1="53" y1="101" x2="53" y2="105" stroke-width="1"/>
+</svg></div>
+      <div class="hw-name">iStorage datAshur PRO</div>
+        <div class="hw-cat">NATO Certified · FIPS 140-2 Level 3</div>
+        <p class="hw-desc">PIN-protected hardware-encrypted USB drive with FIPS 140-2 Level 3, NATO Restricted, and NLNCSA DEP-V certification the only consumer USB drive approved for NATO classified data. Onboard keypad, XTS-AES 256-bit, auto-lock on removal, brute force protection.</p>
+        <p class="hw-use"><strong>Why it matters:</strong> If NATO trusts it with classified material, it's good enough for your seed backups, legal documents, or private keys.</p>
+        <div class="hw-links">
+          <a href="https://istorage-uk.com/product/datashur-pro/" target="_blank" rel="noopener">iStorage datAshur PRO official ↗</a>
+          <a href="https://www.amazon.com/s?k=iStorage+datAshur+PRO" target="_blank" rel="noopener">datAshur PRO on Amazon ↗</a>
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 90 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="18" y="5" width="54" height="90" rx="8"/>
+  <rect x="26" y="14" width="38" height="28" rx="4" fill="currentColor" opacity=".12"/>
+  <text x="45" y="32" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace">IRONKEY</text>
+  <rect x="30" y="50" width="30" height="32" rx="2" fill="currentColor" opacity=".08"/>
+  <line x1="36" y1="58" x2="54" y2="58" stroke-width="1"/>
+  <line x1="36" y1="64" x2="54" y2="64" stroke-width="1"/>
+  <line x1="36" y1="70" x2="54" y2="70" stroke-width="1"/>
+  <text x="36" y="90" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">7</text>
+  <text x="45" y="90" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">8</text>
+  <text x="54" y="90" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">9</text>
+  <rect x="27" y="95" width="36" height="18" rx="4"/>
+  <rect x="30" y="99" width="30" height="8" rx="1" fill="currentColor" opacity=".15"/>
+  <line x1="33" y1="101" x2="33" y2="105" stroke-width="1"/>
+  <line x1="38" y1="101" x2="38" y2="105" stroke-width="1"/>
+  <line x1="43" y1="101" x2="43" y2="105" stroke-width="1"/>
+  <line x1="48" y1="101" x2="48" y2="105" stroke-width="1"/>
+  <line x1="53" y1="101" x2="53" y2="105" stroke-width="1"/>
+</svg></div>
+      <div class="hw-name">Apricorn Aegis Padlock SSD</div>
+        <div class="hw-cat">High Capacity · Portable SSD with PIN</div>
+        <p class="hw-desc">A PIN-protected portable SSD in capacities up to 8TB. Same Apricorn security model as the Secure Key hardware AES 256-bit, physical keypad, no software but with full SSD performance and much more space. Ideal for encrypted backup drives of an entire Bitcoin node's blockchain data or sensitive archive storage.</p>
+        <p class="hw-use"><strong>Why it matters:</strong> Large encrypted storage with no software dependency. Back up your entire node, your encrypted documents, and your operational files on one drive that self-destructs if tampered with.</p>
+        <div class="hw-links">
+          <a href="https://www.apricorn.com/aegis-padlock-ssd" target="_blank" rel="noopener">Aegis Padlock SSD official ↗</a>
+          <a href="https://www.amazon.com/s?k=Apricorn+Aegis+Padlock+SSD" target="_blank" rel="noopener">Aegis Padlock SSD on Amazon ↗</a>
+        </div>
+      </div>
+    </div>
 
-            const storedTheme = localStorage.getItem('opsec-theme');
-            if (storedTheme === 'light') {
-                document.body.classList.add('light-theme');
-            }
+    <div class="info-box" style="margin-top:2rem">
+      <h4>TailsOS on a PIN-protected USB the gold standard portable setup</h4>
+      <p>Combine a standard USB with TailsOS (see section below) with a PIN-protected Apricorn or Kingston drive for your persistent encrypted volume. TailsOS provides the amnesic operating system; the IronKey or Aegis provides tamper-proof, hardware-encrypted offline storage for your keys, documents, and configuration. Together they give you a completely portable, hardware-protected, amnesic computing environment.</p>
+    </div>
+  </div>
+</section>
 
-            toggle.addEventListener('click', () => {
-                document.body.classList.toggle('light-theme');
-                const isLight = document.body.classList.contains('light-theme');
-                localStorage.setItem('opsec-theme', isLight ? 'light' : 'dark');
-            });
-        }
-        
-        loadBreaches();
-        initFadeInOnScroll();
-        initThemeToggle();
-    </script>
+<!-- ==================== TAILS OS ==================== -->
+<section class="section fade-in" id="os">
+  <div class="container">
+    <p class="section-label">// Operating System · Amnesic Live OS</p>
+    <h2>TailsOS</h2>
+    <p class="section-intro">Tails is a live operating system you boot from a USB stick. It routes all traffic through Tor, leaves no trace on the computer you run it on, and is used by journalists, whistleblowers, activists, and security researchers worldwide. Developed by the Tor Project and Debian. Open source, free, and audited.</p>
+
+    <div class="hw-grid">
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 100 110" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M50,8 L88,22 L88,58 Q88,88 50,102 Q12,88 12,58 L12,22 Z"/>
+  <path d="M50,20 L76,30 L76,56 Q76,76 50,88 Q24,76 24,56 L24,30 Z" fill="currentColor" opacity=".06"/>
+  <text x="50" y="50" text-anchor="middle" font-size="9" fill="currentColor" stroke="none" font-family="monospace">TOR</text>
+  <text x="50" y="62" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace">AMNESIC</text>
+</svg></div>
+      <div class="hw-name">What Tails Does</div>
+        <div class="hw-cat">Core Security Properties</div>
+        <p class="hw-desc"><strong>Amnesic:</strong> Tails forgets everything when you power off. No browser history, no files, no connection logs remain on the host machine. <strong>Tor-first:</strong> Every network connection is routed through Tor your IP address is never exposed. <strong>Encrypted persistence:</strong> Optional you choose what survives reboots in an encrypted volume.</p>
+        <div class="hw-links">
+          <a href="https://tails.boum.org" target="_blank" rel="noopener">tails.boum.org official site ↗</a>
+          <a href="https://tails.boum.org/install/" target="_blank" rel="noopener">Installation guide ↗</a>
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="25" y="5" width="50" height="88" rx="10"/>
+  <rect x="32" y="14" width="36" height="28" rx="4" fill="currentColor" opacity=".1"/>
+  <text x="50" y="28" text-anchor="middle" font-size="7" fill="currentColor" stroke="none" font-family="monospace">TAILS</text>
+  <text x="50" y="37" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">OS</text>
+  <circle cx="50" cy="62" r="12" fill="currentColor" opacity=".08"/>
+  <circle cx="50" cy="62" r="5" fill="currentColor" opacity=".12"/>
+  <path d="M44,56 L56,56 L56,68 L44,68 Z" fill="none"/>
+  <line x1="47" y1="58" x2="47" y2="66" stroke-width="1"/>
+  <line x1="53" y1="58" x2="53" y2="66" stroke-width="1"/>
+  <rect x="35" y="93" width="30" height="20" rx="4"/>
+  <rect x="38" y="97" width="24" height="9" rx="1" fill="currentColor" opacity=".15"/>
+  <line x1="40" y1="99" x2="40" y2="104" stroke-width="1"/>
+  <line x1="45" y1="99" x2="45" y2="104" stroke-width="1"/>
+  <line x1="50" y1="99" x2="50" y2="104" stroke-width="1"/>
+  <line x1="55" y1="99" x2="55" y2="104" stroke-width="1"/>
+  <line x1="60" y1="99" x2="60" y2="104" stroke-width="1"/>
+</svg></div>
+      <div class="hw-name">How to Install Tails</div>
+        <div class="hw-cat">Setup ~20 Minutes</div>
+        <p class="hw-desc">1. Download the Tails image from tails.boum.org and verify its cryptographic signature. 2. Flash it to a USB stick (8GB minimum) using Balena Etcher or the Tails USB installer. 3. Boot your computer from USB (hold Option on Mac, press F12/Del on PC during startup). 4. Tails boots in ~30 seconds.</p>
+        <div class="hw-links">
+          <a href="https://tails.boum.org/install/download/" target="_blank" rel="noopener">Download Tails ↗</a>
+          <a href="https://etcher.balena.io/" target="_blank" rel="noopener">Balena Etcher (USB flasher) ↗</a>
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 100 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="25" y="5" width="50" height="88" rx="10"/>
+  <rect x="32" y="14" width="36" height="28" rx="4" fill="currentColor" opacity=".1"/>
+  <text x="50" y="28" text-anchor="middle" font-size="7" fill="currentColor" stroke="none" font-family="monospace">TAILS</text>
+  <text x="50" y="37" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">OS</text>
+  <circle cx="50" cy="62" r="12" fill="currentColor" opacity=".08"/>
+  <circle cx="50" cy="62" r="5" fill="currentColor" opacity=".12"/>
+  <path d="M44,56 L56,56 L56,68 L44,68 Z" fill="none"/>
+  <line x1="47" y1="58" x2="47" y2="66" stroke-width="1"/>
+  <line x1="53" y1="58" x2="53" y2="66" stroke-width="1"/>
+  <rect x="35" y="93" width="30" height="20" rx="4"/>
+  <rect x="38" y="97" width="24" height="9" rx="1" fill="currentColor" opacity=".15"/>
+  <line x1="40" y1="99" x2="40" y2="104" stroke-width="1"/>
+  <line x1="45" y1="99" x2="45" y2="104" stroke-width="1"/>
+  <line x1="50" y1="99" x2="50" y2="104" stroke-width="1"/>
+  <line x1="55" y1="99" x2="55" y2="104" stroke-width="1"/>
+  <line x1="60" y1="99" x2="60" y2="104" stroke-width="1"/>
+</svg></div>
+      <div class="hw-name">Recommended USB for Tails</div>
+        <div class="hw-cat">Hardware · Fast USB 3.0+</div>
+        <p class="hw-desc">Tails works best on a fast USB 3.0 or USB 3.1 stick. Samsung FIT Plus, SanDisk Ultra Fit, or any USB 3.0 drive of 16GB+ works well. Speed matters a slow drive makes Tails noticeably sluggish. Avoid USB 2.0 drives. Keep a second USB for encrypted backup of your Tails persistent volume.</p>
+        <div class="hw-links">
+          <a href="https://www.amazon.com/s?k=Samsung+FIT+Plus+USB+3.1+flash+drive" target="_blank" rel="noopener">Samsung FIT Plus (fast, tiny) ↗</a>
+          <a href="https://www.amazon.com/s?k=SanDisk+Ultra+Fit+USB+3.1" target="_blank" rel="noopener">SanDisk Ultra Fit ↗</a>
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="8" y="8" width="104" height="68" rx="5"/>
+  <rect x="15" y="15" width="90" height="54" rx="3" fill="currentColor" opacity=".06"/>
+  <text x="60" y="36" text-anchor="middle" font-size="7" fill="currentColor" stroke="none" font-family="monospace">Tor Browser</text>
+  <text x="60" y="48" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace">KeePassXC · OnionShare</text>
+  <text x="60" y="58" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace">Electrum · GnuPG · MAT2</text>
+  <line x1="48" y1="76" x2="72" y2="76"/>
+  <rect x="44" y="76" width="32" height="8" rx="2"/>
+</svg></div>
+      <div class="hw-name">What Tails Includes</div>
+        <div class="hw-cat">Pre-Installed Software</div>
+        <p class="hw-desc">Tor Browser · Thunderbird (encrypted email) · KeePassXC (passwords) · OnionShare (secure file transfer) · Electrum Bitcoin wallet · LibreOffice · GnuPG · Metadata Cleaner · MAT2 (metadata stripping) · Kleopatra (PGP) · and more. Everything you need for private, secure computing.</p>
+        <div class="hw-links">
+          <a href="https://tails.boum.org/doc/about/features/" target="_blank" rel="noopener">Full list of included software ↗</a>
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 110 90" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="30" cy="22" r="12"/>
+  <path d="M10,60 Q10,42 30,42 Q50,42 50,60 L50,72 L10,72 Z"/>
+  <circle cx="80" cy="22" r="12"/>
+  <path d="M60,60 Q60,42 80,42 Q100,42 100,60 L100,72 L60,72 Z"/>
+  <line x1="50" y1="38" x2="60" y2="38" stroke-dasharray="3,2" opacity=".5"/>
+  <text x="55" y="85" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">WHO IT'S FOR</text>
+</svg></div>
+      <div class="hw-name">Use Cases</div>
+        <div class="hw-cat">Who It's For</div>
+        <p class="hw-desc">Journalists protecting sources · Whistleblowers · Activists in high-risk environments · Anyone transacting or managing keys on untrusted hardware · Legal professionals with privileged communications · Anyone wanting to use a shared or hotel computer without leaving any trace. Also works as an air-gapped signing environment.</p>
+        <div class="hw-links">
+          <a href="https://tails.boum.org/support/faq/" target="_blank" rel="noopener">Tails FAQ ↗</a>
+          <a href="https://tails.boum.org/doc/" target="_blank" rel="noopener">Full documentation ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== SPARROW WALLET ==================== -->
+<section class="section fade-in" id="sparrow">
+  <div class="container">
+    <p class="section-label">// Bitcoin Wallet Software · Desktop</p>
+    <h2>Sparrow Wallet</h2>
+    <p class="section-intro">Sparrow is the best desktop Bitcoin wallet for anyone who values sovereignty, privacy, and understanding what their wallet is actually doing. It is fully open source, Bitcoin-only, and works with every major hardware signing device including SeedSigner, Coldcard, Jade, and Passport. It runs on Windows, Mac, and Linux, and installs cleanly on TailsOS.</p>
+
+    <div class="hw-grid">
+      <div class="hw-card">
+        <div class="hw-name">What Makes Sparrow Different</div>
+        <div class="hw-cat">Philosophy</div>
+        <p class="hw-desc">Most wallets hide what is happening under the hood. Sparrow shows you everything: the full transaction, every input and output, the fee rate, the script type, and the PSBT (Partially Signed Bitcoin Transaction) data your signing device receives. It is designed for people who want to understand Bitcoin, not just use it.</p>
+        <p class="hw-use"><strong>Key features:</strong> Full PSBT support for air-gapped hardware wallets, built-in Tor, coin control, transaction labelling, CoinJoin via Whirlpool, multisig, watch-only wallets, connects to your own node.</p>
+        <div class="hw-links">
+          <a href="https://sparrowwallet.com" target="_blank" rel="noopener">sparrowwallet.com ↗</a>
+          <a href="https://github.com/sparrowwallet/sparrow" target="_blank" rel="noopener">Source code on GitHub ↗</a>
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-name">Connection Modes</div>
+        <div class="hw-cat">Privacy Levels</div>
+        <p class="hw-desc">Sparrow lets you choose how it connects to the Bitcoin network. Each step up improves your privacy significantly. Start with a public server if you are new, then graduate to your own node when you are ready.</p>
+        <p class="hw-use"><strong>1. Public server</strong> (easiest, least private) connects to Blockstream or other public Electrum servers via Tor. <strong>2. Bitcoin Core</strong> on your own machine. <strong>3. Your own Electrum server</strong> (Fulcrum or Electrs) behind your own node for full sovereignty.</p>
+        <div class="hw-links">
+          <a href="https://sparrowwallet.com/docs/connect-node.html" target="_blank" rel="noopener">Connecting Sparrow to your node ↗</a>
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-name">Hardware Wallet Support</div>
+        <div class="hw-cat">Compatible Devices</div>
+        <p class="hw-desc">Sparrow is the recommended companion app for most open-source signing devices. It speaks the PSBT standard natively, which means every interaction with an air-gapped device is done via QR code or SD card, never via a live USB connection if you choose air-gap mode.</p>
+        <p class="hw-use"><strong>Works with:</strong> SeedSigner (QR), Coldcard (SD card / QR), Blockstream Jade (USB or QR), Foundation Passport (QR), Keystone, Trezor, and more.</p>
+        <div class="hw-links">
+          <a href="https://sparrowwallet.com/docs/" target="_blank" rel="noopener">Sparrow documentation ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAILS INSTALL GUIDE -->
+    <h3 style="margin:2.5rem 0 .5rem;font-size:1.2rem;">How to Install Sparrow Wallet on TailsOS</h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.75rem;">TailsOS does not persist installed software between sessions by default. The method below installs Sparrow into the TailsOS persistent storage so it survives reboots. Use this for a watch-only wallet or for managing UTXOs and labels. <strong>Do not store a seed phrase in Sparrow on Tails</strong> unless you fully understand the security tradeoffs. Use your SeedSigner or Jade for key storage.</p>
+
+    <div class="info-box">
+      <h4>Before you start</h4>
+      <p>You need a TailsOS USB with Persistent Storage already set up and unlocked. If you have not done this yet, boot into Tails, go to <strong>Applications → Tails → Persistent Storage</strong>, and follow the setup wizard. You also need an internet connection (Tails will use Tor automatically).</p>
+    </div>
+
+    <div class="build-steps">
+
+      <div class="build-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Enable the right persistent storage options</h4>
+          <p>In Tails, open <strong>Applications → Tails → Persistent Storage</strong> and make sure these are enabled: <strong>Personal Documents</strong> (gives you the ~/Persistent folder), and <strong>Dotfiles</strong> (saves hidden config files between sessions). Optionally enable Network Connections if you want your WiFi/Tor settings saved too. Restart Tails and unlock Persistent Storage on the welcome screen.</p>
+        </div>
+      </div>
+
+      <div class="build-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Download the Sparrow Standalone tarball</h4>
+          <p>Open Tor Browser in Tails and go to <a href="https://sparrowwallet.com/download/" target="_blank" rel="noopener">sparrowwallet.com/download</a>. Download the <strong>Linux Standalone</strong> version for your CPU (Intel/AMD = x86_64, Raspberry Pi or Apple Silicon = aarch64). The file will be named something like <code>sparrow-2.x.x-x86_64.tar.gz</code>. Do not download the .deb installer version as it cannot be persistently installed in Tails.</p>
+        </div>
+      </div>
+
+      <div class="build-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Verify the download (strongly recommended)</h4>
+          <p>On the download page, Sparrow provides a manifest file and a PGP signature. Verify them before running anything. In a Tails terminal: download the manifest and signature files, import Craig Raw's signing key (<code>gpg --keyserver keyserver.ubuntu.com --recv-keys D4D0D3202FC06849A257B38DE94618334C674B40</code>), then run <code>gpg --verify sparrow-*.tar.gz.asc sparrow-*.tar.gz</code>. You should see "Good signature". If not, delete the file and re-download.</p>
+        </div>
+      </div>
+
+      <div class="build-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Create a folder in persistent storage and extract Sparrow</h4>
+          <p>Open a terminal (<strong>Applications → Utilities → Terminal</strong>) and run:</p>
+          <p><code>mkdir -p ~/Persistent/Apps/Sparrow/data</code></p>
+          <p>Then extract the downloaded tarball into that folder:</p>
+          <p><code>tar -xzf ~/Downloads/sparrow-*.tar.gz -C ~/Persistent/Apps/Sparrow/</code></p>
+          <p>This puts the Sparrow application files in your persistent storage so they survive reboots.</p>
+        </div>
+      </div>
+
+      <div class="build-step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>Launch Sparrow pointing at your persistent data directory</h4>
+          <p>Run Sparrow and tell it to use your persistent folder for its wallet data so settings and labels survive reboots:</p>
+          <p><code>~/Persistent/Apps/Sparrow/bin/Sparrow --dir ~/Persistent/Apps/Sparrow/data</code></p>
+          <p>Sparrow will open. On first launch it will ask you to configure a server connection. Choose <strong>Private Electrum</strong> or <strong>Public Server</strong> depending on whether you have your own node. Enable Tor in the server settings (Tails routes everything through Tor anyway, but enabling it in Sparrow adds an extra layer).</p>
+        </div>
+      </div>
+
+      <div class="build-step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h4>Create a launcher shortcut (optional)</h4>
+          <p>To avoid typing the full command every session, create a small shell script in your dotfiles. In terminal:</p>
+          <p><code>mkdir -p ~/.local/bin</code></p>
+          <p><code>echo '#!/bin/bash' > ~/.local/bin/sparrow</code></p>
+          <p><code>echo 'exec ~/Persistent/Apps/Sparrow/bin/Sparrow --dir ~/Persistent/Apps/Sparrow/data "$@"' >> ~/.local/bin/sparrow</code></p>
+          <p><code>chmod +x ~/.local/bin/sparrow</code></p>
+          <p>Now you can launch Sparrow from the terminal by simply typing <code>sparrow</code>. Because Dotfiles persistence is enabled, this script will survive reboots.</p>
+        </div>
+      </div>
+
+      <div class="build-step">
+        <div class="step-num">7</div>
+        <div class="step-body">
+          <h4>Connect Sparrow to SeedSigner or Jade</h4>
+          <p>For SeedSigner: in Sparrow, go to <strong>File → New Wallet</strong>, choose <strong>Air-gapped Hardware Wallet</strong>, select SeedSigner, and follow the QR code pairing process. Your SeedSigner exports an xpub via QR code; Sparrow imports it as a watch-only wallet. To sign a transaction, Sparrow generates a PSBT QR, you scan it on SeedSigner, sign it, and scan the result back. For Jade: connect via USB or use the QR air-gap mode. Sparrow will detect it automatically.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-box">
+      <h4>Updating Sparrow on Tails</h4>
+      <p>When a new version of Sparrow is released, download the new standalone tarball, verify it, delete the old folder inside ~/Persistent/Apps/Sparrow/bin, and extract the new version in its place. Your wallet data and settings in ~/Persistent/Apps/Sparrow/data are untouched. <a href="https://sparrowwallet.com/download/" target="_blank" rel="noopener">sparrowwallet.com/download ↗</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== HARDWARE WALLETS ==================== -->
+<section class="section fade-in" id="wallets">
+  <div class="container">
+    <p class="section-label">// Bitcoin Key Security · Hardware Wallets</p>
+    <h2>Hardware Wallets</h2>
+    <p class="section-intro">Hardware wallets store your private keys in a secure chip, sign transactions without ever exposing the key to your computer. For most people who don't want to build a SeedSigner, a commercial hardware wallet is the right choice. Here's how they compare.</p>
+
+    <div class="info-box">
+      <h4>The most important rule: buy direct from the manufacturer</h4>
+      <p>Never buy a hardware wallet from a third-party marketplace like Amazon or eBay. Wallets can be tampered with in transit or arrive pre-seeded with someone else's seed phrase. Only buy from the manufacturer's official website. Verify the tamper-evident packaging is intact on arrival. <strong>If the seed phrase is already written down in the box, the device is compromised return it immediately.</strong></p>
+    </div>
+
+    <table class="wallet-compare">
+      <thead>
+        <tr>
+          <th>Device</th>
+          <th>Open Source?</th>
+          <th>Screen</th>
+          <th>Best For</th>
+          <th>Link</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>SeedSigner</strong><br><span style="font-size:.78rem;color:var(--muted)">DIY build · ~0</span></td>
+          <td>✓ Fully open source hardware + firmware</td>
+          <td>Colour LCD</td>
+          <td>Maximum sovereignty. Stateless forgets keys on power off. No supply chain risk. Recommended.</td>
+          <td><a href="https://seedsigner.com" target="_blank" rel="noopener">seedsigner.com ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>Coldcard Mk4</strong><br><span style="font-size:.78rem;color:var(--muted)">~50 USD</span></td>
+          <td>✓ Open source firmware</td>
+          <td>Monochrome OLED</td>
+          <td>Advanced users. Duress PIN, brick-me PIN, fully air-gappable via SD card. No USB required for signing.</td>
+          <td><a href="https://coldcard.com" target="_blank" rel="noopener">coldcard.com ↗</a></td>
+        </tr>
+
+        <tr>
+          <td><strong>Blockstream Jade Plus</strong><br><span style="font-size:.78rem;color:var(--muted)">~$79 USD</span></td>
+          <td>✓ Fully open source hardware + firmware</td>
+          <td>1.9&quot; colour screen</td>
+          <td>Best beginner-to-intermediate option. Camera for QR air-gapped signing. USB-C, Bluetooth, or SD card. Duress PIN. Pairs with Sparrow, Blockstream Green, BlueWallet. Available on Amazon.</td>
+          <td><a href="https://www.amazon.com/dp/B0DS4HDM1H" target="_blank" rel="noopener">Jade Plus on Amazon &#x2197;</a><br><a href="https://blockstream.com/jade/" target="_blank" rel="noopener">blockstream.com/jade &#x2197;</a></td>
+        </tr>
+        <tr>
+          <td><strong>Foundation Passport</strong><br><span style="font-size:.78rem;color:var(--muted)">~99 USD</span></td>
+          <td>✓ Open source hardware + firmware</td>
+          <td>Colour screen</td>
+          <td>Open hardware. Camera for QR signing. Replaceable batteries. Bitcoin-only focus.</td>
+          <td><a href="https://foundationdevices.com" target="_blank" rel="noopener">foundationdevices.com ↗</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== NUNCHUK + TAPSIGNER ==================== -->
+<section class="section fade-in" id="nunchuk">
+  <div class="container">
+    <p class="section-label">// Mobile Security · Multisig · NFC Signing</p>
+    <h2>Nunchuk and TAPSIGNER</h2>
+    <p class="section-intro">Most people think multisig is complicated. Nunchuk makes it genuinely usable on a phone. TAPSIGNER by Coinkite is a Bitcoin private key on a credit-card-sized NFC card you tap to sign. Together they are the most practical path to mobile multisig security available today.</p>
+
+    <div class="hw-grid">
+
+      <div class="hw-card">
+        <div class="hw-name">Nunchuk</div>
+        <div class="hw-cat">Mobile Multisig Coordinator · iOS, Android, Desktop · Free</div>
+        <p class="hw-desc">Nunchuk is a Bitcoin-only wallet built from the ground up for multisig. Where other apps treat multisig as a hidden advanced feature, Nunchuk treats it as the default. You set up a wallet with multiple keys (2-of-3 is most common), and any transaction requires approval from two of them. Your keys can be a mix of hardware wallets, TAPSIGNER cards, and a Nunchuk software key. The app is open source and collects no identifying information beyond an optional email address. It holds no keys itself.</p>
+        <p class="hw-use"><strong>Why it matters:</strong> Single-key Bitcoin storage has one catastrophic failure mode: whoever gets that key gets your funds. Multisig eliminates single points of failure. Nunchuk makes this achievable without a laptop or technical expertise. It secured over $1 billion in Bitcoin as of 2025.</p>
+        <div class="hw-links">
+          <a href="https://nunchuk.io" target="_blank" rel="noopener">nunchuk.io ↗</a>
+          <a href="https://apps.apple.com/app/nunchuk-bitcoin-wallet/id1563190073" target="_blank" rel="noopener">Nunchuk on App Store ↗</a>
+          <a href="https://play.google.com/store/apps/details?id=io.nunchuk.android" target="_blank" rel="noopener">Nunchuk on Google Play ↗</a>
+        </div>
+      </div>
+
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 140 95" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="5" y="5" width="130" height="85" rx="8"/>
+  <rect x="15" y="15" width="22" height="18" rx="3" fill="currentColor" opacity=".15"/>
+  <line x1="19" y1="19" x2="19" y2="29"/>
+  <line x1="23" y1="19" x2="23" y2="29"/>
+  <line x1="27" y1="19" x2="27" y2="29"/>
+  <line x1="31" y1="19" x2="31" y2="29"/>
+  <path d="M75,47 Q82,40 89,47 Q96,54 89,61 Q82,68 75,61 Q68,54 75,47Z" fill="none"/>
+  <path d="M68,40 Q82,26 96,40 Q110,54 96,68 Q82,82 68,68 Q54,54 68,40Z" fill="none" opacity=".4"/>
+  <circle cx="82" cy="54" r="5" fill="currentColor" opacity=".2"/>
+  <circle cx="82" cy="54" r="2"/>
+  <text x="82" y="78" text-anchor="middle" font-size="7" fill="currentColor" stroke="none" font-family="monospace">TAPSIGNER</text>
+  <text x="30" y="55" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace" opacity=".5">NFC</text>
+</svg></div>
+      <div class="hw-name">TAPSIGNER</div>
+        <div class="hw-cat">NFC Signing Card · by Coinkite · ~$40 USD</div>
+        <p class="hw-desc">A Bitcoin private key embedded in a credit-card-sized NFC card with a secure element chip. You tap it to your phone to sign transactions. It has no screen, no battery, and no USB port. Your phone (via Nunchuk or Sparrow) handles the wallet logic; TAPSIGNER holds the keys and never exposes them. PIN-protected. Ships with an RF-blocking sleeve to prevent unauthorised NFC reads. Backed by Coinkite, the same team behind Coldcard.</p>
+        <p class="hw-use"><strong>Why it matters:</strong> At $40 it is the most affordable hardware signing device available. The card form factor means it lives in your wallet. It makes multisig accessible as a second or third key without carrying a dedicated hardware wallet device.</p>
+        <div class="hw-links">
+          <a href="https://store.coinkite.com/store/category/tapsigner" target="_blank" rel="noopener">Buy TAPSIGNER from Coinkite ↗</a>
+          <a href="https://tapsigner.com" target="_blank" rel="noopener">tapsigner.com ↗</a>
+        </div>
+      </div>
+
+      <div class="hw-card">
+        <div class="hw-name">What is Multisig and Why Does It Matter?</div>
+        <div class="hw-cat">Explainer</div>
+        <p class="hw-desc">A multisig wallet requires more than one private key to authorise a transaction. In a 2-of-3 setup you have three keys, and any two of them can sign. If one key is lost, stolen, or destroyed you are not locked out. If an attacker gets one key they still cannot spend your funds. This eliminates the single biggest risk in Bitcoin self-custody: one device, one backup, one catastrophic loss.</p>
+        <p class="hw-use"><strong>Common setups:</strong> 2-of-3 (most common), 3-of-5 (for larger holdings). Keys can be spread across locations, devices, and people (collaborative custody). Wallet configuration file (descriptor) must be backed up separately from the keys.</p>
+        <div class="hw-links">
+          <a href="https://nunchuk.io/blog" target="_blank" rel="noopener">Nunchuk blog (multisig guides) ↗</a>
+        </div>
+      </div>
+
+    </div>
+
+    <h3 style="margin:2.5rem 0 .5rem;font-size:1.2rem;">How to Set Up a 2-of-3 Multisig with Nunchuk and TAPSIGNER</h3>
+    <p style="color:var(--muted);font-size:.9rem;margin-bottom:1.75rem;">This is a practical 2-of-3 setup using three keys: a Nunchuk software key on your phone, a TAPSIGNER card, and a Blockstream Jade hardware wallet. Any two of the three can sign. You need all three key backups and the wallet descriptor to recover.</p>
+
+    <div class="build-steps">
+
+      <div class="build-step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>Install Nunchuk and create a software key</h4>
+          <p>Download Nunchuk from the App Store or Google Play. Open the app and go to <strong>Keys</strong> at the bottom. Tap the + button and select <strong>Software Key</strong>. Nunchuk will generate a seed phrase. Write it down on paper and store it in a different physical location from your TAPSIGNER and Jade. This is Key 1.</p>
+        </div>
+      </div>
+
+      <div class="build-step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>Add your TAPSIGNER as Key 2</h4>
+          <p>In Nunchuk, go to <strong>Keys</strong>, tap + and select <strong>NFC</strong>. Prepare a PIN you will remember (minimum 6 characters). Hold your TAPSIGNER against the back of your phone until the app detects it. Follow the prompts to initialise the card and set your PIN. Nunchuk will import the TAPSIGNER's extended public key. The private key never leaves the card. Store the TAPSIGNER in its RF-blocking sleeve when not in use.</p>
+        </div>
+      </div>
+
+      <div class="build-step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>Add your Jade as Key 3</h4>
+          <p>Connect your Blockstream Jade via USB or use QR code mode. In Nunchuk, go to <strong>Keys</strong>, tap + and select <strong>Hardware Wallet</strong>. Follow the on-screen pairing process. Nunchuk will import the Jade's xpub. This becomes your third key, ideally stored in a different location from the TAPSIGNER and software key backup.</p>
+        </div>
+      </div>
+
+      <div class="build-step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>Create the multisig wallet</h4>
+          <p>Go to Nunchuk's home screen and tap the + button. Select <strong>Custom Wallet</strong>. Give it a name. On the next screen, assign all three keys you just added. Set <strong>Required keys</strong> to 2 (meaning 2-of-3 must sign). Select your preferred address type (Native SegWit or Taproot). Tap <strong>Create Wallet</strong>.</p>
+        </div>
+      </div>
+
+      <div class="build-step">
+        <div class="step-num">5</div>
+        <div class="step-body">
+          <h4>Back up the wallet descriptor immediately</h4>
+          <p>After the wallet is created, Nunchuk will prompt you to back up the <strong>Wallet Configuration</strong> (also called the descriptor or wallet backup file). This file defines the multisig policy and lists all three xpubs. Without it, you cannot reconstruct the wallet even if you have all three seed phrases. Export it and store it in at least two separate locations. Do not store it with any single key.</p>
+        </div>
+      </div>
+
+      <div class="build-step">
+        <div class="step-num">6</div>
+        <div class="step-body">
+          <h4>Receive funds and verify the deposit address</h4>
+          <p>Go to the wallet's Receive tab. Verify the deposit address on at least one hardware device (Jade or, if you have a way, cross-check with Sparrow). Send a small test amount first. Confirm it arrives, then try spending it to verify your signing workflow works before depositing larger amounts.</p>
+        </div>
+      </div>
+
+      <div class="build-step">
+        <div class="step-num">7</div>
+        <div class="step-body">
+          <h4>Signing a transaction</h4>
+          <p>When you want to send Bitcoin, create the transaction in Nunchuk. You will need signatures from 2 of your 3 keys. Sign with the TAPSIGNER by tapping it to your phone when prompted (enter your PIN). Sign with Jade by connecting it or scanning the QR code. The transaction broadcasts automatically once enough signatures are collected. If either device is unavailable, use the software key and whichever device you do have access to.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="info-box">
+      <h4>TAPSIGNER security notes</h4>
+      <p>TAPSIGNER ships with an RF-blocking sleeve. Insert it fully: even 5mm sticking out can allow a nearby NFC reader to get a signal. Store it separately from the device you use to sign. If you lose your TAPSIGNER PIN you cannot access the key on that card. The backup is encrypted and requires the PIN to decrypt. Treat the card as you would a small hardware wallet: do not lend it, do not lose it, and do not expose it to strong magnetic fields. TAPSIGNER has no screen, so you rely entirely on Nunchuk to display transaction details. Always verify addresses on a device with a screen (Jade) before signing high-value transactions. Reference: <a href="https://tapsigner.com/faq" target="_blank" rel="noopener">tapsigner.com/faq ↗</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ==================== FULL NODES ==================== -->
+<section class="section fade-in" id="nodes">
+  <div class="container">
+    <p class="section-label">// Bitcoin Infrastructure · Full Nodes</p>
+    <h2>Running a Full Node</h2>
+    <p class="section-intro">A Bitcoin full node independently downloads and validates every transaction and block it doesn't trust anyone else's interpretation of the chain. Running your own node means your wallet queries your node, not a third-party server. No one knows your addresses, your balance, or your transaction history. You verify the rules for yourself.</p>
+
+    <div class="info-box">
+      <h4>What you need before you start</h4>
+      <p><strong>Storage:</strong> Bitcoin's blockchain is ~650GB and growing you need at least 1TB SSD. <strong>RAM:</strong> 4GB minimum, 8GB recommended. <strong>Connection:</strong> Stable broadband with upload bandwidth (your node will serve data to others). <strong>Time:</strong> Initial block download (IBD) takes 2 5 days. After sync, it runs quietly in the background.</p>
+    </div>
+
+    <div class="tier-label">
+      <span class="tier-badge tier-start">Easiest</span>
+      <span class="tier-desc">Pre-built plug-and-play node devices just add power and internet</span>
+    </div>
+    <div class="node-grid">
+      <div class="node-card">
+        <div class="node-img"><svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="10" y="15" width="100" height="55" rx="5"/>
+  <rect x="18" y="23" width="54" height="30" rx="3" fill="currentColor" opacity=".08"/>
+  <text x="45" y="36" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace">Umbrel</text>
+  <text x="45" y="46" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">Home</text>
+  <circle cx="88" cy="32" r="5" fill="currentColor" opacity=".12"/>
+  <circle cx="88" cy="32" r="2"/>
+  <rect x="80" y="42" width="24" height="5" rx="1" fill="currentColor" opacity=".12"/>
+  <rect x="80" y="50" width="24" height="5" rx="1" fill="currentColor" opacity=".12"/>
+  <line x1="18" y1="60" x2="72" y2="60"/>
+  <rect x="22" y="62" width="6" height="4" rx="1" fill="currentColor" opacity=".2"/>
+  <rect x="32" y="62" width="6" height="4" rx="1" fill="currentColor" opacity=".2"/>
+  <rect x="42" y="62" width="6" height="4" rx="1" fill="currentColor" opacity=".2"/>
+  <line x1="60" y1="70" x2="60" y2="76"/>
+  <rect x="52" y="74" width="16" height="4" rx="1"/>
+</svg></div>
+        <div class="node-name">Umbrel Home</div>
+        <div class="node-sub">Pre-built · ~19 USD</div>
+        <p class="node-desc">Intel N100, 16GB RAM, 2TB NVMe. The most polished node experience app store UI in a browser, installs Bitcoin Core, Lightning, and dozens of other self-hosted apps in one click. Good for beginners who want something that just works.</p>
+        <p class="node-spec"><strong>Software:</strong> Umbrel OS · <strong>Connectivity:</strong> Tor built-in</p>
+        <a href="https://umbrel.com" target="_blank" rel="noopener" class="node-link">umbrel.com ↗</a>
+      </div>
+      <div class="node-card">
+        <div class="node-img"><svg viewBox="0 0 80 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="15" y="5" width="50" height="110" rx="6"/>
+  <rect x="21" y="13" width="38" height="20" rx="3" fill="currentColor" opacity=".08"/>
+  <text x="40" y="22" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">Start9</text>
+  <text x="40" y="30" text-anchor="middle" font-size="5" fill="currentColor" stroke="none" font-family="monospace">Server One</text>
+  <rect x="21" y="38" width="38" height="6" rx="1" fill="currentColor" opacity=".1"/>
+  <rect x="21" y="48" width="38" height="6" rx="1" fill="currentColor" opacity=".1"/>
+  <rect x="21" y="58" width="38" height="6" rx="1" fill="currentColor" opacity=".1"/>
+  <rect x="21" y="68" width="38" height="6" rx="1" fill="currentColor" opacity=".1"/>
+  <circle cx="32" cy="90" r="8" fill="currentColor" opacity=".08"/>
+  <circle cx="32" cy="90" r="3"/>
+  <circle cx="50" cy="90" r="5" fill="currentColor" opacity=".12"/>
+  <circle cx="50" cy="90" r="2"/>
+  <rect x="25" y="103" width="6" height="4" rx="1" fill="currentColor" opacity=".2"/>
+  <rect x="35" y="103" width="6" height="4" rx="1" fill="currentColor" opacity=".2"/>
+  <rect x="48" y="103" width="6" height="4" rx="1" fill="currentColor" opacity=".2"/>
+</svg></div>
+        <div class="node-name">Start9 Server One</div>
+        <div class="node-sub">Pre-built · ~99 USD</div>
+        <p class="node-desc">AMD Ryzen 7, 16GB RAM, 2TB NVMe. Runs StartOS the most sovereignty-focused node OS. Strict app isolation. Strong privacy defaults. For users who want maximum control and are comfortable with a steeper learning curve.</p>
+        <p class="node-spec"><strong>Software:</strong> StartOS (open source) · <strong>Focus:</strong> Sovereignty, app isolation</p>
+        <a href="https://start9.com" target="_blank" rel="noopener" class="node-link">start9.com ↗</a>
+      </div>
+    </div>
+
+    <div class="tier-label" style="margin-top:2.5rem">
+      <span class="tier-badge tier-mid">DIY</span>
+      <span class="tier-desc">Build your own on a Raspberry Pi or old laptop more control, lower cost</span>
+    </div>
+    <div class="node-grid">
+      <div class="node-card">
+        <div class="node-img"><svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="8" y="8" width="104" height="38" rx="4"/>
+  <rect x="14" y="14" width="92" height="26" rx="2" fill="currentColor" opacity=".08"/>
+  <text x="60" y="25" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace">Raspberry Pi 4/5</text>
+  <text x="60" y="34" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">RaspiBlitz</text>
+  <line x1="8" y1="52" x2="112" y2="52" stroke-dasharray="3,2" opacity=".4"/>
+  <rect x="8" y="56" width="104" height="28" rx="4"/>
+  <rect x="14" y="60" width="60" height="18" rx="2" fill="currentColor" opacity=".08"/>
+  <text x="44" y="72" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">1TB SSD</text>
+  <rect x="82" y="60" width="22" height="18" rx="2" fill="currentColor" opacity=".08"/>
+  <text x="93" y="72" text-anchor="middle" font-size="5" fill="currentColor" stroke="none" font-family="monospace">USB3</text>
+  <line x1="55" y1="84" x2="65" y2="94"/>
+  <line x1="65" y1="84" x2="55" y2="94"/>
+</svg></div>
+        <div class="node-name">RaspiBlitz</div>
+        <div class="node-sub">DIY · Open Source</div>
+        <p class="node-desc">The most transparent and configurable node software. Runs on a Raspberry Pi 4/5 with an SSD. SSH-based interface. As of v1.12.0 (Sep 2025) can boot entirely from NVMe microSD only needed for initial install. Best for users who want to understand exactly what's running.</p>
+        <p class="node-spec"><strong>Hardware:</strong> Raspberry Pi 4/5 + 1TB SSD · <strong>Licence:</strong> MIT</p>
+        <a href="https://raspiblitz.org" target="_blank" rel="noopener" class="node-link">raspiblitz.org ↗</a>
+      </div>
+      <div class="node-card">
+        <div class="node-img"><svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="10" y="15" width="100" height="55" rx="5"/>
+  <rect x="18" y="23" width="54" height="30" rx="3" fill="currentColor" opacity=".08"/>
+  <text x="45" y="36" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace">Umbrel</text>
+  <text x="45" y="46" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">Home</text>
+  <circle cx="88" cy="32" r="5" fill="currentColor" opacity=".12"/>
+  <circle cx="88" cy="32" r="2"/>
+  <rect x="80" y="42" width="24" height="5" rx="1" fill="currentColor" opacity=".12"/>
+  <rect x="80" y="50" width="24" height="5" rx="1" fill="currentColor" opacity=".12"/>
+  <line x1="18" y1="60" x2="72" y2="60"/>
+  <rect x="22" y="62" width="6" height="4" rx="1" fill="currentColor" opacity=".2"/>
+  <rect x="32" y="62" width="6" height="4" rx="1" fill="currentColor" opacity=".2"/>
+  <rect x="42" y="62" width="6" height="4" rx="1" fill="currentColor" opacity=".2"/>
+  <line x1="60" y1="70" x2="60" y2="76"/>
+  <rect x="52" y="74" width="16" height="4" rx="1"/>
+</svg></div>
+        <div class="node-name">Umbrel (DIY)</div>
+        <div class="node-sub">DIY · Easy Setup</div>
+        <p class="node-desc">Install Umbrel OS on any Raspberry Pi 4/5 (4GB+ RAM) or x86 machine. Flash the image to a microSD, attach a 1TB+ SSD, connect ethernet, and you have a full node with a clean browser UI. Recommended for beginners building their own hardware.</p>
+        <p class="node-spec"><strong>Hardware:</strong> Raspberry Pi 4/5 or any 64-bit PC · <strong>Cost:</strong> ~00 150 in parts</p>
+        <a href="https://umbrel.com/install" target="_blank" rel="noopener" class="node-link">umbrel.com/install ↗</a>
+      </div>
+      <div class="node-card">
+        <div class="node-img"><svg viewBox="0 0 120 90" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="5" y="5" width="110" height="70" rx="5"/>
+  <rect x="5" y="5" width="110" height="14" rx="5" fill="currentColor" opacity=".1"/>
+  <circle cx="17" cy="12" r="3" fill="currentColor" opacity=".3"/>
+  <circle cx="27" cy="12" r="3" fill="currentColor" opacity=".2"/>
+  <circle cx="37" cy="12" r="3" fill="currentColor" opacity=".15"/>
+  <text x="13" y="34" font-size="6" fill="currentColor" stroke="none" font-family="monospace" opacity=".7">$ bitcoind -daemon</text>
+  <text x="13" y="44" font-size="6" fill="currentColor" stroke="none" font-family="monospace" opacity=".5">Bitcoin server starting</text>
+  <text x="13" y="54" font-size="6" fill="currentColor" stroke="none" font-family="monospace" opacity=".5">blocks: 840,000</text>
+  <text x="13" y="64" font-size="6" fill="currentColor" stroke="none" font-family="monospace" opacity=".4">connections: 8</text>
+  <rect x="13" y="64" width="5" height="7" fill="currentColor" opacity=".6"/>
+  <line x1="55" y1="75" x2="65" y2="85"/>
+  <line x1="65" y1="75" x2="55" y2="85"/>
+</svg></div>
+        <div class="node-name">Bitcoin Core (bare metal)</div>
+        <div class="node-sub">Maximum Control · Linux/Windows/Mac</div>
+        <p class="node-desc">The reference implementation no wrapper software, no app store, just Bitcoin. Install on any machine running Linux, Windows, or macOS. Combine with Tor for privacy. Steepest learning curve but the most auditable setup possible. Every other node software is built on top of this.</p>
+        <p class="node-spec"><strong>Hardware:</strong> Any computer with 1TB+ storage · <strong>Licence:</strong> MIT</p>
+        <a href="https://bitcoin.org/en/full-node" target="_blank" rel="noopener" class="node-link">bitcoin.org full node guide ↗</a>
+      </div>
+      <div class="node-card">
+        <div class="node-img"><svg viewBox="0 0 110 90" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="8" y="10" width="94" height="65" rx="5"/>
+  <rect x="15" y="18" width="80" height="40" rx="3" fill="currentColor" opacity=".06"/>
+  <text x="55" y="34" text-anchor="middle" font-size="7" fill="currentColor" stroke="none" font-family="monospace">Citadel</text>
+  <text x="55" y="44" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">GNU AGPL · Open Source</text>
+  <circle cx="30" cy="65" r="6" fill="currentColor" opacity=".12"/>
+  <circle cx="30" cy="65" r="2.5"/>
+  <circle cx="55" cy="65" r="6" fill="currentColor" opacity=".12"/>
+  <circle cx="55" cy="65" r="2.5"/>
+  <circle cx="80" cy="65" r="6" fill="currentColor" opacity=".12"/>
+  <circle cx="80" cy="65" r="2.5"/>
+  <line x1="55" y1="75" x2="55" y2="83"/>
+  <rect x="47" y="81" width="16" height="5" rx="2"/>
+</svg></div>
+        <div class="node-name">Citadel</div>
+        <div class="node-sub">DIY · AGPL Open Source</div>
+        <p class="node-desc">A fully open-source fork of Umbrel with GNU AGPL licensing (unlike Umbrel's non-commercial PolyForm licence). Strict app isolation, Raspberry Pi 5 optimised, community-funded. A good choice for those who need a genuinely open-source node stack without commercial restrictions.</p>
+        <p class="node-spec"><strong>Licence:</strong> GNU AGPL · <strong>Hardware:</strong> Raspberry Pi 5 (4GB+)</p>
+        <a href="https://runcitadel.space" target="_blank" rel="noopener" class="node-link">runcitadel.space ↗</a>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:2rem">
+      <h4>Recommended parts for a DIY Raspberry Pi node</h4>
+      <p>
+        <a href="https://www.amazon.com/s?k=Raspberry+Pi+5+8GB" target="_blank" rel="noopener">Raspberry Pi 5 (8GB RAM) ↗</a> &nbsp;·&nbsp;
+        <a href="https://www.amazon.com/s?k=1TB+SSD+USB+3.0+portable" target="_blank" rel="noopener">1TB+ USB 3.0 SSD ↗</a> &nbsp;·&nbsp;
+        <a href="https://www.amazon.com/s?k=raspberry+pi+5+case+with+fan" target="_blank" rel="noopener">Pi 5 case with active cooling ↗</a> &nbsp;·&nbsp;
+        <a href="https://bitcoiner.guide/node/" target="_blank" rel="noopener">node.guide full setup walkthroughs ↗</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== COMMS APPS ==================== -->
+<section class="section fade-in" id="comms">
+  <div class="container">
+    <p class="section-label">// Private Communications · Apps</p>
+    <h2>Secure Communications</h2>
+    <p class="section-intro">The hardware is only half the picture. The apps you use for messaging, social media, and browsing determine how much of your life is exposed. These are the open-source, privacy-respecting alternatives to mainstream platforms.</p>
+
+    <div class="app-grid">
+      <div class="app-card">
+        <div class="app-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="app-name">Signal</div>
+        <div class="app-cat">Encrypted Messaging · Free</div>
+        <p class="app-desc">The gold standard for private messaging. End-to-end encrypted by default for every message and call. Open source. Collects almost no metadata. Used by journalists, lawyers, politicians, and security professionals worldwide. Disappearing messages add an extra layer.</p>
+        <a href="https://signal.org" target="_blank" rel="noopener">signal.org ↗</a>
+      </div>
+      <div class="app-card">
+        <div class="app-icon"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <div class="app-name">Nostr</div>
+        <div class="app-cat">Decentralised Social · Censorship-Resistant</div>
+        <p class="app-desc">A protocol not a platform for decentralised social media. Your identity is a cryptographic keypair, not an account on someone's server. No central point of control, no deplatforming, no algorithm. Posts (notes) are signed with your private key and broadcast to relays. Client apps: Damus (iOS), Amethyst (Android), Snort (web).</p>
+        <a href="https://nostr.com" target="_blank" rel="noopener">nostr.com get started ↗</a>
+      </div>
+      <div class="app-card">
+        <div class="app-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+        <div class="app-name">Tor Browser</div>
+        <div class="app-cat">Anonymous Browsing · Free</div>
+        <p class="app-desc">Routes your web traffic through three encrypted relays so websites can't see your real IP address and your ISP can't see what you're visiting. Pre-installed in TailsOS. Essential for any sensitive research or browsing. Also available as a standalone app for Windows, Mac, Linux, and Android.</p>
+        <a href="https://www.torproject.org/download/" target="_blank" rel="noopener">torproject.org download ↗</a>
+      </div>
+      <div class="app-card">
+        <div class="app-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div class="app-name">Proton Mail</div>
+        <div class="app-cat">Encrypted Email · Switzerland</div>
+        <p class="app-desc">End-to-end encrypted email hosted in Switzerland, outside US/UK/Five Eyes jurisdiction. Zero-knowledge Proton cannot read your emails. Open source. Free tier available. Pair with ProtonVPN for encrypted browsing. Also offers Proton Drive (encrypted cloud storage) and Proton Calendar.</p>
+        <a href="https://proton.me" target="_blank" rel="noopener">proton.me ↗</a>
+      </div>
+      <div class="app-card">
+        <div class="app-icon"><svg viewBox="0 0 24 24"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></div>
+        <div class="app-name">Bitwarden</div>
+        <div class="app-cat">Password Manager · Open Source</div>
+        <p class="app-desc">Open-source, end-to-end encrypted password manager. Self-host it on your own server, or use Bitwarden's cloud with zero-knowledge encryption. Works with YubiKey for hardware 2FA. Free for individuals. The only password manager whose entire codebase is publicly auditable.</p>
+        <a href="https://bitwarden.com" target="_blank" rel="noopener">bitwarden.com ↗</a>
+      </div>
+      <div class="app-card">
+        <div class="app-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <div class="app-name">SimpleX Chat</div>
+        <div class="app-cat">No Identifiers · Next-Level Privacy</div>
+        <p class="app-desc">The most private messenger available. Unlike Signal (which requires a phone number), SimpleX has no user identifiers at all no phone number, no username, no account. Connections are established via one-time QR codes. End-to-end encrypted. Cannot be compelled to produce user records because none exist.</p>
+        <a href="https://simplex.chat" target="_blank" rel="noopener">simplex.chat ↗</a>
+      </div>
+      <div class="app-card">
+        <div class="app-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
+        <div class="app-name">Mullvad Browser</div>
+        <div class="app-cat">Privacy Browser · No Account</div>
+        <p class="app-desc">Built jointly by Mullvad VPN and the Tor Project. Designed to minimise browser fingerprinting without requiring Tor (though it works with it). No telemetry, no account required, blocks trackers by default. A good daily driver if Tor Browser's speed is limiting for normal browsing.</p>
+        <a href="https://mullvad.net/browser" target="_blank" rel="noopener">mullvad.net/browser ↗</a>
+      </div>
+      <div class="app-card">
+        <div class="app-icon"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+        <div class="app-name">Zeus Wallet</div>
+        <div class="app-cat">Bitcoin + Lightning · Self-Custodial</div>
+        <p class="app-desc">A self-custodial Lightning wallet that connects directly to your own node (LND, Core Lightning, Eclair). No custodian, no KYC, no third-party server between you and your funds. Open source. Android and iOS. The right mobile wallet for anyone running their own node.</p>
+        <a href="https://zeusln.com" target="_blank" rel="noopener">zeusln.com ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== EVERYDAY HARDWARE ==================== -->
+<section class="section fade-in" id="everyday">
+  <div class="container">
+    <p class="section-label">// Everyday Gear · Start Here</p>
+    <h2>Essential Hardware for Everyone</h2>
+    <p class="section-intro">You don't need a lab full of advanced tools. These five items are the highest-impact, lowest-effort security upgrades available and anyone can use them.</p>
+
+
+    <div class="hw-grid">
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="15" y="25" width="90" height="42" rx="4"/>
+  <rect x="25" y="35" width="18" height="12" rx="2" fill="currentColor" stroke="none" opacity=".15"/>
+  <circle cx="70" cy="41" r="4" fill="currentColor" opacity=".3"/>
+  <circle cx="83" cy="41" r="4" fill="currentColor" opacity=".3"/>
+  <line x1="95" y1="25" x2="95" y2="10"/>
+  <line x1="105" y1="25" x2="105" y2="8"/>
+  <line x1="60" y1="67" x2="60" y2="75"/>
+  <rect x="52" y="73" width="16" height="4" rx="1"/>
+  <text x="60" y="54" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace" letter-spacing="1">GL.iNet</text>
+</svg></div>
+      <div class="hw-name">GL.iNet Travel Router</div>
+        <div class="hw-cat">Private Networking · From 5</div>
+        <p class="hw-desc">Plug into any hotel or public WiFi and it creates your own private encrypted network. Runs open-source OpenWRT firmware. Supports WireGuard and OpenVPN out of the box. The Mango (~5) is the budget pick; Slate AX (~19) offers WiFi 6 speed.</p>
+        <p class="hw-use"><strong>Why it matters:</strong> Hotel and café WiFi are common attack surfaces. This puts a hardware firewall between you and them protecting every device you connect.</p>
+        <div class="hw-links">
+          <a href="https://www.amazon.com/dp/B073TSK26W" target="_blank" rel="noopener">GL.iNet Mango (~5) ↗</a>
+          <a href="https://www.amazon.com/s?k=GL.iNet+Slate+AX+GL-AXT1800" target="_blank" rel="noopener">GL.iNet Slate AX (WiFi 6) ↗</a>
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 80 120" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <ellipse cx="40" cy="38" rx="28" ry="30"/>
+  <circle cx="40" cy="38" r="10" fill="currentColor" opacity=".2"/>
+  <circle cx="40" cy="38" r="4"/>
+  <rect x="28" y="68" width="24" height="40" rx="3"/>
+  <rect x="31" y="72" width="18" height="10" rx="1" fill="currentColor" opacity=".15"/>
+  <line x1="33" y1="74" x2="33" y2="80" stroke-width="1"/>
+  <line x1="37" y1="74" x2="37" y2="80" stroke-width="1"/>
+  <line x1="41" y1="74" x2="41" y2="80" stroke-width="1"/>
+  <line x1="45" y1="74" x2="45" y2="80" stroke-width="1"/>
+</svg></div>
+      <div class="hw-name">YubiKey 5 NFC</div>
+        <div class="hw-cat">Login Security · ~0 65</div>
+        <p class="hw-desc">A physical key you tap to log in. Even if your password is stolen, attackers can't get in without the physical device in hand. Works with Google, Microsoft, GitHub, Proton, Bitwarden, and thousands of services. FIDO2 and passkey support. The single highest-impact security upgrade for most people.</p>
+        <div class="hw-links">
+          <a href="https://www.amazon.com/s?k=YubiKey+5+NFC" target="_blank" rel="noopener">YubiKey 5 NFC (USB-A) ↗</a>
+          <a href="https://www.amazon.com/s?k=YubiKey+5C+NFC" target="_blank" rel="noopener">YubiKey 5C NFC (USB-C) ↗</a>
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 100 110" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M15,20 L15,90 Q15,100 25,100 L75,100 Q85,100 85,90 L85,20"/>
+  <path d="M10,20 Q10,10 50,10 Q90,10 90,20 L90,25 Q90,32 50,32 Q10,32 10,25 Z" fill="currentColor" opacity=".15"/>
+  <path d="M10,20 Q10,10 50,10 Q90,10 90,20 L90,25 Q90,32 50,32 Q10,32 10,25 Z"/>
+  <line x1="25" y1="50" x2="75" y2="50" stroke-dasharray="4,3"/>
+  <line x1="25" y1="60" x2="75" y2="60" stroke-dasharray="4,3"/>
+  <line x1="25" y1="70" x2="75" y2="70" stroke-dasharray="4,3"/>
+  <text x="50" y="88" text-anchor="middle" font-size="7" fill="currentColor" stroke="none" font-family="monospace">FARADAY</text>
+</svg></div>
+      <div class="hw-name">Faraday Pouch</div>
+        <div class="hw-cat">Signal Blocking · 0 25</div>
+        <p class="hw-desc">Blocks all wireless signals to a device inside WiFi, Bluetooth, NFC, GPS, cellular. Drop your car keys in one to block relay theft (one of the fastest-growing vehicle theft methods). Drop your phone in one when you need genuine privacy. Under 5 for a quality pouch.</p>
+        <div class="hw-links">
+          <a href="https://www.amazon.com/s?k=faraday+pouch+key+fob+signal+blocker" target="_blank" rel="noopener">Faraday key pouches ↗</a>
+          <a href="https://www.amazon.com/s?k=faraday+bag+phone" target="_blank" rel="noopener">Faraday phone bags ↗</a>
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 80 100" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="20" y="5" width="40" height="28" rx="3"/>
+  <rect x="27" y="10" width="26" height="14" rx="1" fill="currentColor" opacity=".15"/>
+  <line x1="29" y1="13" x2="29" y2="20" stroke-width="1"/>
+  <line x1="34" y1="13" x2="34" y2="20" stroke-width="1"/>
+  <line x1="39" y1="13" x2="39" y2="20" stroke-width="1"/>
+  <line x1="44" y1="13" x2="44" y2="20" stroke-width="1"/>
+  <rect x="25" y="33" width="30" height="50" rx="4"/>
+  <line x1="40" y1="33" x2="40" y2="83"/>
+  <text x="40" y="60" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">DATA</text>
+  <text x="40" y="68" text-anchor="middle" font-size="5.5" fill="currentColor" stroke="none" font-family="monospace">BLOCK</text>
+  <line x1="32" y1="75" x2="48" y2="75" stroke-width="1" opacity=".5"/>
+</svg></div>
+      <div class="hw-name">USB Data Blocker</div>
+        <div class="hw-cat">Safe Charging · Under 0</div>
+        <p class="hw-desc">Sits between your cable and any public USB charging port. Passes power through but physically blocks the data pins nothing can be transferred to or from your device. Essential for airport, hotel, and café charging points.</p>
+        <div class="hw-links">
+          <a href="https://www.amazon.com/s?k=PortaPow+USB+data+blocker" target="_blank" rel="noopener">PortaPow Data Blocker ↗</a>
+          <a href="https://www.amazon.com/s?k=usb+data+blocker+charge+only" target="_blank" rel="noopener">USB data blockers on Amazon ↗</a>
+        </div>
+      </div>
+      <div class="hw-card">
+        <div class="hw-img"><svg viewBox="0 0 130 100" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="15" y="8" width="100" height="68" rx="4"/>
+  <rect x="22" y="14" width="86" height="56" rx="2" fill="currentColor" opacity=".08"/>
+  <path d="M22,14 L108,14 L65,42 Z" fill="currentColor" opacity=".18"/>
+  <path d="M65,42 L108,14 L108,70 Z" fill="currentColor" opacity=".06"/>
+  <line x1="42" y1="76" x2="88" y2="76"/>
+  <rect x="38" y="76" width="54" height="6" rx="2"/>
+  <text x="65" y="55" text-anchor="middle" font-size="6" fill="currentColor" stroke="none" font-family="monospace" opacity=".6">PRIVATE</text>
+</svg></div>
+      <div class="hw-name">Privacy Screen Filter</div>
+        <div class="hw-cat">Visual Privacy · 5 35</div>
+        <p class="hw-desc">Makes your laptop or phone screen appear black to anyone not directly in front of it. Prevents shoulder surfing in planes, trains, cafés, and open offices. Essential for anyone handling sensitive work in public. Fits over your existing screen no installation tools needed.</p>
+        <div class="hw-links">
+          <a href="https://www.amazon.com/s?k=3M+privacy+screen+filter+laptop" target="_blank" rel="noopener">3M privacy screens (laptop) ↗</a>
+          <a href="https://www.amazon.com/s?k=privacy+screen+protector+iphone+samsung" target="_blank" rel="noopener">Phone privacy screens ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>OpSec Academy Security Hardware Field Guide</p>
+    <p class="footer-muted">A <a href="https://dphfoundation.github.io" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid currentColor">Digital Playhouse Foundation</a> open source initiative · Australian Registered Charity · PBI &amp; DGR · ACN 696 105 441</p>
+    <p class="footer-muted" style="margin-top:.4rem"><a href="https://www.gnu.org/licenses/gpl-3.0.en.html" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid currentColor">GNU GPL v3.0</a> · Private. Secure. Open Source.</p>
+  </div>
+</footer>
+
+<script>
+// Fade in on scroll — use rootMargin so elements below the fold still trigger
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('fade-visible'); observer.unobserve(e.target); } });
+}, { threshold: 0, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Make any section that is the target of a hash link immediately visible
+function revealTarget() {
+  const hash = window.location.hash;
+  if (hash) {
+    const el = document.querySelector(hash);
+    if (el) el.classList.add('fade-visible');
+    // Also reveal all sections above it
+    document.querySelectorAll('.fade-in').forEach(s => {
+      if (el && s.getBoundingClientRect().top <= el.getBoundingClientRect().top) {
+        s.classList.add('fade-visible');
+      }
+    });
+  }
+}
+revealTarget();
+window.addEventListener('hashchange', revealTarget);
+
+// Nav links: reveal target section immediately on click
+document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+  link.addEventListener('click', () => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (target) target.classList.add('fade-visible');
+  });
+});
+
+// Theme toggle
+const toggle = document.getElementById('themeToggle');
+if(localStorage.getItem('opsec-theme') === 'light') document.body.classList.add('light-theme');
+toggle.addEventListener('click', () => {
+  document.body.classList.toggle('light-theme');
+  localStorage.setItem('opsec-theme', document.body.classList.contains('light-theme') ? 'light' : 'dark');
+});
+</script>
 </body>
 </html>
